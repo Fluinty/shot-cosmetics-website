@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produkty - Shot Cosmetics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Shot<span style="color:var(--color-purple-light)">.</span></a>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home / O Nas</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
+                    <li><a href="products.html" class="active">Produkty</a></li>
+                    <li><a href="education.html">Edukacja</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section - Ultra Minimal -->
+        <section style="margin-top: 8rem; padding: 0 0 6rem 0;">
+            <div class="container" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <p
+                    style="color: var(--color-purple); letter-spacing: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.5rem;">
+                    Nasze Kolekcje</p>
+                <h1
+                    style="color: var(--color-purple-dark); margin-bottom: 2rem; font-size: 3rem; font-weight: 300; line-height: 1.2;">
+                    Profesjonalne<br>Kosmetyki Shot</h1>
+                <p
+                    style="color: var(--color-text-light); font-size: 1rem; line-height: 1.8; max-width: 500px; margin: 0 auto 1rem;">
+                    100% zaprojektowane i wyprodukowane we Włoszech
+                </p>
+                <p
+                    style="color: var(--color-text-light); font-size: 1rem; line-height: 1.8; max-width: 500px; margin: 0 auto;">
+                    Bez siarczanów • Bez parabenów • Bez alergenów
+                </p>
+            </div>
+        </section>
+
+        <!-- Dynamic Products Container -->
+        <div id="products-container" style="min-height: 400px;">
+            <div style="text-align: center; padding: 4rem;">
+                <p style="color: var(--color-text-light);">Ładowanie produktów...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/api.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('products-container');
+
+            // Fetch categories with products
+            const categories = await StrapiAPI.fetchCategoriesWithProducts();
+
+            if (!categories || categories.length === 0) {
+                container.innerHTML = '<div style="text-align: center; padding: 4rem;"><p>Brak produktów do wyświetlenia.</p></div>';
+                return;
+            }
+
+            container.innerHTML = ''; // Clear loading state
+
+            categories.forEach((category, index) => {
+                // Skip categories with no products
+                if (!category.products || category.products.length === 0) return;
+
+                const isEven = index % 2 !== 0;
+                const bgStyle = isEven ? 'background: rgba(106, 13, 173, 0.02);' : '';
+                const borderStyle = 'border-top: 1px solid; border-image: linear-gradient(to right, transparent, rgba(106, 13, 173, 0.2), transparent) 1;';
+
+                const sectionHtml = `
+                    <section style="padding: 5rem 0; ${bgStyle} ${borderStyle}">
+                        <div class="container">
+                            <div style="margin-bottom: 3.5rem; text-align: center;">
+                                <h2 style="color: var(--color-purple-dark); margin-bottom: 0.75rem; font-size: 2rem; font-weight: 600;">
+                                    ${category.name}
+                                </h2>
+                                ${category.description ? `<p style="color: var(--color-text-light); font-size: 1rem;">${category.description}</p>` : ''}
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 3rem;">
+                                ${category.products.map(product => `
+                                    <div style="text-align: center;">
+                                        <div style="margin-bottom: 1.5rem;">
+                                            <img src="${StrapiAPI.getImageUrl(product.image)}" 
+                                                 alt="${product.name}"
+                                                 style="max-height: 200px; object-fit: contain; margin: 0 auto;">
+                                        </div>
+                                        <h4 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: var(--color-purple-dark); font-weight: 600;">
+                                            ${product.name}
+                                        </h4>
+                                        ${product.volume ? `<p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.25rem;">${product.volume}</p>` : ''}
+                                        ${product.shortDescription ? `<p style="font-size: 0.9rem; color: var(--color-text-light);">${product.shortDescription}</p>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                `;
+
+                container.insertAdjacentHTML('beforeend', sectionHtml);
+            });
+        });
+    </script>
+</body>
+
+</html>

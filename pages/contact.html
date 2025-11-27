@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Shot Cosmetics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .voivodeship-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #f5f5f5;
+            transition: all 0.2s;
+        }
+
+        .voivodeship-item:hover {
+            background-color: var(--color-purple);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">Shot<span style="color:var(--color-purple-light)">.</span></a>
+                <div class="menu-toggle" id="mobile-menu">
+                    ☰
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home / O Nas</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
+                    <li><a href="products.html">Produkty</a></li>
+                    <li><a href="education.html">Edukacja</a></li>
+                    <li><a href="contact.html" class="active">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 6rem; margin-bottom: 4rem;">
+        <div class="text-center" style="margin-bottom: 4rem;">
+            <h5 class="text-uppercase" style="color: var(--color-purple);">Kontakt</h5>
+            <h2>Skontaktuj się z nami</h2>
+            <p style="color: var(--color-text-light);">Jesteśmy tu, aby pomóc!</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="card" style="padding: 3rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--color-purple);">Wyślij wiadomość</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Imię i nazwisko</label>
+                        <input type="text" placeholder="Jan Kowalski">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="jan@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Wiadomość</label>
+                        <textarea rows="5" placeholder="Twoja wiadomość..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Wyślij</button>
+                </form>
+            </div>
+
+            <div class="card" style="padding: 3rem; background: var(--color-bg);">
+                <h3 style="margin-bottom: 2rem; color: var(--color-purple);">Informacje kontaktowe</h3>
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: var(--color-purple); font-size: 1rem; margin-bottom: 0.5rem;">Adres</h4>
+                    <p style="color: var(--color-text-light);">Shot Cosmetics Polska<br>
+                        ul. Przykładowa 123<br>
+                        00-001 Warszawa</p>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: var(--color-purple); font-size: 1rem; margin-bottom: 0.5rem;">Telefon</h4>
+                    <p style="color: var(--color-text-light);">+48 22 123 45 67</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--color-purple); font-size: 1rem; margin-bottom: 0.5rem;">Email</h4>
+                    <p style="color: var(--color-text-light);">kontakt@shot.pl</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Distributor Map -->
+        <div style="margin-top: 6rem;">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h5 class="text-uppercase" style="color: var(--color-purple);">Dystrybucja</h5>
+                <h2>Znajdź Dystrybutora w Twoim Regionie</h2>
+            </div>
+
+            <div class="card"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; border: none; margin-bottom: 3rem;">
+                <div id="voivodeship-list"
+                    style="padding: 2rem; background: #fff; max-height: 400px; overflow-y: auto; border-right: 1px solid #eee;">
+                </div>
+                <div id="distributor-info"
+                    style="background: #fafafa; padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="color: var(--color-purple); margin-bottom: 1rem;">Wybierz region</h3>
+                    <p style="color: var(--color-text-light);">Dane kontaktowe przedstawiciela handlowego pojawią się
+                        tutaj.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const distributors = {
+            'Dolnośląskie': { name: 'Jan Nowak', phone: '500 100 100', email: 'wroclaw@shot.pl' },
+            'Kujawsko-pomorskie': { name: 'Anna Kowalska', phone: '500 200 200', email: 'torun@shot.pl' },
+            'Lubelskie': { name: 'Piotr Wiśniewski', phone: '500 300 300', email: 'lublin@shot.pl' },
+            'Lubuskie': { name: 'Maria Wójcik', phone: '500 400 400', email: 'zielonagora@shot.pl' },
+            'Łódzkie': { name: 'Krzysztof Kaczmarek', phone: '500 500 500', email: 'lodz@shot.pl' },
+            'Małopolskie': { name: 'Agnieszka Mazur', phone: '500 600 600', email: 'krakow@shot.pl' },
+            'Mazowieckie': { name: 'Tomasz Krawczyk', phone: '500 700 700', email: 'warszawa@shot.pl' },
+            'Opolskie': { name: 'Barbara Piotrowska', phone: '500 800 800', email: 'opole@shot.pl' },
+            'Podkarpackie': { name: 'Michał Grabowski', phone: '500 900 900', email: 'rzeszow@shot.pl' },
+            'Podlaskie': { name: 'Ewa Zając', phone: '600 100 100', email: 'bialystok@shot.pl' },
+            'Pomorskie': { name: 'Adam Pawlak', phone: '600 200 200', email: 'gdansk@shot.pl' },
+            'Śląskie': { name: 'Magdalena Król', phone: '600 300 300', email: 'katowice@shot.pl' },
+            'Świętokrzyskie': { name: 'Marcin Wieczorek', phone: '600 400 400', email: 'kielce@shot.pl' },
+            'Warmińsko-mazurskie': { name: 'Monika Jabłońska', phone: '600 500 500', email: 'olsztyn@shot.pl' },
+            'Wielkopolskie': { name: 'Łukasz Wróbel', phone: '600 600 600', email: 'poznan@shot.pl' },
+            'Zachodniopomorskie': { name: 'Katarzyna Nowicka', phone: '600 700 700', email: 'szczecin@shot.pl' }
+        };
+
+        const listContainer = document.getElementById('voivodeship-list');
+        const infoContainer = document.getElementById('distributor-info');
+
+        if (listContainer && infoContainer) {
+            Object.keys(distributors).forEach(region => {
+                const div = document.createElement('div');
+                div.className = 'voivodeship-item';
+                div.textContent = region;
+
+                div.addEventListener('mouseover', () => {
+                    Array.from(listContainer.children).forEach(el => {
+                        el.style.background = 'transparent';
+                        el.style.color = 'inherit';
+                        el.style.fontWeight = 'normal';
+                    });
+
+                    div.style.background = 'var(--color-purple)';
+                    div.style.color = 'white';
+                    div.style.fontWeight = '600';
+
+                    const data = distributors[region];
+                    infoContainer.innerHTML = `
+                    <h3 style="color: var(--color-purple); margin-bottom: 1.5rem;">${region}</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Przedstawiciel</small>
+                        <p style="font-size: 1.2rem; font-weight: 600;">${data.name}</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Telefon</small>
+                        <p style="font-size: 1.1rem;">${data.phone}</p>
+                    </div>
+                    <div>
+                        <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Email</small>
+                        <p style="font-size: 1.1rem;">${data.email}</p>
+                    </div>
+                `;
+                });
+                listContainer.appendChild(div);
+            });
+        }
+    </script>
+</body>
+
+</html>

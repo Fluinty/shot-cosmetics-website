@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shot Cosmetics - Profesjonalne Kosmetyki do Włosów</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">Shot<span style="color:var(--color-purple-light)">.</span></a>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home / O Nas</a></li>
+                    <li><a href="pages/news.html">Aktualności</a></li>
+                    <li><a href="pages/products.html">Produkty</a></li>
+                    <li><a href="pages/education.html">Edukacja</a></li>
+                    <li><a href="pages/contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero"
+            style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)), url('assets/images/hero_woman.png') center 25%/cover no-repeat; margin-top: 4rem;">
+            <div class="container hero-content" style="text-align: center;">
+                <h1 style="color: white; text-shadow: 3px 3px 10px rgba(0,0,0,0.8);">Shot Cosmetics</h1>
+                <p style="font-size: 1.3rem; color: white; text-shadow: 2px 2px 6px rgba(0,0,0,0.8);">
+                    Włoska pasja. Nowoczesna pielęgnacja.<br>
+                    Odkryj piękno swoich włosów na nowo.
+                </p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; margin-top: 3rem;">
+                    <a href="pages/products.html" class="btn btn-primary">Zobacz Kolekcje</a>
+                    <a href="pages/contact.html" class="btn btn-outline"
+                        style="background: white; color: var(--color-purple); border-color: white;">Znajdź Salon</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="container" style="margin-top: 8rem; margin-bottom: 8rem;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center;">
+                <div>
+                    <h5 class="text-uppercase" style="color: var(--color-purple); margin-bottom: 1.5rem;">O Marce</h5>
+                    <h2 style="margin-bottom: 2rem;">Innowacja spotyka tradycję</h2>
+                    <p
+                        style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.05rem; line-height: 1.8;">
+                        Marka Shot to synonim włoskiej doskonałości. Tworzymy kosmetyki, które nie tylko pielęgnują, ale
+                        transformują włosy, dając kobietom pewność siebie każdego dnia.
+                    </p>
+                    <p style="color: var(--color-text-light); font-size: 1.05rem; line-height: 1.8;">
+                        Nasze produkty powstają z miłości do piękna i nauki. Łączymy naturalne składniki z zaawansowaną
+                        technologią, aby zapewnić Twoim włosom to, co najlepsze.
+                    </p>
+                </div>
+                <div>
+                    <div
+                        style="background: url('assets/images/hero_woman.png') center/cover; height: 500px; border-radius: 200px 200px 0 0; box-shadow: var(--shadow-hover); border: 3px solid var(--color-purple-light);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container"
+            style="background-color: var(--color-bg); padding: 6rem 2rem; border-radius: var(--radius-lg); margin: 4rem auto; border: 2px solid var(--color-purple-light);">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <h5 class="text-uppercase" style="color: var(--color-purple-light);">Bestsellery</h5>
+                <h2 style="color: var(--color-purple-dark);">Ulubieńcy Stylistów</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="card product-card" style="padding: 2rem; text-align: center; background: white;">
+                    <img src="assets/images/product_purple.png"
+                        style="height: 200px; margin: 0 auto 1rem; object-fit: contain;">
+                    <h4 style="margin-bottom: 0.5rem;">Farba DNA Color</h4>
+                    <p style="color: var(--color-text-light); font-size: 0.9rem;">Rewolucyjna koloryzacja z kolagenem.
+                    </p>
+                </div>
+                <div class="card product-card" style="padding: 2rem; text-align: center; background: white;">
+                    <img src="assets/images/product_purple.png"
+                        style="height: 200px; margin: 0 auto 1rem; object-fit: contain;">
+                    <h4 style="margin-bottom: 0.5rem;">Szampon Care & Glamour</h4>
+                    <p style="color: var(--color-text-light); font-size: 0.9rem;">Nawilżenie i blask dla każdego rodzaju
+                        włosów.</p>
+                </div>
+                <div class="card product-card" style="padding: 2rem; text-align: center; background: white;">
+                    <img src="assets/images/product_purple.png"
+                        style="height: 200px; margin: 0 auto 1rem; object-fit: contain;">
+                    <h4 style="margin-bottom: 0.5rem;">Maska Anti-Age</h4>
+                    <p style="color: var(--color-text-light); font-size: 0.9rem;">Odmłodzenie struktury włosa.</p>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="pages/products.html" class="btn btn-outline">Zobacz wszystkie produkty</a>
+            </div>
+        </section>
+
+        <section class="container">
+            <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem;">
+                <div>
+                    <h5 class="text-uppercase" style="color: var(--color-purple);">Aktualności</h5>
+                    <h2>Co nowego w świecie Shot?</h2>
+                </div>
+                <a href="pages/news.html"
+                    style="color: var(--color-purple); font-weight: 700; text-decoration: underline;">Zobacz
+                    archiwum</a>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                <article class="card">
+                    <div style="height: 200px; background: #eee url('assets/images/news1.png') center/cover;"></div>
+                    <div style="padding: 1.5rem;">
+                        <span class="text-uppercase"
+                            style="color: var(--color-purple); font-weight: 700; font-size: 0.7rem;">NOWOŚĆ</span>
+                        <h4 style="margin: 0.5rem 0;">Premiera linii DNA</h4>
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">Nowa era koloryzacji już dostępna.
+                        </p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div style="height: 200px; background: #eee url('assets/images/news2.png') center/cover;"></div>
+                    <div style="padding: 1.5rem;">
+                        <span class="text-uppercase"
+                            style="color: var(--color-purple); font-weight: 700; font-size: 0.7rem;">SZKOLENIE</span>
+                        <h4 style="margin: 0.5rem 0;">Masterclass w Warszawie</h4>
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">Dołącz do najlepszych.</p>
+                    </div>
+                </article>
+                <article class="card">
+                    <div style="height: 200px; background: #eee url('assets/images/news3.png') center/cover;"></div>
+                    <div style="padding: 1.5rem;">
+                        <span class="text-uppercase"
+                            style="color: var(--color-purple); font-weight: 700; font-size: 0.7rem;">WYDARZENIE</span>
+                        <h4 style="margin: 0.5rem 0;">Targi Look 2024</h4>
+                        <p style="color: var(--color-text-light); font-size: 0.9rem;">Relacja z wydarzenia.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="container" style="margin-top: 6rem; margin-bottom: 6rem;">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h5 class="text-uppercase" style="color: var(--color-purple);">Dystrybucja</h5>
+                <h2>Znajdź Dystrybutora w Twoim Regionie</h2>
+                <p style="color: var(--color-text-light);">Wybierz województwo z listy, aby zobaczyć kontakt.</p>
+            </div>
+            <div class="card"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 0;overflow: hidden; border: none; margin-bottom: 3rem;">
+                <div id="voivodeship-list"
+                    style="padding: 2rem; background: #fff; max-height: 400px; overflow-y: auto; border-right: 1px solid #eee;">
+                </div>
+                <div id="distributor-info"
+                    style="background: #fafafa; padding: 3rem; display: flex; flex-direction: column; justify-content: center;">
+                    <h3 style="color: var(--color-purple); margin-bottom: 1rem;">Wybierz region</h3>
+                    <p style="color: var(--color-text-light);">Dane kontaktowe przedstawiciela handlowego pojawią się
+                        tutaj.</p>
+                </div>
+            </div>
+            <div
+                style="height: 400px; width: 100%; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-subtle);">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4981275.806653457!2d15.0!3d52.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47009964a4640bbb%3A0x97573ca49cc55ea!2sPolska!5e0!3m2!1spl!2spl!4v1629812345678!5m2!1spl!2spl"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const distributors = {
+            'Dolnośląskie': { name: 'Jan Nowak', phone: '500 100 100', email: 'wroclaw@shot.pl' },
+            'Kujawsko-pomorskie': { name: 'Anna Kowalska', phone: '500 200 200', email: 'torun@shot.pl' },
+            'Lubelskie': { name: 'Piotr Wiśniewski', phone: '500 300 300', email: 'lublin@shot.pl' },
+            'Lubuskie': { name: 'Maria Wójcik', phone: '500 400 400', email: 'zielonagora@shot.pl' },
+            'Łódzkie': { name: 'Krzysztof Kaczmarek', phone: '500 500 500', email: 'lodz@shot.pl' },
+            'Małopolskie': { name: 'Agnieszka Mazur', phone: '500 600 600', email: 'krakow@shot.pl' },
+            'Mazowieckie': { name: 'Tomasz Krawczyk', phone: '500 700 700', email: 'warszawa@shot.pl' },
+            'Opolskie': { name: 'Barbara Piotrowska', phone: '500 800 800', email: 'opole@shot.pl' },
+            'Podkarpackie': { name: 'Michał Grabowski', phone: '500 900 900', email: 'rzeszow@shot.pl' },
+            'Podlaskie': { name: 'Ewa Zając', phone: '600 100 100', email: 'bialystok@shot.pl' },
+            'Pomorskie': { name: 'Adam Pawlak', phone: '600 200 200', email: 'gdansk@shot.pl' },
+            'Śląskie': { name: 'Magdalena Król', phone: '600 300 300', email: 'katowice@shot.pl' },
+            'Świętokrzyskie': { name: 'Marcin Wieczorek', phone: '600 400 400', email: 'kielce@shot.pl' },
+            'Warmińsko-mazurskie': { name: 'Monika Jabłońska', phone: '600 500 500', email: 'olsztyn@shot.pl' },
+            'Wielkopolskie': { name: 'Łukasz Wróbel', phone: '600 600 600', email: 'poznan@shot.pl' },
+            'Zachodniopomorskie': { name: 'Katarzyna Nowicka', phone: '600 700 700', email: 'szczecin@shot.pl' }
+        };
+
+        const listContainer = document.getElementById('voivodeship-list');
+        const infoContainer = document.getElementById('distributor-info');
+
+        if (listContainer && infoContainer) {
+            Object.keys(distributors).forEach(region => {
+                const div = document.createElement('div');
+                div.style.padding = '0.75rem 1rem';
+                div.style.cursor = 'pointer';
+                div.style.borderBottom = '1px solid #f5f5f5';
+                div.style.transition = 'all 0.2s';
+                div.textContent = region;
+
+                div.addEventListener('mouseover', () => {
+                    Array.from(listContainer.children).forEach(el => {
+                        el.style.background = 'transparent';
+                        el.style.color = 'inherit';
+                        el.style.fontWeight = 'normal';
+                    });
+
+                    div.style.background = 'var(--color-purple)';
+                    div.style.color = 'white';
+                    div.style.fontWeight = '600';
+
+                    const data = distributors[region];
+                    infoContainer.innerHTML = `
+                        <h3 style="color: var(--color-purple); margin-bottom: 1.5rem;">${region}</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Przedstawiciel</small>
+                            <p style="font-size: 1.2rem; font-weight: 600;">${data.name}</p>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Telefon</small>
+                            <p style="font-size: 1.1rem;">${data.phone}</p>
+                        </div>
+                        <div>
+                            <small style="text-transform: uppercase; color: #999; font-size: 0.7rem;">Email</small>
+                            <p style="font-size: 1.1rem;">${data.email}</p>
+                        </div>
+                    `;
+                });
+                listContainer.appendChild(div);
+            });
+        }
+    </script>
+</body>
+
+</html>
