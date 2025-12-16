@@ -4,13 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aktualności - Shot Cosmetics</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
+    <title>Świat Shot - Aktualności</title>
+    <link rel="stylesheet" href="../css/styles.css?v=2">
 </head>
 
 <body>
@@ -18,74 +13,75 @@
     <header>
         <div class="container">
             <nav>
-                <a href="../index.html" class="logo">Shot<span style="color:var(--color-green)">.</span></a>
-                <div class="menu-toggle" id="mobile-menu">
-                    ☰
-                </div>
+                <a href="../index.html" class="logo">Shot<span style="color:var(--color-gold)">.</span></a>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
                 <ul class="nav-links">
-                    <li><a href="../index.html">Home / O Nas</a></li>
-                    <li><a href="news.html" class="active">Aktualności</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">O Nas</a></li>
                     <li><a href="products.html">Produkty</a></li>
                     <li><a href="education.html">Edukacja</a></li>
+                    <li><a href="news.html" class="active">Świat Shot</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <div class="text-center" style="margin-bottom: 4rem;">
-            <h5 class="text-uppercase" style="color: var(--color-purple);">Blog & Wydarzenia</h5>
-            <h2>Świat Shot Cosmetics</h2>
+    <main class="container" style="padding-top: 8rem; min-height: 80vh;">
+        <div class="text-center" style="margin-bottom: 5rem;">
+            <span class="text-uppercase" style="display:block; margin-bottom: 1rem; color: var(--color-gold);">Blog &
+                Wydarzenia</span>
+            <h1 style="margin-bottom: 1.5rem;">Świat Shot Cosmetics</h1>
+            <p style="color: var(--color-text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                Najnowsze trendy, relacje ze szkoleń i premiery produktów. Bądź na bieżąco z włoską modą fryzjerską.
+            </p>
         </div>
 
         <div id="news-container"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; min-height: 300px;">
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem;">
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem; margin-bottom: 6rem;">
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem;">
                 <p style="color: var(--color-text-light);">Ładowanie aktualności...</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
-        </div>
+        <p>&copy; 2024 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
     </footer>
 
-    <script src="../js/api.js"></script>
     <script src="../js/main.js"></script>
+    <script src="../js/api.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             const container = document.getElementById('news-container');
-
-            // Fetch articles
             const articles = await StrapiAPI.fetchArticles();
 
             if (!articles || articles.length === 0) {
-                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 4rem;"><p>Brak aktualności.</p></div>';
+                container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 6rem;"><p>Brak aktualności.</p></div>';
                 return;
             }
 
-            container.innerHTML = ''; // Clear loading state
+            container.innerHTML = '';
 
             articles.forEach(article => {
                 const imageUrl = article.coverImage ? StrapiAPI.getImageUrl(article.coverImage) : '../assets/images/news1.png';
 
                 const articleHtml = `
-                    <article class="card">
-                        <div style="height: 250px; background: #eee url('${imageUrl}') center/cover;"></div>
-                        <div style="padding: 2rem;">
-                            <span class="text-uppercase" style="color: var(--color-purple); font-weight: 700; font-size: 0.75rem; letter-spacing: 1px;">
-                                ${new Date(article.publishedAt).toLocaleDateString('pl-PL')}
-                            </span>
-                            <h3 style="margin: 1rem 0; font-size: 1.5rem;">${article.title}</h3>
-                            <p style="color: var(--color-text-light); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    <article class="card" style="display: flex; flex-direction: column; cursor: pointer;">
+                        <div style="height: 300px; background: #f0f0f0 url('${imageUrl}') center/cover; position: relative;">
+                            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.5));"></div>
+                        </div>
+                        <div style="padding: 2.5rem; flex-grow: 1; display: flex; flex-direction: column;">
+                            <div style="margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between;">
+                                <span class="text-uppercase" style="color: var(--color-gold); font-size: 0.7rem; letter-spacing: 0.1em;">
+                                    ${new Date(article.publishedAt).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                </span>
+                                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Czytaj &rarr;</span>
+                            </div>
+                            <h3 style="margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.3;">${article.title}</h3>
+                            <p style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; flex-grow: 1;">
                                 ${article.excerpt || ''}
                             </p>
-                            <a href="#" style="color: var(--color-black); font-weight: 700; text-decoration: underline; font-size: 0.9rem;">
-                                Czytaj więcej
-                            </a>
                         </div>
                     </article>
                 `;
@@ -94,15 +90,6 @@
             });
         });
     </script>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
-        </div>
-    </footer>
-
-    <script src="../js/main.js"></script>
 </body>
 
 </html>

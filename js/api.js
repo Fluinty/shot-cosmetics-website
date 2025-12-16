@@ -1,13 +1,27 @@
-const STRAPI_URL = 'http://localhost:1337';
+// Config for Static or Local mode
+const USE_STATIC_DATA = true; // Set to true for Netlify deployment
+const API_URL = 'http://localhost:1337';
 
 /**
  * Helper to get full image URL
  */
 function getImageUrl(imageData) {
-    if (!imageData) return 'assets/images/product_purple.png'; // Fallback image
-    // If image has formats (small/medium/thumbnail), use small, otherwise original
+    if (!imageData) return 'assets/images/product_purple.png'; // Fallback
+
     const url = imageData.formats?.small?.url || imageData.url;
-    return `${STRAPI_URL}${url}`;
+
+    if (USE_STATIC_DATA) {
+        // In static mode, we replaced /uploads/ with assets/uploads/ in our JSON export
+        // However, if the JSON still has the raw path from export script, we might handle it here too
+        // But our export script kept the path as is? Wait, the export script had cleanData() but didn't actually use it on the values recursively.
+        // Let's assume the JSON has raw paths "/uploads/foo.png".
+        // We need to strip the domain and map to local assets.
+        return `/assets${url}`;
+        // Note: The export script didn't recursively clean the JSON, so paths are likely "/uploads/file.png".
+        // We want "assets/uploads/file.png".
+    }
+
+    return `${API_URL}${url}`;
 }
 
 /**
@@ -15,10 +29,10 @@ function getImageUrl(imageData) {
  */
 async function fetchCategoriesWithProducts() {
     try {
-        // Fetch categories and populate their products and product images
-        const response = await fetch(`${STRAPI_URL}/api/categories?populate[products][populate]=image&sort=order:asc`);
+        const url = USE_STATIC_DATA ? '/assets/data/categories.json' : `${API_URL}/api/categories?populate[products][populate]=image&sort=order:asc`;
+        const response = await fetch(url);
         const data = await response.json();
-        return data.data;
+        return data.data; // Strapi format { data: [...] }
     } catch (error) {
         console.error('Error fetching categories:', error);
         return [];
@@ -30,7 +44,8 @@ async function fetchCategoriesWithProducts() {
  */
 async function fetchProducts() {
     try {
-        const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
+        const url = USE_STATIC_DATA ? '/assets/data/products.json' : `${API_URL}/api/products?populate=*`;
+        const response = await fetch(url);
         const data = await response.json();
         return data.data;
     } catch (error) {
@@ -44,7 +59,8 @@ async function fetchProducts() {
  */
 async function fetchArticles() {
     try {
-        const response = await fetch(`${STRAPI_URL}/api/articles?populate=*&sort=publishedAt:desc`);
+        const url = USE_STATIC_DATA ? '/assets/data/articles.json' : `${API_URL}/api/articles?populate=*&sort=publishedAt:desc`;
+        const response = await fetch(url);
         const data = await response.json();
         return data.data;
     } catch (error) {
@@ -53,9 +69,7 @@ async function fetchArticles() {
     }
 }
 
-// Export functions if using modules, or just expose to window
 window.StrapiAPI = {
-    STRAPI_URL,
     getImageUrl,
     fetchCategoriesWithProducts,
     fetchProducts,

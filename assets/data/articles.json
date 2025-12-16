@@ -1,0 +1,72 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "documentId": "r7hte3uq0939j57darjl58c6",
+      "title": "Próbny",
+      "slug": "article",
+      "content": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "text": "PróbnyPróbnyPróbnyPróbnyPróbnyPróbny",
+              "bold": true
+            },
+            {
+              "type": "text",
+              "text": "\n\nPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbnyPróbny"
+            }
+          ]
+        }
+      ],
+      "excerpt": null,
+      "createdAt": "2025-11-27T14:54:19.668Z",
+      "updatedAt": "2025-11-27T14:54:30.777Z",
+      "publishedAt": "2025-11-27T14:54:30.790Z",
+      "coverImage": {
+        "id": 1,
+        "documentId": "vpq3xo5svidjfj5faf47m62h",
+        "name": "images.jpg",
+        "alternativeText": null,
+        "caption": null,
+        "width": 168,
+        "height": 300,
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_images.jpg",
+            "hash": "thumbnail_images_0673b19c15",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "path": null,
+            "width": 87,
+            "height": 156,
+            "size": 3.36,
+            "sizeInBytes": 3362,
+            "url": "/uploads/thumbnail_images_0673b19c15.jpg"
+          }
+        },
+        "hash": "images_0673b19c15",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 8.62,
+        "url": "/uploads/images_0673b19c15.jpg",
+        "previewUrl": null,
+        "provider": "local",
+        "provider_metadata": null,
+        "createdAt": "2025-11-27T14:25:37.503Z",
+        "updatedAt": "2025-11-27T14:54:15.425Z",
+        "publishedAt": "2025-11-27T14:25:37.503Z"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 1
+    }
+  }
+}

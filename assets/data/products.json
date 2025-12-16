@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "id": 10,
+      "documentId": "f6b4w0oz0qbhx2731yg0z6o8",
+      "name": "MASKA ANTI-AGE",
+      "description": "Intensywnie regenerująca kuracja przywracająca młodzieńczą witalność włosom dojrzałym, cienkim i osłabionym. Głęboko odżywia, wzmacnia strukturę włosa i nadaje objętości, przywracając sprężystość oraz naturalny blask.",
+      "shortDescription": "Regeneruje i przywraca witalność włosom dojrzałych.",
+      "volume": "250ml",
+      "categoryName": null,
+      "order": 0,
+      "createdAt": "2025-12-12T09:18:02.881Z",
+      "updatedAt": "2025-12-12T09:25:34.705Z",
+      "publishedAt": "2025-12-12T09:25:34.719Z",
+      "image": {
+        "url": "/images/product_mask_250.png",
+        "formats": {
+          "small": {
+            "url": "/images/product_mask_250.png"
+          },
+          "medium": {
+            "url": "/images/product_mask_250.png"
+          },
+          "thumbnail": {
+            "url": "/images/product_mask_250.png"
+          }
+        }
+      },
+      "category": {
+        "id": 18,
+        "name": "ANTI-AGE REGENERUJĄCA",
+        "slugname": "anti-age-regenerujaca"
+      }
+    },
+    {
+      "id": 12,
+      "documentId": "jj6rzch8pcsgqheywroswg9p",
+      "name": "SZAMPON ANTI-AGE",
+      "description": "Delikatnie oczyszczający szampon stworzony specjalnie dla włosów dojrzałych, tracących gęstość i witalność. Wzmacnia osłabione włosy od nasady, przygotowując je do dalszej pielęgnacji i nadając lekkości oraz objętości.",
+      "shortDescription": "Wzmacnia i odżywia włosy dojrzałe.",
+      "volume": "250ml",
+      "categoryName": "Anti-Age regenerująca",
+      "order": 0,
+      "createdAt": "2025-12-12T09:22:53.840Z",
+      "updatedAt": "2025-12-12T09:25:56.768Z",
+      "publishedAt": "2025-12-12T09:25:56.778Z",
+      "image": {
+        "url": "/images/product_shampoo.png",
+        "formats": {
+          "small": {
+            "url": "/images/product_shampoo.png"
+          },
+          "medium": {
+            "url": "/images/product_shampoo.png"
+          },
+          "thumbnail": {
+            "url": "/images/product_shampoo.png"
+          }
+        }
+      },
+      "category": {
+        "id": 18,
+        "name": "ANTI-AGE REGENERUJĄCA",
+        "slugname": "anti-age-regenerujaca"
+      }
+    },
+    {
+      "id": 14,
+      "documentId": "w95rg60xotiofg8kgxpxdot2",
+      "name": "AMPUŁKI REGENERUJĄCE DEEP SERUM",
+      "description": "Intensywna odbudowa i głębokie odżywienie włosów.",
+      "shortDescription": "Intensywna odbudowa i głębokie odżywienie włosów.",
+      "volume": "10x10ml",
+      "categoryName": null,
+      "order": 0,
+      "createdAt": "2025-12-12T09:30:35.123Z",
+      "updatedAt": "2025-12-12T09:30:35.123Z",
+      "publishedAt": "2025-12-12T09:30:35.131Z",
+      "image": {
+        "url": "/images/product_ampoules.png",
+        "formats": {
+          "small": {
+            "url": "/images/product_ampoules.png"
+          },
+          "medium": {
+            "url": "/images/product_ampoules.png"
+          },
+          "thumbnail": {
+            "url": "/images/product_ampoules.png"
+          }
+        }
+      },
+      "category": {
+        "id": 18,
+        "name": "ANTI-AGE REGENERUJĄCA",
+        "slugname": "anti-age-regenerujaca"
+      }
+    },
+    {
+      "id": 16,
+      "documentId": "p6cbkrjjdvhuwcea95dfw7zq",
+      "name": "ODŻYWKA ENERGY RAIN W SPRAY’U",
+      "description": "Błyskawiczne nawilżenie i ułatwione rozczesywanie.",
+      "shortDescription": "Błyskawiczne nawilżenie i ułatwione rozczesywanie.",
+      "volume": "125ml",
+      "categoryName": null,
+      "order": 0,
+      "createdAt": "2025-12-12T09:32:09.997Z",
+      "updatedAt": "2025-12-12T09:32:09.997Z",
+      "publishedAt": "2025-12-12T09:32:10.004Z",
+      "image": {
+        "url": "/images/product_spray.png",
+        "formats": {
+          "small": {
+            "url": "/images/product_spray.png"
+          },
+          "medium": {
+            "url": "/images/product_spray.png"
+          },
+          "thumbnail": {
+            "url": "/images/product_spray.png"
+          }
+        }
+      },
+      "category": {
+        "id": 18,
+        "name": "ANTI-AGE REGENERUJĄCA",
+        "slugname": "anti-age-regenerujaca"
+      }
+    },
+    {
+      "id": 19,
+      "documentId": "e0e9lqsmmwzfp1oot0elkdyn",
+      "name": "MASKA ANTI-AGE (DUŻA)",
+      "description": "Intensywny blask i jedwabista gładkość włosów w dużym opakowaniu.",
+      "shortDescription": "Wersja profesjonalna do salonu.",
+      "volume": "1000ml",
+      "categoryName": null,
+      "order": 0,
+      "createdAt": "2025-12-12T09:35:31.456Z",
+      "updatedAt": "2025-12-12T09:35:48.540Z",
+      "publishedAt": "2025-12-12T09:35:48.581Z",
+      "image": {
+        "url": "/images/product_mask_1000.png",
+        "formats": {
+          "small": {
+            "url": "/images/product_mask_1000.png"
+          },
+          "medium": {
+            "url": "/images/product_mask_1000.png"
+          },
+          "thumbnail": {
+            "url": "/images/product_mask_1000.png"
+          }
+        }
+      },
+      "category": {
+        "id": 18,
+        "name": "ANTI-AGE REGENERUJĄCA",
+        "slugname": "anti-age-regenerujaca"
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 5
+    }
+  }
+}
