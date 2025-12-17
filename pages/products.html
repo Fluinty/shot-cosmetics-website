@@ -10,111 +10,429 @@
 
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="../index.html" class="logo">Shot<span style="color:var(--color-gold)">.</span></a>
-                <div class="menu-toggle" id="mobile-menu">☰</div>
-                <ul class="nav-links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="about.html">O Nas</a></li>
-                    <li><a href="products.html" class="active">Produkty</a></li>
-                    <li><a href="education.html">Edukacja</a></li>
-                    <li><a href="news.html">Świat Shot</a></li>
-                    <li><a href="contact.html">Kontakt</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <style>
+        /* Tab Navigation - Sticky Level 1 */
+        .category-tabs {
+            position: sticky;
+            top: 70px;
+            /* Header height offset */
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1rem 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            /* Centered on desktop */
+            gap: 2rem;
+            box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 0;
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scroll iOS */
+        }
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" style="min-height: 50vh; background: var(--color-purple-dark); margin-top: 4rem;">
-            <div class="hero-overlay"></div>
-            <div class="container hero-content">
-                <span class="text-uppercase" style="display:block; margin-bottom: 1rem; color: var(--color-gold);">Nasze
-                    Produkty</span>
-                <h1 style="color: white; margin-bottom: 1.5rem;">Profesjonalna<br>Pielęgnacja</h1>
-                <p style="opacity: 0.8; max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
-                    Odkryj kompletne linie produktów stworzone z myślą o każdym rodzaju włosów.
-                </p>
-            </div>
-        </section>
+        @media (max-width: 768px) {
+            .category-tabs {
+                justify-content: flex-start;
+                /* Start align on mobile to allow full scroll */
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
 
-        <!-- Dynamic Products Container -->
-        <div id="products-container" style="min-height: 400px; margin-bottom: 6rem;">
-            <div style="text-align: center; padding: 6rem;">
-                <p style="color: var(--color-text-light);">Ładowanie kolekcji...</p>
-            </div>
-        </div>
+        .category-tab {
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: var(--color-text-muted);
+            cursor: pointer;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+            border: none;
+            background: none;
+        }
 
-    </main>
+        .category-tab:hover,
+        .category-tab.active {
+            color: var(--color-purple-dark);
+            font-weight: 600;
+        }
 
-    <footer>
-        <p>&copy; 2024 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
-    </footer>
+        .category-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-gold);
+        }
 
-    <script src="../js/main.js"></script>
-    <script src="../js/api.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const container = document.getElementById('products-container');
-            const categories = await StrapiAPI.fetchCategoriesWithProducts();
+        /* Sub-Category Tabs (Level 2) */
+        .sub-category-tabs {
+            position: sticky;
+            top: 123px;
+            /* Header + Tab1 Height */
+            z-index: 99;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 0.8rem 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            display: none;
+            /* Hidden by default */
+            justify-content: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px -5px rgba(0, 0, 0, 0.05);
+        }
 
-            if (!categories || categories.length === 0) {
-                container.innerHTML = '<div style="text-align: center; padding: 6rem;"><p>Brak produktów do wyświetlenia.</p></div>';
-                return;
+        .sub-category-tabs.visible {
+            display: flex;
+        }
+
+        .sub-tab {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            color: var(--color-text-light);
+            background: #f5f5f5;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .sub-tab:hover,
+        .sub-tab.active {
+            background: var(--color-purple);
+            color: white;
+            border-color: var(--color-purple);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        /* Category Section */
+        .category-section {
+            padding: 4rem 0;
+            animation: fadeIn 0.5s ease;
+            scroll-margin-top: 200px;
+            /* Offset for sticky headers */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
 
-            container.innerHTML = '';
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-            categories.forEach((category, index) => {
-                const isEven = index % 2 !== 0;
-                // Subtle background alternation
-                const bgStyle = isEven ? 'background-color: white;' : 'background-color: var(--color-cream);';
+        /* Subsection Headers */
+        .subsection-header {
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
 
-                let productsHtml = '';
-                if (category.products && category.products.length > 0) {
-                    productsHtml = category.products.map(product => `
-                        <div class="card" style="padding: 2.5rem; text-align: center;">
-                            <div style="height: 220px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-                                <img src="${StrapiAPI.getImageUrl(product.image)}" 
-                                     alt="${product.name}"
-                                     style="max-height: 100%; object-fit: contain;">
+        .subsection-title {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--color-purple);
+        }
+
+        .subsection-desc {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Nested Tricoilogy */
+        .nested-section {
+            margin-top: 3rem;
+            background: #fff;
+            /* Distinct background */
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+    </style>
+    </head>
+
+    <body>
+
+        <header>
+            <div class="container">
+                <nav>
+                    <a href="../index.html" class="logo">Shot<span style="color:var(--color-gold)">.</span></a>
+                    <div class="menu-toggle" id="mobile-menu" style="z-index: 9999; cursor: pointer;"
+                        onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="about.html">O Nas</a></li>
+                        <li><a href="products.html" class="active">Produkty</a></li>
+                        <li><a href="education.html">Edukacja</a></li>
+                        <li><a href="news.html">Świat Shot</a></li>
+                        <li><a href="contact.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <!-- Hero Section -->
+            <!-- Hero Section -->
+            <section class="hero"
+                style="min-height: 50vh; background: var(--color-purple-dark); margin-top: 4rem; display: flex; align-items: center; padding: 4rem 0;">
+                <div class="hero-overlay"></div>
+                <div class="container hero-content"
+                    style="max-width: 1800px; padding: 0 6rem; display: flex; align-items: center; gap: 6rem; z-index: 2; position: relative;">
+
+                    <!-- Text Column -->
+                    <div style="flex: 1; text-align: left;">
+                        <span class="text-uppercase"
+                            style="display:block; margin-bottom: 1rem; color: var(--color-gold); letter-spacing: 2px;">Nasze
+                            Produkty</span>
+                        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 4rem; line-height: 1.1;">
+                            Profesjonalna<br>Pielęgnacja</h1>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; line-height: 1.6; max-width: 90%;">
+                            Odkryj innowacyjne formuły łączące naturę z zaawansowaną technologią, by wydobyć z Twoich
+                            włosów to, co najlepsze. Od głębokiej regeneracji i ochrony koloru po specjalistyczne
+                            zabiegi trychologiczne – nasze produkty to gwarancja salonowej jakości w Twoim domu.
+                        </p>
+                    </div>
+
+                    <!-- Image Column -->
+                    <div style="flex: 1; display: flex; justify-content: flex-end;">
+                        <div style="position: relative; width: 100%; max-width: 700px; aspect-ratio: 16/9;">
+                            <!-- Decorative Frame -->
+                            <div
+                                style="position: absolute; top: 20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--color-gold); opacity: 0.3; border-radius: 8px;">
                             </div>
-                            <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--color-text);">${product.name}</h4>
-                            ${product.volume ? `<span class="text-uppercase" style="font-size: 0.7rem; color: var(--color-text-muted); display: block; margin-bottom: 1rem;">${product.volume}</span>` : ''}
-                            ${product.shortDescription ? `<p style="font-size: 0.9rem; color: var(--color-text-light); line-height: 1.6;">${product.shortDescription}</p>` : ''}
+                            <!-- Image -->
+                            <img src="../assets/images/hero_woman.png" alt="Shot Cosmetics Model"
+                                style="width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative;">
                         </div>
-                    `).join('');
-                } else {
-                    productsHtml = `
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 2rem;">
-                            <p style="color: var(--color-text-muted); font-style: italic;">Produkty w tej kategorii pojawią się wkrótce.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Category Tabs -->
+            <div id="tabs-container" class="category-tabs">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Sub-Category Tabs (Level 2) -->
+            <div id="sub-tabs-container" class="sub-category-tabs">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Dynamic Products Container -->
+            <div id="content-container" class="container" style="min-height: 600px; margin-bottom: 6rem;">
+                <div style="text-align: center; padding: 6rem;">
+                    <p style="color: var(--color-text-light);">Ładowanie produktów...</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
+        </footer>
+
+        <script src="../js/main.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', async () => {
+                const tabsContainer = document.getElementById('tabs-container');
+                const subTabsContainer = document.getElementById('sub-tabs-container');
+                const contentContainer = document.getElementById('content-container');
+
+                try {
+                    const response = await fetch('../assets/data/products_v2.json');
+                    const data = await response.json();
+                    const categories = data.categories;
+
+                    if (!categories || categories.length === 0) {
+                        contentContainer.innerHTML = '<p class="text-center">Brak produktów.</p>';
+                        return;
+                    }
+
+                    // Render Tabs
+                    tabsContainer.innerHTML = '';
+                    categories.forEach((cat, index) => {
+                        const btn = document.createElement('button');
+                        btn.className = `category-tab ${index === 0 ? 'active' : ''}`;
+                        btn.textContent = cat.name;
+                        btn.onclick = () => switchCategory(cat.id);
+                        tabsContainer.appendChild(btn);
+                    });
+
+                    // Render Initial Category
+                    renderCategory(categories[0]);
+
+                    // Tab Switch Logic
+                    window.switchCategory = (id) => {
+                        // Update Active Tab
+                        document.querySelectorAll('.category-tab').forEach(tab => {
+                            if (tab.textContent === categories.find(c => c.id === id).name) {
+                                tab.classList.add('active');
+                            } else {
+                                tab.classList.remove('active');
+                            }
+                        });
+
+                        const cat = categories.find(c => c.id === id);
+                        renderCategory(cat);
+                    };
+
+                    function renderCategory(cat) {
+                        contentContainer.innerHTML = '';
+                        subTabsContainer.innerHTML = ''; // Clear sub-tabs
+                        subTabsContainer.classList.remove('visible');
+
+                        const section = document.createElement('div');
+                        section.className = 'category-section';
+
+                        // Title & Description
+                        const headerHTML = `
+                        <div class="text-center" style="margin-bottom: 3rem;">
+                            <h2 style="color: var(--color-purple-dark); margin-bottom: 0.5rem;">${cat.name}</h2>
+                            ${cat.description ? `<p style="max-width: 700px; margin: 0 auto; color: var(--color-text-light); font-size: 1rem;">${cat.description}</p>` : ''}
+                             <div style="width: 50px; height: 2px; background: var(--color-gold); margin: 1.5rem auto;"></div>
                         </div>
                     `;
+                        section.innerHTML = headerHTML;
+
+                        // Check content type: Simple Products or Nested Subcategories
+                        if (cat.products && cat.products.length > 0) {
+                            // Simple Product Grid
+                            section.innerHTML += renderProductGrid(cat.products);
+                        } else if (cat.subcategories && cat.subcategories.length > 0) {
+                            // Render Sub-Tabs
+                            subTabsContainer.classList.add('visible');
+
+                            cat.subcategories.forEach((sub, idx) => {
+                                // Sub-Tab Button
+                                const subBtn = document.createElement('button');
+                                subBtn.className = 'sub-tab';
+                                // Shorten very long names for tabs aesthetics, or keep nicely formatted
+                                // E.g. "COLOR CARE..." -> "COLOR CARE"
+                                // Take first 3 words max
+                                const shortName = sub.name.split(' ').slice(0, 3).join(' ') + (sub.name.split(' ').length > 3 ? '...' : '');
+
+                                subBtn.textContent = shortName;
+                                subBtn.title = sub.name; // Full name on hover
+
+                                subBtn.onclick = () => {
+                                    const target = document.getElementById(`sub-${idx}`);
+                                    if (target) {
+                                        // Compensate for sticky headers (approx 180px)
+                                        const y = target.getBoundingClientRect().top + window.scrollY - 180;
+                                        window.scrollTo({ top: y, behavior: 'smooth' });
+
+                                        // Update active state
+                                        document.querySelectorAll('.sub-tab').forEach(b => b.classList.remove('active'));
+                                        subBtn.classList.add('active');
+                                    }
+                                };
+                                subTabsContainer.appendChild(subBtn);
+
+                                // Section Content
+                                const subSection = document.createElement('div');
+                                subSection.id = `sub-${idx}`; // anchor
+                                subSection.style.marginTop = '2rem';
+                                subSection.style.marginBottom = '4rem';
+
+                                // Check for Tricoilogy level nesting
+                                if (sub.subcategories && sub.subcategories.length > 0) {
+                                    subSection.innerHTML = `
+                                    <div class="subsection-header">
+                                        <h3 class="subsection-title">${sub.name}</h3>
+                                        ${sub.description ? `<span class="subsection-desc">${sub.description}</span>` : ''}
+                                    </div>
+                                `;
+
+                                    sub.subcategories.forEach(deepSub => {
+                                        subSection.innerHTML += `
+                                        <div class="nested-section">
+                                            <h4 style="color: var(--color-purple); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 2rem;">${deepSub.name}</h4>
+                                            ${renderProductGrid(deepSub.products)}
+                                        </div>
+                                    `;
+                                    });
+                                } else {
+                                    // Standard Subcategory (e.g., Color Care)
+                                    subSection.innerHTML = `
+                                    <div class="subsection-header" style="text-align: center; margin-bottom: 3rem; position: relative; padding: 2rem; background: #fafafa; border-radius: 8px;">
+                                        <h3 class="subsection-title" style="color: var(--color-purple); font-size: 1.8rem; margin-bottom: 1rem;">${sub.name}</h3>
+                                        ${sub.description ? `
+                                            <div style="max-width: 800px; margin: 0 auto; position: relative;">
+                                                <span style="font-size: 3rem; line-height: 1; position: absolute; top: -1rem; left: -1rem; color: var(--color-gold); opacity: 0.3;">"</span>
+                                                <p class="subsection-desc" style="font-size: 1.1rem; line-height: 1.6; color: var(--color-text-light); font-style: italic; position: relative; z-index: 1;">
+                                                    ${sub.description}
+                                                </p>
+                                                <span style="font-size: 3rem; line-height: 1; position: absolute; bottom: -2rem; right: -1rem; color: var(--color-gold); opacity: 0.3;">"</span>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                    ${renderProductGrid(sub.products)}
+                                `;
+                                }
+                                section.appendChild(subSection);
+                            });
+                        }
+
+                        contentContainer.appendChild(section);
+                    }
+
+                    function renderProductGrid(products) {
+                        if (!products || products.length === 0) return '';
+
+                        const gridHTML = products.map(productName => `
+                        <div class="card" style="padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                             <div style="height: 180px; background: #fafafa; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 4px;">
+                                <!-- Placeholder Image -->
+                                <img src="../assets/images/product_purple.png" 
+                                     alt="${productName}" 
+                                     style="max-height: 80%; opacity: 0.8; mix-blend-mode: multiply;">
+                            </div>
+                            <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--color-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; min-height: 2.5em; display: flex; align-items: center; justify-content: center;">${productName}</h4>
+                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Zobacz więcej</span>
+                        </div >
+                                        `).join('');
+
+                        return `<div class="products-grid">${gridHTML}</div>`;
+                    }
+
+                } catch (err) {
+                    console.error(err);
+                    contentContainer.innerHTML = '<p class="text-center" style="color: red;">Wystąpił błąd podczas ładowania produktów.</p>';
                 }
-
-                const sectionHtml = `
-                    <section style="${bgStyle} padding: 6rem 0;">
-                        <div class="container">
-                            <div style="text-align: center; margin-bottom: 4rem;">
-                                <h2 style="margin-bottom: 1rem;">${category.name}</h2>
-                                ${category.description ? `<p style="color: var(--color-text-light); max-width: 700px; margin: 0 auto;">${category.description}</p>` : ''}
-                                <div style="width: 40px; height: 1px; background: var(--color-gold); margin: 2rem auto 0;"></div>
-                            </div>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 3rem;">
-                                ${productsHtml}
-                            </div>
-                        </div>
-                    </section>
-                `;
-
-                container.insertAdjacentHTML('beforeend', sectionHtml);
             });
-        });
-    </script>
-</body>
+        </script>
+        <script src="../js/main.js"></script>
+    </body>
 
 </html>

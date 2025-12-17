@@ -14,7 +14,8 @@
         <div class="container">
             <nav>
                 <a href="../index.html" class="logo">Shot<span style="color:var(--color-gold)">.</span></a>
-                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <div class="menu-toggle" id="mobile-menu" style="z-index: 9999; cursor: pointer;"
+                    onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</div>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html" class="active">O Nas</a></li>
@@ -62,29 +63,39 @@
                 </div>
                 <div style="position: relative;">
                     <div
-                        style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-gold);">
-                        <span style="color: var(--color-text-muted);">[Zdjęcie laboratorium/produkcji]</span>
+                        style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-gold); overflow: hidden; border-radius: 8px;">
+                        <img src="../assets/images/about_lab.png" alt="Laboratorium Shot Cosmetics"
+                            style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section style="background-color: var(--color-purple-dark); padding: 6rem 0; color: white; text-align: center;">
+        <section style="background-color: var(--color-purple-dark); padding: 8rem 0; color: white; text-align: center;">
             <div class="container">
-                <h2 style="margin-bottom: 3rem; color: var(--color-gold);">Wartości Shot Cosmetics</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4rem;">
-                    <div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Innowacja</h3>
+                <h2 style="margin-bottom: 4rem; color: var(--color-gold);">Wartości Shot Cosmetics</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem;">
+                    <div
+                        style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s;">
+                        <img src="../assets/images/icon_innovation.png" alt="Innowacja"
+                            style="width: 64px; height: 64px; margin: 0 auto 1.5rem; mix-blend-mode: screen;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Innowacja</h3>
                         <p style="opacity: 0.8; line-height: 1.6;">Nieustannie poszukujemy nowych składników aktywnych i
                             technologii. Nasz dział R&D to serce firmy.</p>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Jakość</h3>
+                    <div
+                        style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s;">
+                        <img src="../assets/images/icon_quality.png" alt="Jakość"
+                            style="width: 64px; height: 64px; margin: 0 auto 1.5rem; mix-blend-mode: screen;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Jakość</h3>
                         <p style="opacity: 0.8; line-height: 1.6;">Każdy produkt przechodzi rygorystyczne testy
                             jakościowe. "Made in Italy" to dla nas zobowiązanie.</p>
                     </div>
-                    <div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Edukacja</h3>
+                    <div
+                        style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s;">
+                        <img src="../assets/images/icon_education.png" alt="Edukacja"
+                            style="width: 64px; height: 64px; margin: 0 auto 1.5rem; mix-blend-mode: screen;">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Edukacja</h3>
                         <p style="opacity: 0.8; line-height: 1.6;">Wierzymy, że kluczem do sukcesu jest wiedza.
                             Wspieramy fryzjerów poprzez rozbudowany system szkoleń.</p>
                     </div>

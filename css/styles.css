@@ -58,6 +58,8 @@ body {
     color: var(--color-text);
     line-height: 1.8;
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
     font-weight: 300;
     font-size: 16px;
 }
@@ -167,6 +169,12 @@ h3 {
     padding: 0 4rem;
 }
 
+/* Global About Section Spacing (Desktop Fix) */
+#about {
+    padding-top: 12rem;
+    /* Restore the spacing removed from HTML */
+}
+
 section {
     padding: var(--spacing-xl) 0;
 }
@@ -189,6 +197,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    /* Important for mobile */
 }
 
 .logo {
@@ -320,53 +330,172 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 0 1.5rem;
+
+    /* 1. Global Layout Resets & Overflow Protection */
+    html,
+    body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        position: relative;
     }
 
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 1.5rem;
+        overflow-x: hidden;
+    }
+
+    section {
+        padding: 2rem 0;
+        /* Tighter mobile spacing */
+        width: 100%;
+    }
+
+    #about {
+        padding-top: 2rem !important;
+        /* Override global desktop ID style */
+    }
+
+    /* 2. Typography Adjustments */
     h1 {
         font-size: 2.5rem;
     }
 
-    /* Smaller on mobile */
     h2 {
+        font-size: 1.8rem;
+    }
+
+    /* 3. Navigation - Hamburger Overlay */
+    .menu-toggle {
+        display: block;
+        /* Show hamburger */
         font-size: 2rem;
+        cursor: pointer;
+        z-index: 1001;
+        /* Ensure above everything */
+        padding: 0.5rem;
+        /* Touch target */
     }
 
-    section {
-        padding: 4rem 0;
+    nav {
+        width: 100%;
+        justify-content: space-between;
+        /* Ensure logo left, burger right */
+        align-items: center;
+        position: relative;
+        z-index: 1001;
     }
-
-    /* Reduce vertical spacing */
 
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
+        /* Hidden by default */
+        position: fixed;
+        top: 0;
         left: 0;
         width: 100%;
+        height: 100vh;
         background: var(--color-cream);
         flex-direction: column;
-        padding: 4rem 2rem;
-        text-align: center;
-        height: 100vh;
-        border-top: 1px solid var(--color-border);
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        z-index: 999;
+        border-top: none;
     }
 
     .nav-links.active {
         display: flex;
+        /* Show when active */
     }
 
-    .menu-toggle {
+    .nav-links a {
+        font-size: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    .nav-links a::after {
+        display: none;
+        /* Remove underline animation on mobile */
+    }
+
+    /* 4. Hero Section */
+    .hero {
+        padding-top: 14rem !important;
+        /* increased from 8rem to clear header completely and show text */
+        min-height: auto !important;
+        /* Allow content to dictate height */
+        background-position: center top !important;
+        /* Ensure image top is visible */
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+        flex-direction: column;
+    }
+
+    .hero-content .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    /* Stack the buttons container */
+    .hero-content>div:last-child {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* 5. General Grid Reset (Stacking) */
+    .grid-2-cols {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        /* Reduced gap */
+    }
+
+    /* Tighten text spacing inside grids on mobile to override inline styles */
+    .grid-2-cols h2,
+    .grid-2-cols p {
+        margin-bottom: 1rem !important;
+    }
+
+    /* 6. About Section Specifics */
+    /* Show image first, text second */
+    .grid-2-cols>div:nth-child(2) {
+        order: -1;
+    }
+
+    /* CRITICAL: Hide decorative border causing overflow */
+    #about .grid-2-cols>div>div[style*="border"] {
+        display: none !important;
+    }
+
+    /* Reduce height of the image container on mobile (override inline 600px) */
+    #about .grid-2-cols>div>div[style*="height"] {
+        height: 100px !important;
+        background-position: center top !important;
+    }
+
+    /* 7. Products Grid */
+    .products-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* 8. Map & Contact */
+    svg.map {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
         display: block;
     }
 
-    /* Ensure hero text doesn't overflow */
-    .hero-content {
-        padding: 0 1rem;
+    #distributor-info {
+        min-height: auto !important;
+        padding: 2rem !important;
+        display: block !important;
     }
-
-    /* Adjust grid gaps for mobile */
 }
 
 /* Poland Map Interaction */

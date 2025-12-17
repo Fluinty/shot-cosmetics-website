@@ -63,9 +63,9 @@
         <div class="container">
             <nav>
                 <a href="../index.html" class="logo">Shot<span style="color:var(--color-purple-light)">.</span></a>
-                <div class="menu-toggle" id="mobile-menu">
-                    ☰
-                </div>
+                <div class="menu-toggle" id="mobile-menu" style="z-index: 9999; cursor: pointer;"
+                    onclick="console.log('Mobile toggle clicked'); document.querySelector('.nav-links').classList.toggle('active');">
+                    ☰</div>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">O Nas</a></li>
@@ -330,6 +330,7 @@
             }
         }
     </script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

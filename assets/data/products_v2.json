@@ -1,0 +1,190 @@
+{
+    "categories": [
+        {
+            "id": "koloryzacja",
+            "name": "KOLORYZACJA",
+            "description": "Odkryj nieskończone możliwości kreowania wizerunku dzięki naszej palecie profesjonalnych farb. Zaawansowana technologia pigmentów zapewnia trójwymiarowy, głęboki kolor, który utrzymuje się przez wiele tygodni, zachwycając intensywnością i blaskiem. Formuły wzbogacone o unikalne kompleksy pielęgnacyjne chronią strukturę włosa podczas zabiegu, gwarantując miękkość i zdrowy wygląd.",
+            "products": [
+                "FARBA BORN TO BE",
+                "FARBA BORN TO BE NATURAL , BEZ AMONIAKU",
+                "FARBA ON HAIR POWER",
+                "FARBA DNA",
+                "TONERY KWASOWE BORN TO BE TONER",
+                "FARBA BLEACH & COLOR",
+                "MASKI KOLORYZUJĄCE EXTRA PIGMENT"
+            ]
+        },
+        {
+            "id": "rozjasnianie",
+            "name": "ROZJAŚNIANIE",
+            "description": "Przekrocz granice blondu z naszymi innowacyjnymi systemami rozjaśniania, które łączą moc działania z bezpieczeństwem. Od delikatnych refleksów po spektakularne, chłodne platyny – nasze produkty pozwalają na precyzyjną zmianę koloru nawet o 10 tonów. Dzięki zawartości technologii Plex i składników ochronnych, włosy pozostają w doskonałej kondycji, elastyczne i lśniące nawet po intensywnym zabiegu.",
+            "products": [
+                "ROZJAŚNIACZ GREEN APPLE",
+                "ROZJAŚNIACZ #10 TONÓW Z PLEXEM",
+                "ROZJAŚNIACZ #10 TONÓW CZARNY Z PLEXEM",
+                "ROZJAŚNIACZ NO AMMONIA BEZ AMONIAKU",
+                "ROZJAŚNIACZ MORE & MORE W KREMIE",
+                "ROZJAŚNIACZ WHITE & BLACK CZARNY W KREMIE",
+                "ROZJAŚNIACZ FILM DECO Z GLINKĄ",
+                "ROZJAŚNIACZ H2O WATER BLEACH",
+                "ROZJAŚNIACZ FAST LIGHT",
+                "FARBA BLEACH & COLOR"
+            ]
+        },
+        {
+            "id": "pielegnacja",
+            "name": "PIELĘGNACJA",
+            "description": "Holistyczne podejście do zdrowia włosów, inspirowane bogactwem natury i wsparte najnowszą nauką. Każda linia pielęgnacyjna została stworzona z myślą o specyficznych potrzebach – od głębokiego nawilżenia, przez intensywną regenerację, aż po spektakularną objętość. Poczuj różnicę już po pierwszym użyciu i ciesz się włosami pełnymi witalności każdego dnia.",
+            "subcategories": [
+                {
+                    "name": "COLOR CARE DO WŁOSÓW FARBOWANYCH, CHRONIĄCA KOLOR",
+                    "description": "Przedłuż trwałość swojego koloru i zachowaj jego intensywność na dłużej. Specjalna kwasowa formuła domyka łuski włosa, chroniąc pigment przed wypłukiwaniem i blaknięciem pod wpływem słońca.",
+                    "products": [
+                        "SZAMPON COLOR CARE",
+                        "MASKA COLOR CARE",
+                        "LATTE MLECZKO",
+                        "MINERAL OIL OLEJEK MINERALNY",
+                        "KROPLE ZŁOTA OLEJEK SERUM"
+                    ]
+                },
+                {
+                    "name": "SIMPLY BLOND DO WŁOSÓW BLOND, ROZJAŚNIANYCH I Z PASEMKAMI",
+                    "description": "Dedykowana pielęgnacja dla wymagających, chłodnych i świetlistych blondów. Skutecznie niweluje niepożądane żółte odcienie, jednocześnie intensywnie regenerując strukturę włosa naruszoną rozjaśnianiem.",
+                    "products": [
+                        "SZAMPON SIMPLY BLOND",
+                        "MASKA SIMPLY BLOND",
+                        "ODŻYWKA 10W 1 W SPRAY’U",
+                        "ODŻYWKA DWUFAZOWA FIOLETOWA",
+                        "KROPLE PLATYNY OLEJEK SERUM"
+                    ]
+                },
+                {
+                    "name": "ANTI-AGE REGENERUJĄCA",
+                    "description": "Eliksir młodości dla Twoich włosów, przywracający im utraconą siłę i blask. Bogata w kolagen i witaminy formuła odbudowuje włosy od wewnątrz, przeciwdziałając oznakom starzenia i osłabienia.",
+                    "products": [
+                        "SZAMPON ANTI-AGE",
+                        "MASKA ANTI-AGE",
+                        "ODŻYWKA ENERGY RAIN W SPRAY’U",
+                        "AMPUŁKI REGENERUJĄCE DEEP SERUM",
+                        "KROPLE RUBINU OLEJEK SERUM"
+                    ]
+                },
+                {
+                    "name": "ANTI-STRESS NAWILŻAJĄCO-WYGŁADZAJĄCA",
+                    "description": "Ukojenie dla niesfornych, puszących się i matowych włosów. Wygładzająca moc składników naturalnych przywraca jedwabistą gładkość, ułatwia rozczesywanie i chroni przed wilgocią.",
+                    "products": [
+                        "SZAMPON ANTI-STRESS",
+                        "MASKA ANTI-STRESS",
+                        "BI-POWER KURACJA KERATYNOWA",
+                        "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA"
+                    ]
+                },
+                {
+                    "name": "TEXTURIZING OBJĘTOŚĆ I LOKI",
+                    "description": "Podkreśl charakter swojej fryzury, dodając jej spektakularnej objętości lub definiując sprężyste loki. Lekkie formuły unoszą włosy u nasady bez obciążania, zapewniając długotrwały efekt.",
+                    "products": [
+                        "SZAMPON TEXTURIZING",
+                        "MASKA TEXTURIZING",
+                        "DAILY DEW SPRAY DODAJĄCY OBJĘTOŚCI",
+                        "KREM DO LOKÓW"
+                    ]
+                },
+                {
+                    "name": "TRICOILOGY ZABIEGI TRYCHOLOGICZNE",
+                    "description": "Profesjonalne wsparcie w walce z problemami skóry głowy, oparte na naturalnych ekstraktach. Skuteczne rozwiązania dla zdrowej skóry, która jest fundamentem pięknych włosów.",
+                    "subcategories": [
+                        {
+                            "name": "ERGOVIT",
+                            "description": "Specjalistyczna kuracja hamująca wypadanie włosów i stymulująca ich wzrost.",
+                            "products": [
+                                "SZAMPON PRZECIW WYPADANIU",
+                                "AMPUŁKI PRZECIW WYPADANIU",
+                                "LOTION PRZECIW WYPADANIU"
+                            ]
+                        },
+                        {
+                            "name": "NORMALIZING",
+                            "description": "Przywraca równowagę skórze głowy, skutecznie eliminując problem łupieżu.",
+                            "products": [
+                                "SZAMPON PRZECIWŁUPIEŻOWY",
+                                "AMPUŁKI PRZECIWŁUPIEŻOWE"
+                            ]
+                        },
+                        {
+                            "name": "PURIFYING",
+                            "description": "Głębokie oczyszczenie i detoks dla przetłuszczającej się skóry głowy.",
+                            "products": [
+                                "SZAMPON FRESH",
+                                "MASKA FRESH",
+                                "OLEJEK OCHRONNY OIL5",
+                                "GLINKA OCZYSZCZAJĄCA"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "SUN OCHRONA PRZED SŁOŃCEM",
+                    "description": "Niezbędna tarcza ochronna przed szkodliwym promieniowaniem UV, wodą morską i chlorem. Zapobiega przesuszeniu i płowieniu koloru, idealna na lato.",
+                    "products": [
+                        "SZAMPON SUN",
+                        "MASKA SUN",
+                        "SPRAY REMEDY SUN"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "zabiegi",
+            "name": "ZABIEGI - KURACJE",
+            "description": "Ekskluzywne rytuały salonowe, które transformują włosy, przywracając im idealną kondycję. Od molekularnej odbudowy, przez laminację, aż po trwale przekształcenia struktury – nasze zabiegi to gwarancja spektakularnych metamorfoz i zadowolenia klientek.",
+            "products": [
+                "AMMINO PLASTIA – ODBUDOWA MOLEKULARNA",
+                "LAMINO-K - LAMINACJA WŁOSÓW",
+                "PRODIGY – TOTALNA ODBUDOWA KERATYNOWA",
+                "K-SMOOTH KERATYNOWE WYGŁADZANIE WŁOSÓW",
+                "WAVE OR PERM - TRWAŁA ONDULACJA"
+            ]
+        },
+        {
+            "id": "techniczne",
+            "name": "PRODUKTY TECHNICZNE",
+            "description": "Niezawodne narzędzia pracy każdego profesjonalisty, stworzone, by wspierać Cię na każdym etapie usługi. Gwarantują precyzję, bezpieczeństwo i idealne przygotowanie włosów, stanowiąc fundament udanych zabiegów chemicznych w salonie.",
+            "products": [
+                "UTLENIACZE W KREMIE OXI",
+                "UTLENIACZE BLUE GEL",
+                "SZAMPON OCZYSZCZAJĄCY ALKALICZNY",
+                "SZAMPON ZAKWASZAJĄCY",
+                "SPRAY ZAKWASZAJĄCY",
+                "PIANKA REGENERUJĄCA Z OTRĘBAMI",
+                "PIANKA REGENERUJĄCA ANTI-GIALLO",
+                "SZAMPON RESET ANTIGIALLO FIOLETOWY",
+                "ZMYWACZ ŚLADÓW FARBY"
+            ]
+        },
+        {
+            "id": "stylizacja",
+            "name": "STYLIZACJA",
+            "description": "Kreatywna stylizacja bez granic i perfekcyjne wykończenie każdej fryzury. Nasza gama produktów do stylizacji łączy utrwalenie z pielęgnacją, pozwalając na swobodne rzeźbienie formy, dodawanie tekstury i blasku, bez obciążania i sklejania włosów.",
+            "products": [
+                "LAKIER SUPER STRONG",
+                "LAKIER DO CIENKICH I FARBOWANYCH WŁOSÓW",
+                "LAKIER EKOLOGICZNY BEZ GAZU",
+                "PIANKA EXTRA MOCNA",
+                "SÓL MORSKA BEACH WAVES",
+                "ŻEL EXTRA MOCNY",
+                "EMULSJA MULTIFORMA",
+                "SPRAY NABŁYSZCZAJĄCY",
+                "SPRAY TERMOOCHRONNY",
+                "FLUID ELASTIC FIX",
+                "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA",
+                "EXTRA MATT WAX PASTA EXTRA MATOWA",
+                "SPIDER FIBER PASTA WŁÓKNISTA",
+                "HYDRO SHINE WOSK WODNY",
+                "CLAY DRY GLINKA MOCNA MATOWA",
+                "MATT PASTE PASTA MATUJĄCA",
+                "ODŻYWKA DWUFAZOWA BIFASIC",
+                "ODŻYWKA W SPRAY’U 13W1"
+            ]
+        }
+    ]
+}
