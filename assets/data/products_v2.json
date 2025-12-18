@@ -3,187 +3,520 @@
         {
             "id": "koloryzacja",
             "name": "KOLORYZACJA",
-            "description": "Odkryj nieskończone możliwości kreowania wizerunku dzięki naszej palecie profesjonalnych farb. Zaawansowana technologia pigmentów zapewnia trójwymiarowy, głęboki kolor, który utrzymuje się przez wiele tygodni, zachwycając intensywnością i blaskiem. Formuły wzbogacone o unikalne kompleksy pielęgnacyjne chronią strukturę włosa podczas zabiegu, gwarantując miękkość i zdrowy wygląd.",
+            "description": "Perfekcyjny kolor i ochrona struktury włosa.",
             "products": [
-                "FARBA BORN TO BE",
-                "FARBA BORN TO BE NATURAL , BEZ AMONIAKU",
-                "FARBA ON HAIR POWER",
-                "FARBA DNA",
-                "TONERY KWASOWE BORN TO BE TONER",
-                "FARBA BLEACH & COLOR",
-                "MASKI KOLORYZUJĄCE EXTRA PIGMENT"
+                {
+                    "name": "FARBA BORN TO BE",
+                    "desc": "Trwała koloryzacja z kolagenem.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "FARBA BORN TO BE NATURAL , BEZ AMONIAKU",
+                    "desc": "Delikatna koloryzacja bez amoniaku.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "FARBA ON HAIR POWER",
+                    "desc": "Mocna farba kryjąca siwe włosy.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "FARBA DNA",
+                    "desc": "Innowacyjna formuła z kwasami owocowymi.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "TONERY KWASOWE BORN TO BE TONER",
+                    "desc": "Kwasowe tonowanie bez naruszania bazy.",
+                    "capacity": "60ml"
+                },
+                {
+                    "name": "FARBA BLEACH & COLOR",
+                    "desc": "Rozjaśnianie i kolor w jednym kroku.",
+                    "capacity": "80ml"
+                },
+                {
+                    "name": "MASKI KOLORYZUJĄCE EXTRA PIGMENT",
+                    "desc": "Maska odświeżająca kolor.",
+                    "capacity": "200ml"
+                }
             ]
         },
         {
             "id": "rozjasnianie",
             "name": "ROZJAŚNIANIE",
-            "description": "Przekrocz granice blondu z naszymi innowacyjnymi systemami rozjaśniania, które łączą moc działania z bezpieczeństwem. Od delikatnych refleksów po spektakularne, chłodne platyny – nasze produkty pozwalają na precyzyjną zmianę koloru nawet o 10 tonów. Dzięki zawartości technologii Plex i składników ochronnych, włosy pozostają w doskonałej kondycji, elastyczne i lśniące nawet po intensywnym zabiegu.",
+            "description": "Bezpieczne i skuteczne rozjaśnianie do 9 tonów.",
             "products": [
-                "ROZJAŚNIACZ GREEN APPLE",
-                "ROZJAŚNIACZ #10 TONÓW Z PLEXEM",
-                "ROZJAŚNIACZ #10 TONÓW CZARNY Z PLEXEM",
-                "ROZJAŚNIACZ NO AMMONIA BEZ AMONIAKU",
-                "ROZJAŚNIACZ MORE & MORE W KREMIE",
-                "ROZJAŚNIACZ WHITE & BLACK CZARNY W KREMIE",
-                "ROZJAŚNIACZ FILM DECO Z GLINKĄ",
-                "ROZJAŚNIACZ H2O WATER BLEACH",
-                "ROZJAŚNIACZ FAST LIGHT",
-                "FARBA BLEACH & COLOR"
+                {
+                    "name": "ROZJAŚNIACZ GREEN APPLE",
+                    "desc": "Rozjaśniacz o zapachu zielonego jabłka.",
+                    "capacity": "500g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ #10 TONÓW Z PLEXEM",
+                    "desc": "Mocne rozjaśnianie z ochroną Plex.",
+                    "capacity": "500g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ #10 TONÓW CZARNY Z PLEXEM",
+                    "desc": "Czarny rozjaśniacz neutralizujący żółć.",
+                    "capacity": "500g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ NO AMMONIA BEZ AMONIAKU",
+                    "desc": "Bezpieczny dla wrażliwych włosów.",
+                    "capacity": "500g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ MORE & MORE W KREMIE",
+                    "desc": "Kremowy rozjaśniacz precyzyjny.",
+                    "capacity": "250g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ WHITE & BLACK CZARNY W KREMIE",
+                    "desc": "Kremowy, czarny, chłodny efekt.",
+                    "capacity": "250g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ FILM DECO Z GLINKĄ",
+                    "desc": "Zastygający, idealny do balejażu.",
+                    "capacity": "400g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ H2O WATER BLEACH",
+                    "desc": "Aktywowany wodą, ultra delikatny.",
+                    "capacity": "5x20g"
+                },
+                {
+                    "name": "ROZJAŚNIACZ FAST LIGHT",
+                    "desc": "Szybki rozjaśniacz do dekoloryzacji.",
+                    "capacity": "500g"
+                },
+                {
+                    "name": "FARBA BLEACH & COLOR",
+                    "desc": "Krem rozjaśniający z pigmentem.",
+                    "capacity": "80ml"
+                }
             ]
         },
         {
             "id": "pielegnacja",
             "name": "PIELĘGNACJA",
-            "description": "Holistyczne podejście do zdrowia włosów, inspirowane bogactwem natury i wsparte najnowszą nauką. Każda linia pielęgnacyjna została stworzona z myślą o specyficznych potrzebach – od głębokiego nawilżenia, przez intensywną regenerację, aż po spektakularną objętość. Poczuj różnicę już po pierwszym użyciu i ciesz się włosami pełnymi witalności każdego dnia.",
+            "description": "Kompletna pielęgnacja dla każdego rodzaju włosów.",
             "subcategories": [
                 {
                     "name": "COLOR CARE DO WŁOSÓW FARBOWANYCH, CHRONIĄCA KOLOR",
-                    "description": "Przedłuż trwałość swojego koloru i zachowaj jego intensywność na dłużej. Specjalna kwasowa formuła domyka łuski włosa, chroniąc pigment przed wypłukiwaniem i blaknięciem pod wpływem słońca.",
+                    "description": "Zatrzymuje pigment i nawilża.",
                     "products": [
-                        "SZAMPON COLOR CARE",
-                        "MASKA COLOR CARE",
-                        "LATTE MLECZKO",
-                        "MINERAL OIL OLEJEK MINERALNY",
-                        "KROPLE ZŁOTA OLEJEK SERUM"
+                        {
+                            "name": "SZAMPON COLOR CARE",
+                            "desc": "Szampon zakwaszający po koloryzacji.",
+                            "capacity": "300ml / 1000ml"
+                        },
+                        {
+                            "name": "MASKA COLOR CARE",
+                            "desc": "Maska chroniąca kolor.",
+                            "capacity": "250ml / 500ml"
+                        },
+                        {
+                            "name": "LATTE MLECZKO",
+                            "desc": "Odżywcze mleczko bez spłukiwania.",
+                            "capacity": "150ml"
+                        },
+                        {
+                            "name": "MINERAL OIL OLEJEK MINERALNY",
+                            "desc": "Ampułki mineralne odbudowujące.",
+                            "capacity": "10x10ml"
+                        },
+                        {
+                            "name": "KROPLE ZŁOTA OLEJEK SERUM",
+                            "desc": "Serum z drobinkami złota.",
+                            "capacity": "100ml"
+                        }
                     ]
                 },
                 {
                     "name": "SIMPLY BLOND DO WŁOSÓW BLOND, ROZJAŚNIANYCH I Z PASEMKAMI",
-                    "description": "Dedykowana pielęgnacja dla wymagających, chłodnych i świetlistych blondów. Skutecznie niweluje niepożądane żółte odcienie, jednocześnie intensywnie regenerując strukturę włosa naruszoną rozjaśnianiem.",
+                    "description": "Czysty blond bez żółtych refleksów.",
                     "products": [
-                        "SZAMPON SIMPLY BLOND",
-                        "MASKA SIMPLY BLOND",
-                        "ODŻYWKA 10W 1 W SPRAY’U",
-                        "ODŻYWKA DWUFAZOWA FIOLETOWA",
-                        "KROPLE PLATYNY OLEJEK SERUM"
+                        {
+                            "name": "SZAMPON SIMPLY BLOND",
+                            "desc": "Szampon neutralizujący żółć.",
+                            "capacity": "300ml / 1000ml"
+                        },
+                        {
+                            "name": "MASKA SIMPLY BLOND",
+                            "desc": "Maska regenerująca blond.",
+                            "capacity": "250ml / 500ml"
+                        },
+                        {
+                            "name": "ODŻYWKA 10W 1 W SPRAY’U",
+                            "desc": "Wielofunkcyjna odżywka w sprayu.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "ODŻYWKA DWUFAZOWA FIOLETOWA",
+                            "desc": "Dwufaza chłodząca kolor.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "KROPLE PLATYNY OLEJEK SERUM",
+                            "desc": "Serum nabłyszczające blond.",
+                            "capacity": "50ml"
+                        }
                     ]
                 },
                 {
                     "name": "ANTI-AGE REGENERUJĄCA",
-                    "description": "Eliksir młodości dla Twoich włosów, przywracający im utraconą siłę i blask. Bogata w kolagen i witaminy formuła odbudowuje włosy od wewnątrz, przeciwdziałając oznakom starzenia i osłabienia.",
+                    "description": "Odmłodzenie i witalność dla włosów dojrzałych.",
                     "products": [
-                        "SZAMPON ANTI-AGE",
-                        "MASKA ANTI-AGE",
-                        "ODŻYWKA ENERGY RAIN W SPRAY’U",
-                        "AMPUŁKI REGENERUJĄCE DEEP SERUM",
-                        "KROPLE RUBINU OLEJEK SERUM"
+                        {
+                            "name": "SZAMPON ANTI-AGE",
+                            "desc": "Szampon z kolagenem.",
+                            "capacity": "300ml / 1000ml"
+                        },
+                        {
+                            "name": "MASKA ANTI-AGE",
+                            "desc": "Maska odbudowująca strukturę.",
+                            "capacity": "250ml / 500ml"
+                        },
+                        {
+                            "name": "ODŻYWKA ENERGY RAIN W SPRAY’U",
+                            "desc": "Energetyzująca mgiełka.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "AMPUŁKI REGENERUJĄCE DEEP SERUM",
+                            "desc": "Głęboka rekonstrukcja.",
+                            "capacity": "10x10ml"
+                        },
+                        {
+                            "name": "KROPLE RUBINU OLEJEK SERUM",
+                            "desc": "Serum przeciw starzeniu się włosa.",
+                            "capacity": "100ml"
+                        }
                     ]
                 },
                 {
                     "name": "ANTI-STRESS NAWILŻAJĄCO-WYGŁADZAJĄCA",
-                    "description": "Ukojenie dla niesfornych, puszących się i matowych włosów. Wygładzająca moc składników naturalnych przywraca jedwabistą gładkość, ułatwia rozczesywanie i chroni przed wilgocią.",
+                    "description": "Gładkość i kontrola nad puszeniem.",
                     "products": [
-                        "SZAMPON ANTI-STRESS",
-                        "MASKA ANTI-STRESS",
-                        "BI-POWER KURACJA KERATYNOWA",
-                        "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA"
+                        {
+                            "name": "SZAMPON ANTI-STRESS",
+                            "desc": "Szampon wygładzający.",
+                            "capacity": "300ml / 1000ml"
+                        },
+                        {
+                            "name": "MASKA ANTI-STRESS",
+                            "desc": "Maska nawilżająca.",
+                            "capacity": "250ml / 500ml"
+                        },
+                        {
+                            "name": "BI-POWER KURACJA KERATYNOWA",
+                            "desc": "Keratynowa odbudowa.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA",
+                            "desc": "Krem prostujący włosy.",
+                            "capacity": "150ml"
+                        }
                     ]
                 },
                 {
                     "name": "TEXTURIZING OBJĘTOŚĆ I LOKI",
-                    "description": "Podkreśl charakter swojej fryzury, dodając jej spektakularnej objętości lub definiując sprężyste loki. Lekkie formuły unoszą włosy u nasady bez obciążania, zapewniając długotrwały efekt.",
+                    "description": "Objętość i definicja skrętu.",
                     "products": [
-                        "SZAMPON TEXTURIZING",
-                        "MASKA TEXTURIZING",
-                        "DAILY DEW SPRAY DODAJĄCY OBJĘTOŚCI",
-                        "KREM DO LOKÓW"
+                        {
+                            "name": "SZAMPON TEXTURIZING",
+                            "desc": "Szampon dodający objętości.",
+                            "capacity": "300ml / 1000ml"
+                        },
+                        {
+                            "name": "MASKA TEXTURIZING",
+                            "desc": "Lekka maska nieobciążająca.",
+                            "capacity": "250ml / 500ml"
+                        },
+                        {
+                            "name": "DAILY DEW SPRAY DODAJĄCY OBJĘTOŚCI",
+                            "desc": "Spray unoszący u nasady.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "KREM DO LOKÓW",
+                            "desc": "Krem definiujący loki.",
+                            "capacity": "150ml"
+                        }
                     ]
                 },
                 {
                     "name": "TRICOILOGY ZABIEGI TRYCHOLOGICZNE",
-                    "description": "Profesjonalne wsparcie w walce z problemami skóry głowy, oparte na naturalnych ekstraktach. Skuteczne rozwiązania dla zdrowej skóry, która jest fundamentem pięknych włosów.",
+                    "description": "Zaawansowane rozwiązania problemów skóry głowy.",
                     "subcategories": [
                         {
                             "name": "ERGOVIT",
-                            "description": "Specjalistyczna kuracja hamująca wypadanie włosów i stymulująca ich wzrost.",
                             "products": [
-                                "SZAMPON PRZECIW WYPADANIU",
-                                "AMPUŁKI PRZECIW WYPADANIU",
-                                "LOTION PRZECIW WYPADANIU"
+                                {
+                                    "name": "SZAMPON PRZECIW WYPADANIU",
+                                    "desc": "Stymuluje wzrost nowych włosów.",
+                                    "capacity": "250ml"
+                                },
+                                {
+                                    "name": "AMPUŁKI PRZECIW WYPADANIU",
+                                    "desc": "Intensywna kuracja.",
+                                    "capacity": "10x10ml"
+                                },
+                                {
+                                    "name": "LOTION PRZECIW WYPADANIU",
+                                    "desc": "Lotion do codziennego stosowania.",
+                                    "capacity": "100ml"
+                                }
                             ]
                         },
                         {
                             "name": "NORMALIZING",
-                            "description": "Przywraca równowagę skórze głowy, skutecznie eliminując problem łupieżu.",
                             "products": [
-                                "SZAMPON PRZECIWŁUPIEŻOWY",
-                                "AMPUŁKI PRZECIWŁUPIEŻOWE"
+                                {
+                                    "name": "SZAMPON PRZECIWŁUPIEŻOWY",
+                                    "desc": "Zwalcza łupież.",
+                                    "capacity": "250ml"
+                                },
+                                {
+                                    "name": "AMPUŁKI PRZECIWŁUPIEŻOWE",
+                                    "desc": "Kuracja normalizująca.",
+                                    "capacity": "10x10ml"
+                                }
                             ]
                         },
                         {
                             "name": "PURIFYING",
-                            "description": "Głębokie oczyszczenie i detoks dla przetłuszczającej się skóry głowy.",
                             "products": [
-                                "SZAMPON FRESH",
-                                "MASKA FRESH",
-                                "OLEJEK OCHRONNY OIL5",
-                                "GLINKA OCZYSZCZAJĄCA"
+                                {
+                                    "name": "SZAMPON FRESH",
+                                    "desc": "Odświeżający szampon oczyszczający.",
+                                    "capacity": "250ml"
+                                },
+                                {
+                                    "name": "MASKA FRESH",
+                                    "desc": "Maska balansująca.",
+                                    "capacity": "200ml"
+                                },
+                                {
+                                    "name": "OLEJEK OCHRONNY OIL5",
+                                    "desc": "Olejek kojący skórę głowy.",
+                                    "capacity": "50ml"
+                                },
+                                {
+                                    "name": "GLINKA OCZYSZCZAJĄCA",
+                                    "desc": "Detoks dla skóry głowy.",
+                                    "capacity": "200ml"
+                                }
                             ]
                         }
                     ]
                 },
                 {
                     "name": "SUN OCHRONA PRZED SŁOŃCEM",
-                    "description": "Niezbędna tarcza ochronna przed szkodliwym promieniowaniem UV, wodą morską i chlorem. Zapobiega przesuszeniu i płowieniu koloru, idealna na lato.",
+                    "description": "Ochrona UV i nawilżenie.",
                     "products": [
-                        "SZAMPON SUN",
-                        "MASKA SUN",
-                        "SPRAY REMEDY SUN"
+                        {
+                            "name": "SZAMPON SUN",
+                            "desc": "Szampon po plaży/basenie.",
+                            "capacity": "250ml"
+                        },
+                        {
+                            "name": "MASKA SUN",
+                            "desc": "Regeneracja po słońcu.",
+                            "capacity": "200ml"
+                        },
+                        {
+                            "name": "SPRAY REMEDY SUN",
+                            "desc": "Ochrona bez spłukiwania.",
+                            "capacity": "150ml"
+                        }
                     ]
                 }
             ]
         },
         {
-            "id": "zabiegi",
+            "id": "zabiegi-kuracje",
             "name": "ZABIEGI - KURACJE",
-            "description": "Ekskluzywne rytuały salonowe, które transformują włosy, przywracając im idealną kondycję. Od molekularnej odbudowy, przez laminację, aż po trwale przekształcenia struktury – nasze zabiegi to gwarancja spektakularnych metamorfoz i zadowolenia klientek.",
+            "description": "Profesjonalne zabiegi salonowe.",
             "products": [
-                "AMMINO PLASTIA – ODBUDOWA MOLEKULARNA",
-                "LAMINO-K - LAMINACJA WŁOSÓW",
-                "PRODIGY – TOTALNA ODBUDOWA KERATYNOWA",
-                "K-SMOOTH KERATYNOWE WYGŁADZANIE WŁOSÓW",
-                "WAVE OR PERM - TRWAŁA ONDULACJA"
+                {
+                    "name": "AMMINO PLASTIA – ODBUDOWA MOLEKULARNA",
+                    "desc": "Głęboka rekonstrukcja mostków.",
+                    "capacity": "Zestaw"
+                },
+                {
+                    "name": "LAMINO-K - LAMINACJA WŁOSÓW",
+                    "desc": "Efekt tafli i wygładzenia.",
+                    "capacity": "Zestaw"
+                },
+                {
+                    "name": "PRODIGY – TOTALNA ODBUDOWA KERATYNOWA",
+                    "desc": "Keratynowa odbudowa zniszczeń.",
+                    "capacity": "Zestaw"
+                },
+                {
+                    "name": "K-SMOOTH KERATYNOWE WYGŁADZANIE WŁOSÓW",
+                    "desc": "Trwałe prostowanie.",
+                    "capacity": "500ml"
+                },
+                {
+                    "name": "WAVE OR PERM - TRWAŁA ONDULACJA",
+                    "desc": "Nowoczesna trwała.",
+                    "capacity": "500ml"
+                }
             ]
         },
         {
             "id": "techniczne",
             "name": "PRODUKTY TECHNICZNE",
-            "description": "Niezawodne narzędzia pracy każdego profesjonalisty, stworzone, by wspierać Cię na każdym etapie usługi. Gwarantują precyzję, bezpieczeństwo i idealne przygotowanie włosów, stanowiąc fundament udanych zabiegów chemicznych w salonie.",
+            "description": "Niezbędne w salonie fryzjerskim.",
             "products": [
-                "UTLENIACZE W KREMIE OXI",
-                "UTLENIACZE BLUE GEL",
-                "SZAMPON OCZYSZCZAJĄCY ALKALICZNY",
-                "SZAMPON ZAKWASZAJĄCY",
-                "SPRAY ZAKWASZAJĄCY",
-                "PIANKA REGENERUJĄCA Z OTRĘBAMI",
-                "PIANKA REGENERUJĄCA ANTI-GIALLO",
-                "SZAMPON RESET ANTIGIALLO FIOLETOWY",
-                "ZMYWACZ ŚLADÓW FARBY"
+                {
+                    "name": "UTLENIACZE W KREMIE OXI",
+                    "desc": "Stabilizowana woda utleniona.",
+                    "capacity": "1000ml"
+                },
+                {
+                    "name": "UTLENIACZE BLUE GEL",
+                    "desc": "Niebieski żel tonujący.",
+                    "capacity": "1000ml"
+                },
+                {
+                    "name": "SZAMPON OCZYSZCZAJĄCY ALKALICZNY",
+                    "desc": "Szampon otwierający łuskę.",
+                    "capacity": "1000ml"
+                },
+                {
+                    "name": "SZAMPON ZAKWASZAJĄCY",
+                    "desc": "Szampon domykający łuskę.",
+                    "capacity": "1000ml"
+                },
+                {
+                    "name": "SPRAY ZAKWASZAJĄCY",
+                    "desc": "Stabilizacja pH.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "PIANKA REGENERUJĄCA Z OTRĘBAMI",
+                    "desc": "Odbudowa przed zabiegiem.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "PIANKA REGENERUJĄCA ANTI-GIALLO",
+                    "desc": "Pianka niwelująca żółć.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "SZAMPON RESET ANTIGIALLO FIOLETOWY",
+                    "desc": "Silny szampon fioletowy.",
+                    "capacity": "1000ml"
+                },
+                {
+                    "name": "ZMYWACZ ŚLADÓW FARBY",
+                    "desc": "Usuwa farbę ze skóry.",
+                    "capacity": "250ml"
+                }
             ]
         },
         {
             "id": "stylizacja",
             "name": "STYLIZACJA",
-            "description": "Kreatywna stylizacja bez granic i perfekcyjne wykończenie każdej fryzury. Nasza gama produktów do stylizacji łączy utrwalenie z pielęgnacją, pozwalając na swobodne rzeźbienie formy, dodawanie tekstury i blasku, bez obciążania i sklejania włosów.",
+            "description": "Profesjonalna stylizacja i wykończenie.",
             "products": [
-                "LAKIER SUPER STRONG",
-                "LAKIER DO CIENKICH I FARBOWANYCH WŁOSÓW",
-                "LAKIER EKOLOGICZNY BEZ GAZU",
-                "PIANKA EXTRA MOCNA",
-                "SÓL MORSKA BEACH WAVES",
-                "ŻEL EXTRA MOCNY",
-                "EMULSJA MULTIFORMA",
-                "SPRAY NABŁYSZCZAJĄCY",
-                "SPRAY TERMOOCHRONNY",
-                "FLUID ELASTIC FIX",
-                "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA",
-                "EXTRA MATT WAX PASTA EXTRA MATOWA",
-                "SPIDER FIBER PASTA WŁÓKNISTA",
-                "HYDRO SHINE WOSK WODNY",
-                "CLAY DRY GLINKA MOCNA MATOWA",
-                "MATT PASTE PASTA MATUJĄCA",
-                "ODŻYWKA DWUFAZOWA BIFASIC",
-                "ODŻYWKA W SPRAY’U 13W1"
+                {
+                    "name": "LAKIER SUPER STRONG",
+                    "desc": "Bardzo mocne utrwalenie.",
+                    "capacity": "500ml"
+                },
+                {
+                    "name": "LAKIER DO CIENKICH I FARBOWANYCH WŁOSÓW",
+                    "desc": "Delikatny lakier.",
+                    "capacity": "500ml"
+                },
+                {
+                    "name": "LAKIER EKOLOGICZNY BEZ GAZU",
+                    "desc": "Lakier non-aerosol.",
+                    "capacity": "300ml"
+                },
+                {
+                    "name": "PIANKA EXTRA MOCNA",
+                    "desc": "Mocna pianka modelująca.",
+                    "capacity": "300ml"
+                },
+                {
+                    "name": "SÓL MORSKA BEACH WAVES",
+                    "desc": "Efekt plażowych fal.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "ŻEL EXTRA MOCNY",
+                    "desc": "Żel strukturyzujący.",
+                    "capacity": "150ml"
+                },
+                {
+                    "name": "EMULSJA MULTIFORMA",
+                    "desc": "Krem stylizujący.",
+                    "capacity": "150ml"
+                },
+                {
+                    "name": "SPRAY NABŁYSZCZAJĄCY",
+                    "desc": "Lustrzany połysk.",
+                    "capacity": "150ml"
+                },
+                {
+                    "name": "SPRAY TERMOOCHRONNY",
+                    "desc": "Ochrona przed prostownicą.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "FLUID ELASTIC FIX",
+                    "desc": "Elastyczne utrwalenie.",
+                    "capacity": "150ml"
+                },
+                {
+                    "name": "LISS ANTISTRESS EMULSJA WYGŁADZAJĄCA",
+                    "desc": "Wygładzenie końcówek.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "EXTRA MATT WAX PASTA EXTRA MATOWA",
+                    "desc": "Matowe wykończenie.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "SPIDER FIBER PASTA WŁÓKNISTA",
+                    "desc": "Włóknista pasta rzeźbiąca.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "HYDRO SHINE WOSK WODNY",
+                    "desc": "Wodny wosk nabłyszczający.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "CLAY DRY GLINKA MOCNA MATOWA",
+                    "desc": "Twarda glinka matowa.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "MATT PASTE PASTA MATUJĄCA",
+                    "desc": "Pasta średnio utrwalająca.",
+                    "capacity": "100ml"
+                },
+                {
+                    "name": "ODŻYWKA DWUFAZOWA BIFASIC",
+                    "desc": "Nawilżenie w sprayu.",
+                    "capacity": "200ml"
+                },
+                {
+                    "name": "ODŻYWKA W SPRAY’U 13W1",
+                    "desc": "13 korzyści w jednym produkcie.",
+                    "capacity": "150ml"
+                }
             ]
         }
     ]

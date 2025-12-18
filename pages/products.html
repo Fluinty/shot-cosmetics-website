@@ -270,7 +270,7 @@
                 const contentContainer = document.getElementById('content-container');
 
                 try {
-                    const response = await fetch('../assets/data/products_v2.json');
+                    const response = await fetch('../assets/data/products_v2.json?v=' + new Date().getTime());
                     const data = await response.json();
                     const categories = data.categories;
 
@@ -365,23 +365,75 @@
                                 subSection.style.marginTop = '2rem';
                                 subSection.style.marginBottom = '4rem';
 
-                                // Check for Tricoilogy level nesting
+                                // Check for Tricoilogy level nesting (3rd Level)
                                 if (sub.subcategories && sub.subcategories.length > 0) {
-                                    subSection.innerHTML = `
-                                    <div class="subsection-header">
+                                    // Header
+                                    const headerDiv = document.createElement('div');
+                                    headerDiv.className = 'subsection-header';
+                                    headerDiv.innerHTML = `
                                         <h3 class="subsection-title">${sub.name}</h3>
                                         ${sub.description ? `<span class="subsection-desc">${sub.description}</span>` : ''}
-                                    </div>
-                                `;
-
-                                    sub.subcategories.forEach(deepSub => {
-                                        subSection.innerHTML += `
-                                        <div class="nested-section">
-                                            <h4 style="color: var(--color-purple); font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 2rem;">${deepSub.name}</h4>
-                                            ${renderProductGrid(deepSub.products)}
-                                        </div>
                                     `;
+                                    subSection.appendChild(headerDiv);
+
+                                    // 3rd Level Tabs Container
+                                    const deepTabsContainer = document.createElement('div');
+                                    deepTabsContainer.style.display = 'flex';
+                                    deepTabsContainer.style.justifyContent = 'center';
+                                    deepTabsContainer.style.gap = '1rem';
+                                    deepTabsContainer.style.flexWrap = 'wrap';
+                                    deepTabsContainer.style.marginBottom = '2rem';
+                                    subSection.appendChild(deepTabsContainer);
+
+                                    // Container for 3rd level content
+                                    const deepContentContainer = document.createElement('div');
+                                    subSection.appendChild(deepContentContainer);
+
+                                    // Logic to handle tab switching
+                                    let activeDeepIndex = 0;
+
+                                    sub.subcategories.forEach((deepSub, deepIdx) => {
+                                        // Create Tab Button
+                                        const deepBtn = document.createElement('button');
+                                        deepBtn.textContent = deepSub.name;
+                                        deepBtn.className = 'btn btn-outline'; // Reuse existing styles
+                                        deepBtn.style.fontSize = '0.8rem';
+                                        deepBtn.style.padding = '0.5rem 1rem';
+                                        deepBtn.style.borderColor = activeDeepIndex === deepIdx ? 'var(--color-purple)' : '#ddd';
+                                        deepBtn.style.color = activeDeepIndex === deepIdx ? 'var(--color-purple)' : 'var(--color-text)';
+                                        deepBtn.style.backgroundColor = activeDeepIndex === deepIdx ? '#f3f0f7' : 'transparent';
+
+                                        // Create Content Div
+                                        const deepContentDiv = document.createElement('div');
+                                        deepContentDiv.style.display = activeDeepIndex === deepIdx ? 'block' : 'none';
+                                        deepContentDiv.innerHTML = `
+                                            <h4 style="color: var(--color-purple); font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 2rem; text-align: center; display: none;">${deepSub.name}</h4>
+                                            ${renderProductGrid(deepSub.products)}
+                                        `;
+                                        deepContentContainer.appendChild(deepContentDiv);
+
+                                        // Click Handler
+                                        deepBtn.onclick = () => {
+                                            // Update active index
+                                            activeDeepIndex = deepIdx;
+
+                                            // 1. Update Tabs Visuals
+                                            Array.from(deepTabsContainer.children).forEach((btn, i) => {
+                                                const isActive = i === deepIdx;
+                                                btn.style.borderColor = isActive ? 'var(--color-purple)' : '#ddd';
+                                                btn.style.color = isActive ? 'var(--color-purple)' : 'var(--color-text)';
+                                                btn.style.backgroundColor = isActive ? '#f3f0f7' : 'transparent';
+                                            });
+
+                                            // 2. Show/Hide Content
+                                            Array.from(deepContentContainer.children).forEach((div, i) => {
+                                                div.style.display = i === deepIdx ? 'block' : 'none';
+                                            });
+                                        };
+
+                                        deepTabsContainer.appendChild(deepBtn);
                                     });
+
                                 } else {
                                     // Standard Subcategory (e.g., Color Care)
                                     subSection.innerHTML = `
@@ -410,18 +462,24 @@
                     function renderProductGrid(products) {
                         if (!products || products.length === 0) return '';
 
-                        const gridHTML = products.map(productName => `
+                        const gridHTML = products.map(product => {
+                            const name = typeof product === 'string' ? product : product.name;
+                            const desc = typeof product === 'string' ? 'Zobacz więcej' : product.desc;
+                            const capacity = (typeof product !== 'string' && product.capacity) ? `<span style="display: block; font-size: 0.7rem; color: var(--color-gold); margin-top: 0.5rem; font-weight: 600;">${product.capacity}</span>` : '';
+
+                            return `
                         <div class="card" style="padding: 2rem; text-align: center; transition: all 0.3s ease;">
                              <div style="height: 180px; background: #fafafa; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 4px;">
-                                <!-- Placeholder Image -->
                                 <img src="../assets/images/product_purple.png" 
-                                     alt="${productName}" 
+                                     alt="${name}" 
                                      style="max-height: 80%; opacity: 0.8; mix-blend-mode: multiply;">
                             </div>
-                            <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--color-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; min-height: 2.5em; display: flex; align-items: center; justify-content: center;">${productName}</h4>
-                            <span style="font-size: 0.75rem; color: var(--color-text-muted);">Zobacz więcej</span>
+                            <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--color-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; min-height: 2.5em; display: flex; align-items: center; justify-content: center;">${name}</h4>
+                            <p style="font-size: 0.8rem; color: var(--color-text-light); line-height: 1.4; margin-bottom: 0.5rem;">${desc}</p>
+                            ${capacity}
                         </div >
-                                        `).join('');
+                        `;
+                        }).join('');
 
                         return `<div class="products-grid">${gridHTML}</div>`;
                     }
