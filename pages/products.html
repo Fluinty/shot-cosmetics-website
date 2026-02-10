@@ -229,12 +229,14 @@
 
                 <!-- Text Column -->
                 <div style="flex: 1; text-align: left;">
-                    <span class="text-uppercase"
+                    <span id="products-hero-label" class="text-uppercase"
                         style="display:block; margin-bottom: 1rem; color: var(--color-gold); letter-spacing: 2px;">Nasze
                         Produkty</span>
-                    <h1 style="color: white; margin-bottom: 1.5rem; font-size: 4rem; line-height: 1.1;">
+                    <h1 id="products-hero-title"
+                        style="color: white; margin-bottom: 1.5rem; font-size: 4rem; line-height: 1.1;">
                         Profesjonalna<br>Pielęgnacja</h1>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; line-height: 1.6; max-width: 90%;">
+                    <p id="products-hero-desc"
+                        style="color: rgba(255,255,255,0.9); font-size: 1.25rem; line-height: 1.6; max-width: 90%;">
                         Odkryj innowacyjne formuły łączące naturę z zaawansowaną technologią, by wydobyć z Twoich
                         włosów to, co najlepsze. Od głębokiej regeneracji i ochrony koloru po specjalistyczne
                         zabiegi trychologiczne – nasze produkty to gwarancja salonowej jakości w Twoim domu.
@@ -249,7 +251,7 @@
                             style="position: absolute; top: 20px; right: -20px; width: 100%; height: 100%; border: 2px solid var(--color-gold); opacity: 0.3; border-radius: 8px;">
                         </div>
                         <!-- Image -->
-                        <img src="../assets/images/hero_woman.png" alt="Shot Cosmetics Model"
+                        <img id="products-hero-img" src="../assets/images/hero_woman.png" alt="Shot Cosmetics Model"
                             style="width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative;">
                     </div>
                 </div>
@@ -473,6 +475,20 @@
         });
     </script>
     <script src="../js/main.js?v=3"></script>
+    <script>
+        // Load products page hero from CMS
+        (async function () {
+            const page = await StrapiAPI.fetchProductsPage();
+            if (!page) return;
+            if (page.section_label) document.getElementById('products-hero-label').textContent = page.section_label;
+            if (page.hero_title) document.getElementById('products-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
+            if (page.hero_description) document.getElementById('products-hero-desc').textContent = page.hero_description;
+            if (page.hero_image) {
+                const imgUrl = StrapiAPI.getImageUrl(page.hero_image);
+                if (imgUrl) document.getElementById('products-hero-img').src = imgUrl;
+            }
+        })();
+    </script>
 </body>
 
 </html>
