@@ -1,0 +1,25 @@
+{
+    "rewrites": [
+        {
+            "source": "/pages/products",
+            "destination": "/pages/products.html"
+        },
+        {
+            "source": "/pages/about",
+            "destination": "/pages/about.html"
+        },
+        {
+            "source": "/pages/education",
+            "destination": "/pages/education.html"
+        },
+        {
+            "source": "/pages/contact",
+            "destination": "/pages/contact.html"
+        },
+        {
+            "source": "/pages/news",
+            "destination": "/pages/news.html"
+        }
+    ],
+    "cleanUrls": true
+}
