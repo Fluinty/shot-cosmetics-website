@@ -115,7 +115,7 @@
                 </div>
                 <div style="order: 1; position: relative;">
                     <div id="about-image"
-                        style="height: 600px; background: url('assets/images/about_salon.png') center/cover; position: relative; z-index: 1; box-shadow: var(--shadow-subtle);">
+                        style="height: 600px; background: url('assets/images/about_salon.png') center top/cover; position: relative; z-index: 1; box-shadow: var(--shadow-subtle);">
                     </div>
                     <div
                         style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 1px solid var(--color-gold); z-index: 0;">
@@ -133,8 +133,10 @@
                 <div style="width: 60px; height: 1px; background: var(--color-gold); margin: 0 auto;"></div>
             </div>
 
-            <div id="bestsellers-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
-                <p class="text-center" style="color: var(--color-text-muted); grid-column: 1/-1;">Ladowanie produktow...</p>
+            <div id="bestsellers-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem;">
+                <p class="text-center" style="color: var(--color-text-muted); grid-column: 1/-1;">Ladowanie produktow...
+                </p>
             </div>
 
             <div class="text-center" style="margin-top: 5rem;">
@@ -478,7 +480,7 @@
             // image
             if (about.image) {
                 const imgUrl = StrapiAPI.getImageUrl(about.image);
-                if (imgUrl) document.getElementById('about-image').style.background = `url('${imgUrl}') center/cover`;
+                if (imgUrl) document.getElementById('about-image').style.background = `url('${imgUrl}') center top/cover`;
             }
         }
 
