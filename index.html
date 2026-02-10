@@ -70,19 +70,20 @@
     </header>
 
     <main>
-        <section class="hero"
+        <section id="hero-section" class="hero"
             style="background: url('assets/images/hero-model.jpg') center top/cover no-repeat; margin-bottom: 0;">
             <div class="hero-overlay"></div>
             <div class="container hero-content">
-                <span class="text-uppercase"
+                <span id="hero-badge" class="text-uppercase"
                     style="display:block; margin-bottom: 1rem; letter-spacing: 0.3em; opacity: 0.9;">Made in
                     Italy</span>
-                <h1 style="color: white; margin-bottom: 1.5rem;">Włoska Perfekcja<br>w Twoim Salonie</h1>
-                <p
+                <h1 id="hero-title" style="color: white; margin-bottom: 1.5rem;">Włoska Perfekcja<br>w Twoim Salonie
+                </h1>
+                <p id="hero-subtitle"
                     style="font-size: 1.2rem; margin-bottom: 3rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
                     Odkryj luksusową pielęgnację i koloryzacją, która łączy naturę z zaawansowaną technologią.
                 </p>
-                <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                <div id="hero-buttons" style="display: flex; gap: 1.5rem; justify-content: center;">
                     <a href="pages/products.html" class="btn btn-primary"
                         style="background: var(--color-gold); border-color: var(--color-gold); color: black;">Odkryj
                         Produkty</a>
@@ -93,18 +94,17 @@
         </section>
 
         <section id="about" class="container">
-            <!-- Added extra padding top to prevent overlap -->
             <div class="grid-2-cols">
                 <div style="order: 2;">
-                    <span class="text-uppercase"
+                    <span id="about-badge" class="text-uppercase"
                         style="color: var(--color-gold); display: block; margin-bottom: 1rem;">Filozofia Marki</span>
-                    <h2 style="margin-bottom: 2rem;">Innowacja Spotyka Tradycję</h2>
-                    <p style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.1rem;">
+                    <h2 id="about-heading" style="margin-bottom: 2rem;">Innowacja Spotyka Tradycję</h2>
+                    <p id="about-text1" style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.1rem;">
                         Marka Shot to synonim włoskiej doskonałości. Tworzymy kosmetyki, które nie tylko
                         pielęgnują, ale
                         transformują włosy, dając kobietom pewność siebie każdego dnia.
                     </p>
-                    <p style="color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 3rem;">
+                    <p id="about-text2" style="color: var(--color-text-light); font-size: 1.1rem; margin-bottom: 3rem;">
                         Nasze laboratoria we Włoszech łączą najczystsze składniki aktywne z nowoczesną
                         technologią,
                         tworząc formuły bezpieczne i skuteczne.
@@ -114,11 +114,9 @@
                         naszą historię</a>
                 </div>
                 <div style="order: 1; position: relative;">
-                    <!-- Updated Image Source -->
-                    <div
+                    <div id="about-image"
                         style="height: 600px; background: url('assets/images/about_salon.png') center/cover; position: relative; z-index: 1; box-shadow: var(--shadow-subtle);">
                     </div>
-                    <!-- Adjusted frame position -->
                     <div
                         style="position: absolute; top: -20px; left: -20px; width: 100%; height: 100%; border: 1px solid var(--color-gold); z-index: 0;">
                     </div>
@@ -490,7 +488,36 @@
             });
         }
 
+        // ── Hero from CMS ──
+        async function loadHero() {
+            const hero = await StrapiAPI.fetchHomepageHero();
+            if (!hero) return;
+            if (hero.background_image) {
+                const imgUrl = StrapiAPI.getImageUrl(hero.background_image);
+                if (imgUrl) document.getElementById('hero-section').style.background = `url('${imgUrl}') center top/cover no-repeat`;
+            }
+            if (hero.badge) document.getElementById('hero-badge').textContent = hero.badge;
+            if (hero.title) document.getElementById('hero-title').innerHTML = hero.title.replace('\n', '<br>');
+            if (hero.subtitle) document.getElementById('hero-subtitle').textContent = hero.subtitle;
+        }
+
+        // ── About from CMS ──
+        async function loadAbout() {
+            const about = await StrapiAPI.fetchHomepageAbout();
+            if (!about) return;
+            if (about.badge) document.getElementById('about-badge').textContent = about.badge;
+            if (about.heading) document.getElementById('about-heading').textContent = about.heading;
+            if (about.paragraph_1) document.getElementById('about-text1').textContent = about.paragraph_1;
+            if (about.paragraph_2) document.getElementById('about-text2').textContent = about.paragraph_2;
+            if (about.image) {
+                const imgUrl = StrapiAPI.getImageUrl(about.image);
+                if (imgUrl) document.getElementById('about-image').style.background = `url('${imgUrl}') center/cover`;
+            }
+        }
+
         // ── Initialize ──
+        loadHero();
+        loadAbout();
         loadNews();
         loadDistributors();
     </script>

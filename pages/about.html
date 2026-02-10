@@ -51,14 +51,15 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero"
+        <section id="about-hero" class="hero"
             style="min-height: 60vh; background: url('../assets/images/about_salon.png') center/cover no-repeat fixed; margin-top: 4rem;">
             <div class="hero-overlay" style="background: rgba(42, 10, 74, 0.7);"></div>
             <div class="container hero-content">
                 <span class="text-uppercase" style="display:block; margin-bottom: 1rem; color: var(--color-gold);">O
                     Nas</span>
-                <h1 style="color: white; margin-bottom: 1.5rem;">Włoskie Korzenie,<br>Światowa Jakość</h1>
-                <p style="opacity: 0.9; max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
+                <h1 id="about-hero-title" style="color: white; margin-bottom: 1.5rem;">Włoskie Korzenie,<br>Światowa
+                    Jakość</h1>
+                <p id="about-hero-subtitle" style="opacity: 0.9; max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
                     Poznaj historię marki, która od ponad 20 lat redefiniuje pojęcie profesjonalnej pielęgnacji włosów.
                 </p>
             </div>
@@ -69,9 +70,11 @@
                 <div>
                     <span class="text-uppercase"
                         style="color: var(--color-purple); display: block; margin-bottom: 1rem;">Nasza Historia</span>
-                    <h2 style="margin-bottom: 2rem; color: var(--color-purple-dark);">Pasja, która zrodziła się w sercu
+                    <h2 id="about-history-heading" style="margin-bottom: 2rem; color: var(--color-purple-dark);">Pasja,
+                        która zrodziła się w sercu
                         Włoch</h2>
-                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;">
+                    <p id="about-history-p1"
+                        style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;">
                         Marka Shot powstała w 2002 roku z wizji tworzenia profesjonalnych kosmetyków do włosów, które
                         łączą artystyczną duszę włoskiego fryzjerstwa z naukową precyzją i innowacją. Od samego początku
                         rozwijamy nasze formuły we Włoszech, gdzie kreatywność, rzemiosło i nowoczesna technologia
@@ -79,7 +82,8 @@
                         opracowywany, testowany i certyfikowany we współpracy z Uniwersytetem w Pawii, co gwarantuje
                         bezpieczeństwo, skuteczność i profesjonalne rezultaty.
                     </p>
-                    <p style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;">
+                    <p id="about-history-p2"
+                        style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;">
                         Zaczynając jako ambitna, rodzinna inicjatywa, marka Shot konsekwentnie budowała swoją pozycję na
                         rynku profesjonalnym. Dziś jest obecna w ponad 50 krajach na całym świecie, dostarczając
                         stylistom i salonom fryzjerskim narzędzia, dzięki którym mogą realizować najbardziej wymagające
@@ -88,7 +92,7 @@
                     </p>
                 </div>
                 <div style="position: relative;">
-                    <div
+                    <div id="about-history-image"
                         style="height: 500px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-gold); overflow: hidden; border-radius: 8px;">
                         <img src="../assets/images/about_lab.png" alt="Laboratorium Shot Cosmetics"
                             style="width: 100%; height: 100%; object-fit: cover;">
@@ -100,7 +104,8 @@
         <section style="background-color: var(--color-purple-dark); padding: 8rem 0; color: white; text-align: center;">
             <div class="container">
                 <h2 style="margin-bottom: 4rem; color: var(--color-gold);">Wartości Shot Cosmetics</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+                <div id="values-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                     <!-- Dynamizm -->
                     <div
                         style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s; height: 100%;">
@@ -201,7 +206,35 @@
         </div>
     </footer>
 
+    <script src="../js/api.js?v=4"></script>
     <script src="../js/main.js?v=3"></script>
+    <script>
+        (async function () {
+            const about = await StrapiAPI.fetchAboutPage();
+            if (!about) return;
+
+            if (about.hero_title) document.getElementById('about-hero-title').innerHTML = about.hero_title.replace('\n', '<br>');
+            if (about.hero_subtitle) document.getElementById('about-hero-subtitle').textContent = about.hero_subtitle;
+            if (about.history_heading) document.getElementById('about-history-heading').textContent = about.history_heading;
+            if (about.history_paragraph_1) document.getElementById('about-history-p1').textContent = about.history_paragraph_1;
+            if (about.history_paragraph_2) document.getElementById('about-history-p2').textContent = about.history_paragraph_2;
+
+            // Dynamic values if provided by API
+            if (about.values && about.values.length > 0) {
+                const icons = ['⚡', '🏅', '💡', '🤝'];
+                const grid = document.getElementById('values-grid');
+                grid.innerHTML = about.values.map((v, i) => `
+                    <div style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s; height: 100%;">
+                        <div style="width: 64px; height: 64px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
+                            ${icons[i] || '✨'}
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">${v.title}</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">${v.description}</p>
+                    </div>
+                `).join('');
+            }
+        })();
+    </script>
 </body>
 
 </html>
