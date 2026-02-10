@@ -118,7 +118,7 @@ async function fetchEducators() {
 }
 
 async function fetchEducationPage() {
-    return await strapiFetch('/education-page?populate=*');
+    return await strapiFetch('/education-page?populate[hero_image]=*&populate[program_image]=*&populate[program_features]=*');
 }
 
 // ─── DISTRIBUTORS ─────────────────────────────────────────────────

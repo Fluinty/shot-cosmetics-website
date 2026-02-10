@@ -183,12 +183,12 @@
 
     <main>
         <!-- Hero Title -->
-        <section
+        <section id="edu-hero"
             style="background: var(--color-purple-dark); padding: 6rem 0 4rem; text-align: center; margin-top: 4rem;">
             <div class="container">
-                <span class="text-uppercase"
+                <span id="edu-hero-label" class="text-uppercase"
                     style="color: var(--color-gold); margin-bottom: 1rem; display: block;">Rozwój i Wiedza</span>
-                <h1 style="color: white; margin-bottom: 0;">Akademia Shot</h1>
+                <h1 id="edu-hero-title" style="color: white; margin-bottom: 0;">Akademia Shot</h1>
             </div>
         </section>
 
@@ -199,18 +199,19 @@
                     <div
                         style="position: absolute; top: 20px; left: -20px; width: 100%; height: 100%; border: 2px solid var(--color-gold); opacity: 0.3; border-radius: 8px; z-index: 0;">
                     </div>
-                    <img src="../assets/images/news_masterclass.png" alt="Szkolenie Shot"
+                    <img id="edu-program-img" src="../assets/images/news_masterclass.png" alt="Szkolenie Shot"
                         style="position: relative; z-index: 1; border-radius: 8px; box-shadow: var(--shadow-hover);">
                 </div>
             </div>
             <div style="flex: 1;">
-                <h2 style="margin-bottom: 2rem;">Program Szkoleniowy: <br>Master Class</h2>
-                <p style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.1rem;">
+                <h2 id="edu-program-title" style="margin-bottom: 2rem;">Program Szkoleniowy: <br>Master Class</h2>
+                <p id="edu-program-desc"
+                    style="color: var(--color-text-light); margin-bottom: 2rem; font-size: 1.1rem;">
                     Nasz autorski program szkoleniowy to połączenie teorii z intensywną praktyką. Stawiamy na
                     holistyczne podejście do fryzjerstwa, ucząc nie tylko technik, ale także diagnozy włosa i
                     psychologii pracy z klientem.
                 </p>
-                <ul style="color: var(--color-text); line-height: 2;">
+                <ul id="edu-program-features" style="color: var(--color-text); line-height: 2;">
                     <li>• <strong>Koloryzacja DNA:</strong> Poznaj chemię koloru od podstaw.</li>
                     <li>• <strong>Blond Mastery:</strong> Bezpieczne rozjaśnianie i tonowanie.</li>
                     <li>• <strong>Trychologia w salonie:</strong> Zabiegi pielęgnacyjne i kuracje.</li>
@@ -348,6 +349,34 @@
 
         loadEducators();
         loadEvents();
+
+        // Load education page content from CMS
+        (async function () {
+            const page = await StrapiAPI.fetchEducationPage();
+            if (!page) return;
+            if (page.hero_title) document.getElementById('edu-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
+            if (page.hero_subtitle) document.getElementById('edu-hero-label').textContent = page.hero_subtitle;
+            if (page.hero_image) {
+                const heroUrl = StrapiAPI.getImageUrl(page.hero_image);
+                if (heroUrl) {
+                    const hero = document.getElementById('edu-hero');
+                    hero.style.backgroundImage = `url('${heroUrl}')`;
+                    hero.style.backgroundSize = 'cover';
+                    hero.style.backgroundPosition = 'center';
+                }
+            }
+            if (page.program_title) document.getElementById('edu-program-title').innerHTML = page.program_title.replace(/\n/g, '<br>');
+            if (page.program_description) document.getElementById('edu-program-desc').textContent = page.program_description;
+            if (page.program_image) {
+                const imgUrl = StrapiAPI.getImageUrl(page.program_image);
+                if (imgUrl) document.getElementById('edu-program-img').src = imgUrl;
+            }
+            if (page.program_features && page.program_features.length > 0) {
+                document.getElementById('edu-program-features').innerHTML = page.program_features.map(f =>
+                    `<li>• <strong>${f.title}:</strong> ${f.description}</li>`
+                ).join('');
+            }
+        })();
     </script>
 </body>
 
