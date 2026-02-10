@@ -51,10 +51,12 @@
 
     <main class="container" style="padding-top: 8rem; min-height: 80vh;">
         <div class="text-center" style="margin-bottom: 5rem;">
-            <span class="text-uppercase" style="display:block; margin-bottom: 1rem; color: var(--color-gold);">Blog &
+            <span id="news-hero-label" class="text-uppercase"
+                style="display:block; margin-bottom: 1rem; color: var(--color-gold);">Blog &
                 Wydarzenia</span>
-            <h1 style="margin-bottom: 1.5rem;">Świat Shot Cosmetics</h1>
-            <p style="color: var(--color-text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+            <h1 id="news-hero-title" style="margin-bottom: 1.5rem;">Świat Shot Cosmetics</h1>
+            <p id="news-hero-desc"
+                style="color: var(--color-text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
                 Najnowsze trendy, relacje ze szkoleń i premiery produktów. Bądź na bieżąco z włoską modą fryzjerską.
             </p>
         </div>
@@ -87,6 +89,16 @@
 
     <script src="../js/api.js?v=4"></script>
     <script src="../js/main.js?v=3"></script>
+    <script>
+        // Load news page header from CMS
+        (async function () {
+            const page = await StrapiAPI.fetchNewsPage();
+            if (!page) return;
+            if (page.section_label) document.getElementById('news-hero-label').textContent = page.section_label;
+            if (page.hero_title) document.getElementById('news-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
+            if (page.hero_description) document.getElementById('news-hero-desc').textContent = page.hero_description;
+        })();
+    </script>
     <script>
         (async function () {
             const container = document.getElementById('news-container');

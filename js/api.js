@@ -149,6 +149,9 @@ async function fetchContactInfo() {
 async function fetchProductsPage() {
     return await strapiFetch('/products-page?populate=*');
 }
+async function fetchNewsPage() {
+    return await strapiFetch('/news-page?populate=*');
+}
 
 // ─── EXPORT ───────────────────────────────────────────────────────
 
@@ -171,5 +174,6 @@ window.StrapiAPI = {
     fetchHomepageAbout,
     fetchAboutPage,
     fetchContactInfo,
-    fetchProductsPage
+    fetchProductsPage,
+    fetchNewsPage
 };
