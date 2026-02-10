@@ -139,7 +139,7 @@ async function fetchHomepageAbout() {
 }
 
 async function fetchAboutPage() {
-    return await strapiFetch('/about-page?populate[history_image]=*&populate[values][populate][icon]=*');
+    return await strapiFetch('/about-page?populate[history_image]=*&populate[hero_image]=*&populate[values][populate][icon]=*');
 }
 
 async function fetchContactInfo() {

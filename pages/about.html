@@ -216,6 +216,12 @@
             // Hero section
             if (about.hero_title) document.getElementById('about-hero-title').innerHTML = about.hero_title.replace(/\n/g, '<br>');
             if (about.hero_subtitle) document.getElementById('about-hero-subtitle').textContent = about.hero_subtitle;
+            if (about.hero_image) {
+                const heroImgUrl = StrapiAPI.getImageUrl(about.hero_image);
+                if (heroImgUrl) {
+                    document.getElementById('about-hero').style.backgroundImage = `url('${heroImgUrl}')`;
+                }
+            }
 
             // History section
             if (about.history_title) document.getElementById('about-history-heading').textContent = about.history_title;
