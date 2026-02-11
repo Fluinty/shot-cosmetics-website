@@ -771,10 +771,7 @@ footer {
     }
 
     /* 6. About Section Specifics */
-    /* Show image first, text second */
-    .grid-2-cols>div:nth-child(2) {
-        order: -1;
-    }
+    /* Image div (order:1 inline) should appear first on mobile too - no override needed */
 
     /* Map Section: Override above rule - show map first, then info panel on mobile */
     .map-section .grid-2-cols>div:first-child {
@@ -787,9 +784,10 @@ footer {
         order: 1 !important;
     }
 
-    /* CRITICAL: Hide decorative border causing overflow */
+    /* Decorative border - keep visible but adjust for mobile */
     #about .grid-2-cols>div>div[style*="border"] {
-        display: none !important;
+        top: -12px !important;
+        left: -12px !important;
     }
 
     /* Reduce #about padding on mobile */
@@ -797,14 +795,18 @@ footer {
         padding-top: 4rem !important;
     }
 
-    /* Fix inline order overrides on mobile */
-    #about .grid-2-cols>div {
-        order: unset !important;
+    /* Fix inline order overrides on mobile - image first, text second */
+    #about .grid-2-cols>div:first-child {
+        order: 2 !important;
     }
 
-    /* Reduce height of the image container on mobile (override inline 600px) */
+    #about .grid-2-cols>div:nth-child(2) {
+        order: 1 !important;
+    }
+
+    /* Responsive image height on mobile (override inline 600px) */
     #about .grid-2-cols>div>div[style*="height"] {
-        height: 250px !important;
+        height: 350px !important;
         background-position: center top !important;
     }
 
