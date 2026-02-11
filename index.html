@@ -483,20 +483,26 @@
                 const imgUrl = StrapiAPI.getImageUrl(about.image);
                 if (imgUrl) {
                     const el = document.getElementById('about-image');
-                    el.style.backgroundImage = `url('${imgUrl}')`;
-                    el.style.backgroundPosition = 'center top';
-                    el.style.backgroundSize = 'cover';
+                    // Switch to IMG tag for reliability
+                    el.innerHTML = `<img src="${imgUrl}" alt="O nas" style="width: 100%; height: 100%; object-fit: cover; display: block;">`;
+                    
+                    // Reset container styles to support img
+                    el.style.backgroundImage = 'none';
                     el.style.backgroundColor = 'transparent';
-                    // Ensure visibility on mobile
-                    el.style.minHeight = '250px'; 
+                    el.style.overflow = 'hidden'; // For border-radius
+                    
+                    // Ensure visibility
                     el.style.display = 'block';
                     el.parentElement.style.display = 'block';
+                    
+                    // Mobile height safeguard
+                    if (window.innerWidth <= 768) {
+                        el.style.minHeight = '250px';
+                    }
                 } else {
-                    // Fallback if URL invalid but object exists
                     document.getElementById('about-image').style.display = 'none';
                 }
             } else {
-                // No image data
                  document.getElementById('about-image').style.display = 'none';
             }
             
