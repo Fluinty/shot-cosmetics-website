@@ -72,7 +72,7 @@
 
     <main>
 
-        <section class="container" style="padding: 6rem 0;">
+        <section class="container" style="padding: 6rem 0; margin-top: 4rem;">
             <div class="grid-2-cols">
                 <div>
                     <span class="text-uppercase"
@@ -92,17 +92,16 @@
             </div>
         </section>
 
-        <section id="about-hero" class="hero"
-            style="min-height: 60vh; background: var(--color-purple-dark) center top/cover no-repeat fixed; display: flex; align-items: center; justify-content: center; padding: 8rem 0; color: white; text-align: center; position: relative;">
-            <div class="hero-overlay" style="background: rgba(42, 10, 74, 0.65);"></div>
-            <div class="container" style="position: relative; z-index: 2;">
-                <h2 style="margin-bottom: 4rem; color: var(--color-gold); font-size: 2.5rem; letter-spacing: 0.1em;">
-                    NASZA HISTORIA</h2>
+        <section id="about-values" style="background: #faf8f5; padding: 8rem 0; text-align: center;">
+            <div class="container">
+                <h2
+                    style="margin-bottom: 4rem; color: var(--color-purple-dark); font-size: 2.5rem; letter-spacing: 0.05em;">
+                    Wartości Shot Cosmetics</h2>
                 <div id="values-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                     <!-- Dynamizm -->
                     <div
-                        style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s; height: 100%;">
+                        style="padding: 2rem; background: white; border-radius: 8px; transition: transform 0.3s; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
                         <div
                             style="width: 64px; height: 64px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24"
@@ -111,8 +110,10 @@
                                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Dynamizm</h3>
-                        <p style="opacity: 0.8; line-height: 1.6;">Nieustannie monitorujemy i wyprzedzamy zmieniające
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-purple-dark);">Dynamizm
+                        </h3>
+                        <p style="color: var(--color-text-light); line-height: 1.6;">Nieustannie monitorujemy i
+                            wyprzedzamy zmieniające
                             się trendy rynku fryzjerskiego, szybko reagując na potrzeby profesjonalistów.</p>
                     </div>
 
@@ -128,9 +129,11 @@
                                 <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Doświadczenie
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-purple-dark);">
+                            Doświadczenie
                         </h3>
-                        <p style="opacity: 0.8; line-height: 1.6;">Ponad 20 lat obecności w branży pozwala nam tworzyć
+                        <p style="color: var(--color-text-light); line-height: 1.6;">Ponad 20 lat obecności w branży
+                            pozwala nam tworzyć
                             produkty najwyższej jakości, oparte na wiedzy, praktyce i precyzji.</p>
                     </div>
 
@@ -150,9 +153,11 @@
                                 </path>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Innowacyjność
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-purple-dark);">
+                            Innowacyjność
                         </h3>
-                        <p style="opacity: 0.8; line-height: 1.6;">Regularnie wprowadzamy nowe rozwiązania i
+                        <p style="color: var(--color-text-light); line-height: 1.6;">Regularnie wprowadzamy nowe
+                            rozwiązania i
                             udoskonalamy formuły, dbając o zdrowie włosów i najwyższe standardy skuteczności.</p>
                     </div>
 
@@ -170,8 +175,10 @@
                                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">Wspólnota</h3>
-                        <p style="opacity: 0.8; line-height: 1.6;">Tworzymy silną, międzynarodową społeczność
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-purple-dark);">Wspólnota
+                        </h3>
+                        <p style="color: var(--color-text-light); line-height: 1.6;">Tworzymy silną, międzynarodową
+                            społeczność
                             profesjonalistów, znaną jako #shotfamily, opartą na zaufaniu, uczciwości i wspólnej pasji.
                         </p>
                     </div>
@@ -209,13 +216,6 @@
                 const about = await StrapiAPI.fetchAboutPage();
                 if (!about) return; // Graceful fallback to static HTML
 
-                // Hero background image on values/history section
-                if (about.hero_image) {
-                    const heroImgUrl = StrapiAPI.getImageUrl(about.hero_image);
-                    if (heroImgUrl) {
-                        document.getElementById('about-hero').style.backgroundImage = `url('${heroImgUrl}')`;
-                    }
-                }
 
                 // History section
                 if (about.history_title) document.getElementById('about-history-heading').textContent = about.history_title;
@@ -242,18 +242,16 @@
                 if (about.values && about.values.length > 0) {
                     const grid = document.getElementById('values-grid');
                     grid.innerHTML = about.values.map(v => `
-                    <div style="padding: 2rem; background: rgba(255,255,255,0.05); border-radius: 8px; transition: transform 0.3s; height: 100%;">
+                    <div style="padding: 2rem; background: white; border-radius: 8px; transition: transform 0.3s; height: 100%; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
                         <div style="width: 64px; height: 64px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem;">
                             ${v.icon ? `<img src="${StrapiAPI.getImageUrl(v.icon)}" alt="${v.title}" style="max-width: 100%; max-height: 100%; object-fit: contain;">` : '✨'}
                         </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-white);">${v.title}</h3>
-                        <p style="opacity: 0.8; line-height: 1.6;">${v.description}</p>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-purple-dark);">${v.title}</h3>
+                        <p style="color: var(--color-text-light); line-height: 1.6;">${v.description}</p>
                     </div>
                     `).join('');
                 }
-                // Reveal hero content with fade
-                const heroContent = document.querySelector('#about-hero .hero-content');
-                if (heroContent) heroContent.style.opacity = '1';
+
 
             } catch (error) {
                 console.error("Error loading about page:", error);
