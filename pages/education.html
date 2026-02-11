@@ -148,7 +148,8 @@
     <header>
         <div class="container">
             <nav>
-                <a href="../index.html" class="logo"><img src="../assets/images/logo-new.png" alt="Shot Hair Specialist" style="height: 50px;"></a>
+                <a href="../index.html" class="logo"><img src="../assets/images/logo-new.png" alt="Shot Hair Specialist"
+                        style="height: 50px;"></a>
                 <div class="menu-toggle" id="mobile-menu" style="z-index: 10005; cursor: pointer;">&#9776;</div>
                 <ul class="nav-links">
                     <li><a href="../index.html">Home</a></li>
@@ -186,17 +187,8 @@
 
     <main>
         <!-- Hero Title -->
-        <section id="edu-hero"
-            style="background: var(--color-purple-dark); padding: 6rem 0; text-align: center; margin-top: 4rem; margin-bottom: 2rem;">
-            <div class="container" style="opacity: 0; transition: opacity 0.5s ease;">
-                <span id="edu-hero-label" class="text-uppercase"
-                    style="color: var(--color-gold); margin-bottom: 1rem; display: block;"></span>
-                <h1 id="edu-hero-title" style="color: white; margin-bottom: 0;">&nbsp;</h1>
-            </div>
-        </section>
-
         <!-- Training Program -->
-        <section class="container program-section">
+        <section class="container program-section" style="margin-top: 10rem;">
             <div style="flex: 1;">
                 <div style="position: relative;">
                     <div
@@ -358,17 +350,6 @@
         (async function () {
             const page = await StrapiAPI.fetchEducationPage();
             if (!page) return;
-            if (page.hero_title) document.getElementById('edu-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
-            if (page.hero_subtitle) document.getElementById('edu-hero-label').textContent = page.hero_subtitle;
-            if (page.hero_image) {
-                const heroUrl = StrapiAPI.getImageUrl(page.hero_image);
-                if (heroUrl) {
-                    const hero = document.getElementById('edu-hero');
-                    hero.style.backgroundImage = `url('${heroUrl}')`;
-                    hero.style.backgroundSize = 'cover';
-                    hero.style.backgroundPosition = 'center top';
-                }
-            }
             if (page.program_title) document.getElementById('edu-program-title').innerHTML = page.program_title.replace(/\n/g, '<br>');
             if (page.program_description) document.getElementById('edu-program-desc').textContent = page.program_description;
             if (page.program_image) {
@@ -381,12 +362,12 @@
                 ).join('');
             }
             // Reveal hero content with fade
-            document.querySelector('#edu-hero .container').style.opacity = '1';
+
         })();
 
         // Safety timeout: reveal hero even if CMS is slow
         setTimeout(() => {
-            document.querySelectorAll('.hero-content, #edu-hero .container').forEach(el => el.style.opacity = '1');
+            document.querySelectorAll('.hero-content').forEach(el => el.style.opacity = '1');
         }, 3000);
     </script>
 </body>
