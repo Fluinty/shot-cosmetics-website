@@ -23,7 +23,7 @@
     function initRevealAnimations() {
         // Auto-tag sections and cards for reveal
         const selectors = [
-            'section:not(.hero)',
+            'section:not(.hero):not(#map-section)',
             '.card',
             '.stat-card',
             '.program-section > div',
@@ -52,6 +52,15 @@
             }
             revealObserver.observe(el);
         });
+
+        // Safety: on mobile, reveal all elements after 3s to prevent scroll deadlock
+        if (window.innerWidth <= 768) {
+            setTimeout(() => {
+                document.querySelectorAll('.reveal:not(.revealed)').forEach(el => {
+                    el.classList.add('revealed');
+                });
+            }, 3000);
+        }
     }
 
     // ─── BACK TO TOP BUTTON ──────────────────────────────────────────

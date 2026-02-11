@@ -486,13 +486,12 @@
                     el.style.backgroundImage = `url('${imgUrl}')`;
                     el.style.backgroundPosition = 'center top';
                     el.style.backgroundSize = 'cover';
-                } else {
-                    // Hide empty image placeholder
-                    document.getElementById('about-image').parentElement.style.display = 'none';
+                    el.style.backgroundColor = 'transparent';
                 }
             } else {
-                // Hide empty image placeholder
-                document.getElementById('about-image').parentElement.style.display = 'none';
+                // No image in CMS - collapse the empty box
+                document.getElementById('about-image').style.height = '0';
+                document.getElementById('about-image').style.minHeight = '0';
             }
             // Reveal about section
             document.getElementById('about').style.opacity = '1';
