@@ -68,6 +68,11 @@ async function fetchAllProducts() {
     return data || [];
 }
 
+async function fetchProductBySlug(slug) {
+    const data = await strapiFetch(`/products?filters[slug][$eq]=${slug}&populate=*`);
+    return data && data.length > 0 ? data[0] : null;
+}
+
 async function fetchBestsellers(limit = 3) {
     // Try bestsellers first
     let data = await strapiFetch(`/products?populate=*&filters[is_bestseller][$eq]=true&pagination[limit]=${limit}&sort=sort_order:asc`);
@@ -169,6 +174,7 @@ window.StrapiAPI = {
     fetchSubcategories,
     fetchProductsByCategory,
     fetchAllProducts,
+    fetchProductBySlug,
     fetchBestsellers,
     fetchCategoryFull,
     fetchArticles,

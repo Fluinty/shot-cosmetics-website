@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://hairpassion-production.up.railway.app" crossorigin>
+    <title>Produkt - Shot Cosmetics</title>
+    <link rel="stylesheet" href="../css/styles.css?v=5">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo"><img src="../assets/images/logo-new.png" alt="Shot Hair Specialist"
+                        style="height: 50px;"></a>
+                <div class="menu-toggle" id="mobile-menu" style="z-index: 10005; cursor: pointer;">&#9776;</div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">O Nas</a></li>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle">Produkty</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
+                            <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
+                            <li class="has-submenu">
+                                <a href="/pages/products?cat=pielegnacja">Pielęgnacja</a>
+                                <ul class="submenu">
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=0">Color Care</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=1">Simply Blond</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=2">Anti-Age</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=3">Anti-Stress</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=4">Texturizing</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=5">Tricoilogy</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=6">Sun</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=7">Repara</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/pages/products?cat=zabiegi-kuracje">Zabiegi</a></li>
+                            <li><a href="/pages/products?cat=techniczne">Techniczne</a></li>
+                            <li><a href="/pages/products?cat=stylizacja">Stylizacja</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="education.html">Edukacja</a></li>
+                    <li><a href="news.html">Świat Shot</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 10rem; margin-top: 4rem; flex: 1;">
+        <a href="javascript:history.back()"
+            style="display: inline-block; margin-bottom: 2rem; color: var(--color-purple); font-weight: 600;">&larr;
+            Wróć do listy</a>
+
+        <div id="loading"
+            style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 20000; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s;">
+            <div class="spinner"
+                style="width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid var(--color-purple); border-radius: 50%; animation: spin 1s linear infinite;">
+            </div>
+        </div>
+
+        <article id="product-container"
+            style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem;">
+        </article>
+    </main>
+
+    <footer>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <p>&copy; 2024 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
+            <div class="footer-links"
+                style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.5rem;">
+                <a href="../public/Polityka_Prywatnosci.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='inherit'">Polityka
+                    Prywatności</a>
+                <a href="../public/Regulamin.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--color-gold)'"
+                    onmouseout="this.style.color='inherit'">Regulamin</a>
+                <a href="../public/Pliki_Cookies.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--color-gold)'" onmouseout="this.style.color='inherit'">Pliki
+                    Cookies</a>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/187oNV5CgZ/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/shot.hair.polska?igsh=MXdvZHc2cmh6dzlvNw%3D%3D&utm_source=qr"
+                target="_blank" aria-label="Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="../js/api.js?v=4"></script>
+    <script src="../js/main.js?v=3"></script>
+    <script src="../js/ui-enhancements.js?v=2"></script>
+    <script>
+        // Init page with loader
+        async function initPage() {
+            const container = document.getElementById('product-container');
+            const loader = document.getElementById('loading');
+
+            try {
+                // Safety timeout
+                const safetyTimer = setTimeout(() => {
+                    if (loader && loader.style.opacity !== '0') {
+                        loader.style.opacity = '0';
+                        setTimeout(() => loader.style.display = 'none', 500);
+                    }
+                }, 5000);
+
+                const params = new URLSearchParams(window.location.search);
+                const slug = params.get('slug');
+
+                if (!slug) {
+                    container.innerHTML = '<p class="text-center" style="width: 100%; color: red; padding: 4rem 0;">Brak parametru produktu.</p>';
+                    return;
+                }
+
+                const product = await StrapiAPI.fetchProductBySlug(slug);
+
+                if (!product) {
+                    container.innerHTML = '<p class="text-center" style="width: 100%; color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono produktu.</p>';
+                    return;
+                }
+
+                const imgUrl = StrapiAPI.getImageUrl(product.image);
+                // Handle rich text description
+                let descHTML = (product.description || '').replace(/\n/g, '<br>');
+                let usageHTML = (product.usage || '').replace(/\n/g, '<br>');
+
+                // Product Layout
+                container.innerHTML = `
+                    <div style="flex: 1 1 300px; text-align: center;">
+                        ${imgUrl ? `<img src="${imgUrl}" alt="${product.name}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">` : '<div style="height: 300px; background: #eee; border-radius: 8px;"></div>'}
+                    </div>
+                    <div style="flex: 1 1 400px; display: flex; flex-direction: column; justify-content: center;">
+                        <span class="text-uppercase" style="color: var(--color-gold); display: block; margin-bottom: 0.5rem; font-weight: 600;">${product.category?.name || 'Produkt'}</span>
+                        <h1 style="margin-bottom: 1.5rem; font-size: 2.5rem; line-height: 1.2;">${product.name}</h1>
+                        <div style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 2rem;">
+                            ${descHTML}
+                        </div>
+                        ${usageHTML ? `
+                        <div style="margin-bottom: 2rem;">
+                            <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Sposób użycia:</h3>
+                            <p style="color: var(--color-text-light); line-height: 1.6;">${usageHTML}</p>
+                        </div>` : ''}
+                        
+                        ${product.capacity ? `<p style="color: var(--color-text-muted); font-size: 0.9rem;">Pojemność: <strong>${product.capacity}</strong></p>` : ''}
+                    </div>
+                `;
+
+                // Update page title
+                document.title = `${product.name} - Shot Cosmetics`;
+
+                // Clear timeout logic as successful
+                clearTimeout(safetyTimer);
+
+            } catch (error) {
+                console.error("Error loading product:", error);
+                container.innerHTML = '<p class="text-center" style="width: 100%; color: red;">Wystąpił błąd podczas ładowania produktu.</p>';
+            } finally {
+                // Ensure loader removal
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.style.display = 'none', 500);
+                }
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+
+</html>

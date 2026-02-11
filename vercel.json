@@ -19,6 +19,14 @@
         {
             "source": "/pages/news",
             "destination": "/pages/news.html"
+        },
+        {
+            "source": "/pages/news-detail",
+            "destination": "/pages/news-detail.html"
+        },
+        {
+            "source": "/pages/product-detail",
+            "destination": "/pages/product-detail.html"
         }
     ],
     "cleanUrls": true
