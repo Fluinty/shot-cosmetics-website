@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link rel="stylesheet" href="css/styles.css?v=5">
     <style>
         /* Fix mobile map layout order */
         @media (max-width: 768px) {
@@ -481,6 +481,7 @@
             // image
             if (about.image) {
                 const imgUrl = StrapiAPI.getImageUrl(about.image);
+                console.log('About Image Debug:', { about, imgUrl });
                 if (imgUrl) {
                     const el = document.getElementById('about-image');
                     el.style.backgroundImage = `url('${imgUrl}')`;
