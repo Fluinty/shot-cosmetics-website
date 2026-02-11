@@ -71,18 +71,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section id="about-hero" class="hero"
-            style="min-height: 60vh; background: var(--color-purple-dark) center top/cover no-repeat fixed; margin-top: 4rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: center; padding: 6rem 0;">
-            <div class="hero-overlay" style="background: rgba(42, 10, 74, 0.7);"></div>
-            <div class="container hero-content" style="opacity: 0; transition: opacity 0.5s ease;">
-                <span class="text-uppercase"
-                    style="display:block; margin-bottom: 1rem; color: var(--color-gold);"></span>
-                <h1 id="about-hero-title" style="color: white; margin-bottom: 1.5rem;">&nbsp;</h1>
-                <p id="about-hero-subtitle" style="opacity: 0.9; max-width: 600px; margin: 0 auto; font-size: 1.2rem;">
-                </p>
-            </div>
-        </section>
 
         <section class="container" style="padding: 6rem 0;">
             <div class="grid-2-cols">
@@ -104,9 +92,12 @@
             </div>
         </section>
 
-        <section style="background-color: var(--color-purple-dark); padding: 8rem 0; color: white; text-align: center;">
-            <div class="container">
-                <h2 style="margin-bottom: 4rem; color: var(--color-gold);">Wartości Shot Cosmetics</h2>
+        <section id="about-hero" class="hero"
+            style="min-height: 60vh; background: var(--color-purple-dark) center top/cover no-repeat fixed; display: flex; align-items: center; justify-content: center; padding: 8rem 0; color: white; text-align: center; position: relative;">
+            <div class="hero-overlay" style="background: rgba(42, 10, 74, 0.65);"></div>
+            <div class="container" style="position: relative; z-index: 2;">
+                <h2 style="margin-bottom: 4rem; color: var(--color-gold); font-size: 2.5rem; letter-spacing: 0.1em;">
+                    NASZA HISTORIA</h2>
                 <div id="values-grid"
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
                     <!-- Dynamizm -->
@@ -191,7 +182,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
+        <p>&copy; 2026 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/share/187oNV5CgZ/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
                 <svg class="social-icon" viewBox="0 0 24 24">
@@ -218,9 +209,7 @@
                 const about = await StrapiAPI.fetchAboutPage();
                 if (!about) return; // Graceful fallback to static HTML
 
-                // Hero section
-                if (about.hero_title) document.getElementById('about-hero-title').innerHTML = about.hero_title.replace(/\n/g, '<br>');
-                if (about.hero_subtitle) document.getElementById('about-hero-subtitle').textContent = about.hero_subtitle;
+                // Hero background image on values/history section
                 if (about.hero_image) {
                     const heroImgUrl = StrapiAPI.getImageUrl(about.hero_image);
                     if (heroImgUrl) {
