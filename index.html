@@ -90,7 +90,7 @@
             </div>
         </section>
 
-        <section id="about" class="container">
+        <section id="about" class="container" style="opacity: 0; transition: opacity 0.5s ease;">
             <div class="grid-2-cols">
                 <div style="order: 2;">
                     <span id="about-badge" class="text-uppercase"
@@ -115,8 +115,8 @@
             </div>
         </section>
 
-        <section class="container"
-            style="background-color: white; margin: 4rem auto; padding: 6rem 4rem; position: relative;">
+        <section id="bestsellers-section" class="container"
+            style="background-color: white; margin: 4rem auto; padding: 6rem 4rem; position: relative; opacity: 0; transition: opacity 0.5s ease;">
             <div class="text-center" style="margin-bottom: 5rem;">
                 <span class="text-uppercase"
                     style="color: var(--color-purple-light); display: block; margin-bottom: 1rem;">Bestsellery</span>
@@ -135,7 +135,7 @@
             </div>
         </section>
 
-        <section class="container">
+        <section id="news-section" class="container" style="opacity: 0; transition: opacity 0.5s ease;">
             <div style="display: flex; justify-content: space-between; align-items: end; margin-bottom: 3rem;">
                 <div>
                     <h5 class="text-uppercase" style="color: var(--color-purple);">Aktualności</h5>
@@ -338,6 +338,8 @@
                     </div>
                 </a>
             `).join('');
+            // Reveal news section
+            document.getElementById('news-section').style.opacity = '1';
         }
 
         // ── Load Distributors from API ──
@@ -486,6 +488,8 @@
                     el.style.backgroundSize = 'cover';
                 }
             }
+            // Reveal about section
+            document.getElementById('about').style.opacity = '1';
         }
 
         // ── Bestsellers from CMS ──
@@ -508,6 +512,8 @@
                     </div>
                 `;
             }).join('');
+            // Reveal bestsellers section
+            document.getElementById('bestsellers-section').style.opacity = '1';
         }
 
         // ── Contact box from CMS ──
@@ -547,10 +553,14 @@
         loadContact();
         loadDistributors();
 
-        // Safety timeout: reveal hero even if CMS is slow
+        // Safety timeout: reveal all sections even if CMS is slow
         setTimeout(() => {
             document.querySelectorAll('.hero-content').forEach(el => el.style.opacity = '1');
-        }, 3000);
+            ['about', 'bestsellers-section', 'news-section'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.opacity = '1';
+            });
+        }, 5000);
     </script>
     <script src="js/main.js?v=3"></script>
     <script src="js/ui-enhancements.js?v=1"></script>
