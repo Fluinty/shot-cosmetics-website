@@ -786,8 +786,11 @@ footer {
 
     /* Decorative border - keep visible but adjust for mobile */
     #about .grid-2-cols>div>div[style*="border"] {
-        top: -12px !important;
-        left: -12px !important;
+        top: -15px !important;
+        left: -15px !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: block !important;
     }
 
     /* Reduce #about padding on mobile */
@@ -802,11 +805,20 @@ footer {
 
     #about .grid-2-cols>div:nth-child(2) {
         order: 1 !important;
+        margin-bottom: 2rem;
+        /* Add spacing between image and text */
+        padding-left: 15px;
+        /* Offset for the border */
+        padding-top: 15px;
+        /* Offset for the border */
     }
 
     /* Responsive image height on mobile (override inline 600px) */
     #about .grid-2-cols>div>div[style*="height"] {
-        height: 350px !important;
+        height: auto !important;
+        aspect-ratio: 4/5 !important;
+        /* Portrait aspect ratio looking good on mobile */
+        max-height: 500px !important;
         background-position: center top !important;
     }
 
