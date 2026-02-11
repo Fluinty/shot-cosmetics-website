@@ -481,33 +481,23 @@
             // image
             if (about.image) {
                 const imgUrl = StrapiAPI.getImageUrl(about.image);
-                console.log('About Image Debug:', { about, imgUrl });
-                const el = document.getElementById('about-image');
-                // Force visibility reset
-                el.style.display = 'block'; 
-                el.parentElement.style.display = 'block'; 
-                
                 if (imgUrl) {
+                    const el = document.getElementById('about-image');
                     el.style.backgroundImage = `url('${imgUrl}')`;
                     el.style.backgroundPosition = 'center top';
                     el.style.backgroundSize = 'cover';
                     el.style.backgroundColor = 'transparent';
-                    // Debug: Red Border
-                    el.style.border = '5px solid red';
+                    // Ensure visibility on mobile
                     el.style.minHeight = '250px'; 
+                    el.style.display = 'block';
+                    el.parentElement.style.display = 'block';
                 } else {
-                    // Debug: Blue Box if URL missing
-                    el.style.backgroundColor = 'blue';
-                    el.style.height = '250px';
-                    el.style.minHeight = '250px';
+                    // Fallback if URL invalid but object exists
+                    document.getElementById('about-image').style.display = 'none';
                 }
             } else {
-                // Debug: Orange Box if no image object matches
-                const el = document.getElementById('about-image');
-                el.style.backgroundColor = 'orange';
-                el.style.height = '250px';
-                el.style.minHeight = '250px';
-                el.style.display = 'block';
+                // No image data
+                 document.getElementById('about-image').style.display = 'none';
             }
             
             // Reveal about section
