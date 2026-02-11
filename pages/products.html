@@ -537,28 +537,8 @@
                     if (heroContent) heroContent.style.opacity = '1';
                 }
 
-                // Execute all loads
-                await Promise.all([
-                    (async () => {
-                        if (categorySlug) {
-                            // Load specific category
-                            const link = document.querySelector(`.dropdown-menu a[href*="cat=${categorySlug}"]`);
-                            if (link) activateMenu(link);
-
-                            // Handle submenu if present
-                            if (subcategoryIndex !== null) {
-                                const subLink = document.querySelector(`.submenu a[href*="sub=${subcategoryIndex}"]`);
-                                if (subLink) subLink.classList.add('active');
-                            }
-
-                            await loadCategoryProducts(categorySlug, subcategoryIndex);
-                        } else {
-                            // Load all products
-                            await loadAllProducts();
-                        }
-                    })(),
-                    loadHero()
-                ]);
+                // Load hero content
+                await loadHero();
 
             } catch (err) {
                 console.error(err);
