@@ -10,13 +10,15 @@
     <title>Szkolenie - Shot Cosmetics</title>
     <link rel="stylesheet" href="../css/styles.css?v=5">
     <style>
+        /* ─── Layout ────────────────────────────────── */
         .event-detail-layout {
             max-width: 900px;
             margin: 0 auto;
         }
 
+        /* ─── Hero header ───────────────────────────── */
         .event-header {
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .event-type-badge {
@@ -39,10 +41,11 @@
             margin-bottom: 1.5rem;
         }
 
+        /* ─── Meta bar (date, location, status, duration, participants) ── */
         .event-meta-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 2rem;
+            gap: 1.5rem 2.5rem;
             padding: 1.5rem 2rem;
             background: #f8f6ff;
             border-radius: 12px;
@@ -64,7 +67,7 @@
         }
 
         .event-meta-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--color-text-muted);
@@ -74,31 +77,6 @@
         .event-meta-value {
             font-weight: 600;
             color: var(--color-purple-dark);
-        }
-
-        .event-cover {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .event-description {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .event-long-desc {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--color-text);
-            margin-bottom: 2.5rem;
         }
 
         .event-status-badge {
@@ -119,7 +97,121 @@
             color: #c62828;
         }
 
-        /* CTA Button */
+        /* ─── Cover image ──────────────────────────── */
+        .event-cover {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ─── Description ──────────────────────────── */
+        .event-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .event-long-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ─── Info sections (program, skills, etc.) ── */
+        .info-section {
+            margin-bottom: 2.5rem;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        .info-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 1.8rem;
+            background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+            color: white;
+        }
+
+        .info-section-header .section-icon {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .info-section-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+
+        .info-section-body {
+            padding: 1.8rem;
+        }
+
+        .info-section-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-section-body ul li {
+            padding: 0.6rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--color-text);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .info-section-body ul li:last-child {
+            border-bottom: none;
+        }
+
+        .info-section-body ul li::before {
+            position: absolute;
+            left: 0;
+            top: 0.65rem;
+            font-size: 1rem;
+        }
+
+        /* Different bullet icons per section */
+        .info-section.program ul li::before {
+            content: "📌";
+        }
+
+        .info-section.skills ul li::before {
+            content: "🎯";
+        }
+
+        .info-section.bring ul li::before {
+            content: "✂️";
+        }
+
+        .info-section.included ul li::before {
+            content: "✅";
+        }
+
+        /* Alternating section background */
+        .info-section:nth-child(even) {
+            background: #faf9fe;
+        }
+
+        .info-section .rich-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        /* ─── CTA Button ───────────────────────────── */
         .event-cta {
             margin: 3rem 0;
             padding: 3rem;
@@ -164,11 +256,9 @@
             background: #e6c358;
         }
 
-        /* Gallery */
+        /* ─── Gallery ──────────────────────────────── */
         .event-gallery {
             margin: 3rem 0;
-            padding-top: 2rem;
-            border-top: 1px solid var(--color-border);
         }
 
         .event-gallery h2 {
@@ -203,7 +293,7 @@
             object-fit: cover;
         }
 
-        /* Lightbox */
+        /* ─── Lightbox ─────────────────────────────── */
         .lightbox-overlay {
             position: fixed;
             top: 0;
@@ -313,6 +403,10 @@
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .info-section-body {
+                padding: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -398,7 +492,7 @@
         </div>
     </footer>
 
-    <script src="../js/api.js?v=5"></script>
+    <script src="../js/api.js?v=6"></script>
     <script src="../js/main.js?v=3"></script>
     <script src="../js/ui-enhancements.js?v=2"></script>
     <script>
@@ -412,7 +506,7 @@
             'pokaz': 'Pokaz'
         };
 
-        // Lightbox
+        // ─── Lightbox ──────────────────────────────────
         let lightboxImages = [];
         let lightboxIndex = 0;
 
@@ -461,117 +555,202 @@
             if (e.key === 'ArrowRight') lightboxNav(1);
         }
 
-        (async function () {
-            const container = document.getElementById('event-container');
-            const params = new URLSearchParams(window.location.search);
-            const docId = params.get('id');
+        // ─── Helper: convert text with line breaks to <ul> list ──
+        function textToList(text) {
+            if (!text) return '';
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            // Remove leading bullet characters if present
+            return '<ul>' + lines.map(l => {
+                const clean = l.replace(/^[-–•*]\s*/, '').replace(/^\d+\.\s*/, '');
+                return `<li>${renderRichText(clean)}</li>`;
+            }).join('') + '</ul>';
+        }
 
-            if (!docId) {
-                container.innerHTML = '<p class="text-center" style="color: red; padding: 4rem 0;">Brak parametru szkolenia.</p>';
-                return;
-            }
-
-            const event = await StrapiAPI.fetchEventById(docId);
-            if (!event) {
-                container.innerHTML = '<p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono szkolenia.</p>';
-                return;
-            }
-
-            document.title = `${event.title} - Shot Cosmetics Edukacja`;
-
-            // Date formatting
-            const d = event.date ? new Date(event.date) : null;
-            const dateFormatted = d ? `${d.getDate()} ${MONTHS_PL_FULL[d.getMonth()]} ${d.getFullYear()}` : '';
-
-            // Type badge
-            const typeLabel = EVENT_TYPE_LABELS[event.event_type] || 'Szkolenie';
-
-            // Status
-            const statusHTML = event.is_full
-                ? '<span class="event-status-badge status-full">Lista zamknięta</span>'
-                : '<span class="event-status-badge status-available">Miejsca dostępne</span>';
-
-            // Cover image
-            const imgUrl = StrapiAPI.getImageUrl(event.image);
-
-            // Rich text
-            const descHTML = renderRichText(event.description || '');
-            const longDescHTML = renderRichText(event.long_description || '');
-
-            // Gallery
-            let galleryHTML = '';
-            const galleryImages = [];
-            if (event.gallery && event.gallery.length > 0) {
-                event.gallery.forEach(img => {
-                    const url = img.url ? (img.url.startsWith('http') ? img.url : STRAPI_URL + img.url) : null;
-                    if (url) galleryImages.push(url);
-                });
-                if (galleryImages.length > 0) {
-                    galleryHTML = `
-                        <div class="event-gallery">
-                            <h2>📸 Galeria</h2>
-                            <div class="gallery-grid">
-                                ${galleryImages.map((url, i) => `
-                                    <div class="gallery-item" onclick="openLightbox(${JSON.stringify(galleryImages).replace(/"/g, '&quot;')}, ${i})">
-                                        <img src="${url}" alt="Zdjęcie ${i + 1}" loading="lazy">
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                }
-            }
-
-            // CTA — only if not full
-            const ctaHTML = event.is_full ? '' : `
-                <div class="event-cta">
-                    <h2>Zainteresowany? Zapisz się!</h2>
-                    <p>Zostaw swoje dane, a skontaktujemy się z Tobą w celu potwierdzenia udziału.</p>
-                    <a href="contact.html?event=${encodeURIComponent(event.title)}" class="cta-btn">
-                        ✍️ ZAPISZ SIĘ
-                    </a>
+        // ─── Build an info section card ──────────────
+        function buildInfoSection(icon, title, text, cssClass) {
+            if (!text || !text.trim()) return '';
+            const bodyContent = textToList(text);
+            return `
+                <div class="info-section ${cssClass}">
+                    <div class="info-section-header">
+                        <span class="section-icon">${icon}</span>
+                        <h2>${title}</h2>
+                    </div>
+                    <div class="info-section-body">
+                        ${bodyContent}
+                    </div>
                 </div>
             `;
+        }
 
-            container.innerHTML = `
-                <div class="event-header">
-                    <span class="event-type-badge">${typeLabel}</span>
-                    <h1 class="event-title">${event.title}</h1>
-                    <div class="event-meta-bar">
-                        ${dateFormatted ? `
+        // ─── Main init ──────────────────────────────
+        (async function () {
+            const container = document.getElementById('event-container');
+
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const docId = params.get('id');
+
+                if (!docId) {
+                    container.innerHTML = '<p class="text-center" style="color: red; padding: 4rem 0;">Brak parametru szkolenia (id).</p>';
+                    return;
+                }
+
+                if (typeof StrapiAPI === 'undefined' || typeof StrapiAPI.fetchEventById !== 'function') {
+                    throw new Error('StrapiAPI lub funkcja fetchEventById nie są dostępne. Odśwież stronę (Ctrl+F5).');
+                }
+
+                console.log('[education-detail] Fetching event:', docId);
+                const event = await StrapiAPI.fetchEventById(docId);
+                console.log('[education-detail] Event data:', event);
+
+                if (!event) {
+                    container.innerHTML = `<p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono szkolenia o ID: ${docId}</p>`;
+                    return;
+                }
+
+                document.title = `${event.title} - Shot Cosmetics Edukacja`;
+
+                // ── Date formatting ──
+                const d = event.date ? new Date(event.date) : null;
+                const dateFormatted = d ? `${d.getDate()} ${MONTHS_PL_FULL[d.getMonth()]} ${d.getFullYear()}` : '';
+
+                // ── Type badge ──
+                const typeLabel = EVENT_TYPE_LABELS[event.event_type] || 'Szkolenie';
+
+                // ── Status ──
+                const statusHTML = event.is_full
+                    ? '<span class="event-status-badge status-full">Lista zamknięta</span>'
+                    : '<span class="event-status-badge status-available">Miejsca dostępne</span>';
+
+                // ── Cover image ──
+                const imgUrl = StrapiAPI.getImageUrl(event.image);
+
+                // ── Rich text descriptions ──
+                const descHTML = renderRichText(event.description || '');
+                const longDescHTML = renderRichText(event.long_description || '');
+
+                // ── Info sections ──
+                const programHTML = buildInfoSection('📋', 'Program szkolenia', event.program, 'program');
+                const skillsHTML = buildInfoSection('🎯', 'Jakie umiejętności zdobędziesz', event.skills, 'skills');
+                const bringHTML = buildInfoSection('✂️', 'Co zabrać ze sobą', event.what_to_bring, 'bring');
+                const includedHTML = buildInfoSection('✅', 'Co zawiera szkolenie', event.whats_included, 'included');
+
+                // ── Gallery ──
+                let galleryHTML = '';
+                const galleryImages = [];
+                if (event.gallery && event.gallery.length > 0) {
+                    event.gallery.forEach(img => {
+                        const url = img.url ? (img.url.startsWith('http') ? img.url : STRAPI_URL + img.url) : null;
+                        if (url) galleryImages.push(url);
+                    });
+                    if (galleryImages.length > 0) {
+                        galleryHTML = `
+                            <div class="event-gallery">
+                                <h2>📸 Galeria</h2>
+                                <div class="gallery-grid">
+                                    ${galleryImages.map((url, i) => `
+                                        <div class="gallery-item" onclick="openLightbox(${JSON.stringify(galleryImages).replace(/"/g, '&quot;')}, ${i})">
+                                            <img src="${url}" alt="Zdjęcie ${i + 1}" loading="lazy">
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+
+                // ── CTA — only if not full ──
+                const ctaHTML = event.is_full ? '' : `
+                    <div class="event-cta">
+                        <h2>Zainteresowany? Zapisz się!</h2>
+                        <p>Zostaw swoje dane, a skontaktujemy się z Tobą w celu potwierdzenia udziału.</p>
+                        <a href="contact.html?event=${encodeURIComponent(event.title)}" class="cta-btn">
+                            ✍️ ZAPISZ SIĘ
+                        </a>
+                    </div>
+                `;
+
+                // ── Build meta items ──
+                let metaItems = '';
+                if (dateFormatted) {
+                    metaItems += `
                         <div class="event-meta-item">
                             <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
                             <div>
                                 <span class="event-meta-label">Data</span>
                                 <span class="event-meta-value">${dateFormatted}</span>
                             </div>
-                        </div>
-                        ` : ''}
-                        ${event.location ? `
+                        </div>`;
+                }
+                if (event.location) {
+                    metaItems += `
                         <div class="event-meta-item">
                             <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                             <div>
                                 <span class="event-meta-label">Lokalizacja</span>
                                 <span class="event-meta-value">${event.location}</span>
                             </div>
-                        </div>
-                        ` : ''}
+                        </div>`;
+                }
+                if (event.duration) {
+                    metaItems += `
                         <div class="event-meta-item">
-                            ${statusHTML}
+                            <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <div>
+                                <span class="event-meta-label">Czas trwania</span>
+                                <span class="event-meta-value">${event.duration}</span>
+                            </div>
+                        </div>`;
+                }
+                if (event.max_participants) {
+                    metaItems += `
+                        <div class="event-meta-item">
+                            <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                            <div>
+                                <span class="event-meta-label">Liczba uczestników</span>
+                                <span class="event-meta-value">maks. ${event.max_participants} osób</span>
+                            </div>
+                        </div>`;
+                }
+                metaItems += `
+                    <div class="event-meta-item">
+                        ${statusHTML}
+                    </div>`;
+
+                // ── Render ──
+                container.innerHTML = `
+                    <div class="event-header">
+                        <span class="event-type-badge">${typeLabel}</span>
+                        <h1 class="event-title">${event.title}</h1>
+                        <div class="event-meta-bar">
+                            ${metaItems}
                         </div>
                     </div>
-                </div>
 
-                ${imgUrl ? `<img class="event-cover" src="${imgUrl}" alt="${event.title}">` : ''}
+                    ${imgUrl ? `<img class="event-cover" src="${imgUrl}" alt="${event.title}">` : ''}
 
-                ${descHTML ? `<div class="event-description">${descHTML}</div>` : ''}
-                
-                ${longDescHTML ? `<div class="event-long-desc">${longDescHTML}</div>` : ''}
+                    ${descHTML ? `<div class="event-description">${descHTML}</div>` : ''}
+                    ${longDescHTML ? `<div class="event-long-desc">${longDescHTML}</div>` : ''}
 
-                ${ctaHTML}
+                    ${programHTML}
+                    ${skillsHTML}
+                    ${bringHTML}
+                    ${includedHTML}
 
-                ${galleryHTML}
-            `;
+                    ${galleryHTML}
+
+                    ${ctaHTML}
+                `;
+
+            } catch (err) {
+                console.error('[education-detail] Error:', err);
+                container.innerHTML = `<div style="text-align:center; padding: 4rem; color: red;">
+                    <h3>Wystąpił błąd podczas ładowania szkolenia</h3>
+                    <p>${err.message}</p>
+                    <p style="font-size:0.8rem; margin-top:1rem;">Spróbuj odświeżyć stronę (Ctrl+F5) lub sprawdź konsolę (F12).</p>
+                </div>`;
+            }
         })();
     </script>
 </body>
