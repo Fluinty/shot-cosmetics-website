@@ -79,10 +79,7 @@
                         style="color: var(--color-purple); display: block; margin-bottom: 1rem;">Nasza Historia</span>
                     <h2 id="about-history-heading" style="margin-bottom: 2rem; color: var(--color-purple-dark);">&nbsp;
                     </h2>
-                    <p id="about-history-p1"
-                        style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;"></p>
-                    <p id="about-history-p2"
-                        style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;"></p>
+                    <div id="about-history-content"></div>
                 </div>
                 <div style="position: relative;">
                     <div id="about-history-image"
@@ -220,13 +217,12 @@
                 // History section
                 if (about.history_title) document.getElementById('about-history-heading').textContent = about.history_title;
                 if (about.history_content) {
-                    // history_content is richtext — split into paragraphs
-                    const paragraphs = about.history_content.split('\n').filter(p => p.trim());
-                    const p1 = document.getElementById('about-history-p1');
-                    const p2 = document.getElementById('about-history-p2');
-                    if (paragraphs[0]) p1.innerHTML = renderRichText(paragraphs[0]);
-                    if (paragraphs[1]) p2.innerHTML = renderRichText(paragraphs[1]);
-                    else p2.style.display = 'none';
+                    const container = document.getElementById('about-history-content');
+                    // Split by double newlines to get paragraphs
+                    const paragraphs = about.history_content.split(/\n\s*\n/).filter(p => p.trim());
+                    container.innerHTML = paragraphs.map(p =>
+                        `<p style="color: var(--color-text-light); margin-bottom: 1.5rem; line-height: 1.8;">${renderRichText(p)}</p>`
+                    ).join('');
                 }
 
                 // History image
