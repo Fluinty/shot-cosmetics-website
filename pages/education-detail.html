@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://hairpassion-production.up.railway.app" crossorigin>
+    <title>Szkolenie - Shot Cosmetics</title>
+    <link rel="stylesheet" href="../css/styles.css?v=5">
+    <style>
+        .event-detail-layout {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .event-header {
+            margin-bottom: 3rem;
+        }
+
+        .event-type-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--color-gold);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: var(--color-purple-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 1.5rem 2rem;
+            background: #f8f6ff;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-purple);
+            margin-bottom: 2rem;
+        }
+
+        .event-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .event-meta-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--color-purple);
+            flex-shrink: 0;
+        }
+
+        .event-meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            display: block;
+        }
+
+        .event-meta-value {
+            font-weight: 600;
+            color: var(--color-purple-dark);
+        }
+
+        .event-cover {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-description {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .event-long-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2.5rem;
+        }
+
+        .event-status-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .status-full {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        /* CTA Button */
+        .event-cta {
+            margin: 3rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+        }
+
+        .event-cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: white;
+        }
+
+        .event-cta p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: var(--color-gold);
+            color: var(--color-purple-dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: #e6c358;
+        }
+
+        /* Gallery */
+        .event-gallery {
+            margin: 3rem 0;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .event-gallery h2 {
+            font-size: 1.5rem;
+            color: var(--color-purple-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lightbox */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .lightbox-prev {
+            left: 2rem;
+        }
+
+        .lightbox-next {
+            right: 2rem;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .event-title {
+                font-size: 1.8rem;
+            }
+
+            .event-meta-bar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .event-cta {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo"><img src="../assets/images/logo-new.png" alt="Shot Hair Specialist"
+                        style="height: 50px;"></a>
+                <div class="menu-toggle" id="mobile-menu" style="z-index: 10005; cursor: pointer;">&#9776;</div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">O Nas</a></li>
+                    <li class="dropdown">
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
+                            <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
+                            <li class="has-submenu">
+                                <a href="/pages/products?cat=pielegnacja">Pielęgnacja</a>
+                                <ul class="submenu">
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=0">Color Care</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=1">Simply Blond</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=2">Anti-Age</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=3">Anti-Stress</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=4">Texturizing</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=5">Tricoilogy</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=6">Sun</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=7">Repara</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/pages/products?cat=zabiegi-kuracje">Zabiegi</a></li>
+                            <li><a href="/pages/products?cat=techniczne">Techniczne</a></li>
+                            <li><a href="/pages/products?cat=stylizacja">Stylizacja</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="education.html">Edukacja</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 10rem; margin-top: 4rem; flex: 1;">
+        <a href="education.html"
+            style="display: inline-block; margin-bottom: 2rem; color: var(--color-purple); font-weight: 600; text-decoration: none;">&larr;
+            Wróć do kalendarza szkoleń</a>
+
+        <article id="event-container" class="event-detail-layout">
+            <p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Ładowanie szkolenia...</p>
+        </article>
+    </main>
+
+    <footer>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <p>&copy; 2026 Shot Cosmetics Polska. Wszelkie prawa zastrzeżone.</p>
+            <div class="footer-links"
+                style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin-bottom: 0.5rem;">
+                <a href="../public/Polityka_Prywatnosci.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem;">Polityka Prywatności</a>
+                <a href="../public/Regulamin.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem;">Regulamin</a>
+                <a href="../public/Pliki_Cookies.pdf" target="_blank"
+                    style="color: inherit; text-decoration: none; font-size: 0.9rem;">Pliki Cookies</a>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.facebook.com/share/187oNV5CgZ/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z" />
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/shot.hair.polska?igsh=MXdvZHc2cmh6dzlvNw%3D%3D&utm_source=qr"
+                target="_blank" aria-label="Instagram">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+            </a>
+        </div>
+    </footer>
+
+    <script src="../js/api.js?v=5"></script>
+    <script src="../js/main.js?v=3"></script>
+    <script src="../js/ui-enhancements.js?v=2"></script>
+    <script>
+        const STRAPI_URL = 'https://hairpassion-production.up.railway.app';
+        const MONTHS_PL_FULL = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca',
+            'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+
+        const EVENT_TYPE_LABELS = {
+            'szkolenie': 'Szkolenie',
+            'warsztaty': 'Warsztaty',
+            'pokaz': 'Pokaz'
+        };
+
+        // Lightbox
+        let lightboxImages = [];
+        let lightboxIndex = 0;
+
+        function openLightbox(images, index) {
+            lightboxImages = images;
+            lightboxIndex = index;
+            const overlay = document.createElement('div');
+            overlay.className = 'lightbox-overlay';
+            overlay.id = 'lightbox';
+            overlay.innerHTML = `
+                <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+                ${images.length > 1 ? `
+                <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); lightboxNav(-1)">&#8249;</button>
+                <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); lightboxNav(1)">&#8250;</button>
+                ` : ''}
+                <img class="lightbox-img" src="${images[index]}" alt="">
+                ${images.length > 1 ? `<div class="lightbox-counter">${index + 1} / ${images.length}</div>` : ''}
+            `;
+            overlay.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+            requestAnimationFrame(() => overlay.classList.add('active'));
+            document.addEventListener('keydown', lightboxKeyHandler);
+        }
+
+        function closeLightbox() {
+            const overlay = document.getElementById('lightbox');
+            if (overlay) {
+                overlay.classList.remove('active');
+                setTimeout(() => { overlay.remove(); document.body.style.overflow = ''; }, 300);
+            }
+            document.removeEventListener('keydown', lightboxKeyHandler);
+        }
+
+        function lightboxNav(dir) {
+            lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+            const img = document.querySelector('.lightbox-img');
+            const counter = document.querySelector('.lightbox-counter');
+            if (img) img.src = lightboxImages[lightboxIndex];
+            if (counter) counter.textContent = `${lightboxIndex + 1} / ${lightboxImages.length}`;
+        }
+
+        function lightboxKeyHandler(e) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxNav(-1);
+            if (e.key === 'ArrowRight') lightboxNav(1);
+        }
+
+        (async function () {
+            const container = document.getElementById('event-container');
+            const params = new URLSearchParams(window.location.search);
+            const docId = params.get('id');
+
+            if (!docId) {
+                container.innerHTML = '<p class="text-center" style="color: red; padding: 4rem 0;">Brak parametru szkolenia.</p>';
+                return;
+            }
+
+            const event = await StrapiAPI.fetchEventById(docId);
+            if (!event) {
+                container.innerHTML = '<p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono szkolenia.</p>';
+                return;
+            }
+
+            document.title = `${event.title} - Shot Cosmetics Edukacja`;
+
+            // Date formatting
+            const d = event.date ? new Date(event.date) : null;
+            const dateFormatted = d ? `${d.getDate()} ${MONTHS_PL_FULL[d.getMonth()]} ${d.getFullYear()}` : '';
+
+            // Type badge
+            const typeLabel = EVENT_TYPE_LABELS[event.event_type] || 'Szkolenie';
+
+            // Status
+            const statusHTML = event.is_full
+                ? '<span class="event-status-badge status-full">Lista zamknięta</span>'
+                : '<span class="event-status-badge status-available">Miejsca dostępne</span>';
+
+            // Cover image
+            const imgUrl = StrapiAPI.getImageUrl(event.image);
+
+            // Rich text
+            const descHTML = renderRichText(event.description || '');
+            const longDescHTML = renderRichText(event.long_description || '');
+
+            // Gallery
+            let galleryHTML = '';
+            const galleryImages = [];
+            if (event.gallery && event.gallery.length > 0) {
+                event.gallery.forEach(img => {
+                    const url = img.url ? (img.url.startsWith('http') ? img.url : STRAPI_URL + img.url) : null;
+                    if (url) galleryImages.push(url);
+                });
+                if (galleryImages.length > 0) {
+                    galleryHTML = `
+                        <div class="event-gallery">
+                            <h2>📸 Galeria</h2>
+                            <div class="gallery-grid">
+                                ${galleryImages.map((url, i) => `
+                                    <div class="gallery-item" onclick="openLightbox(${JSON.stringify(galleryImages).replace(/"/g, '&quot;')}, ${i})">
+                                        <img src="${url}" alt="Zdjęcie ${i + 1}" loading="lazy">
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            // CTA — only if not full
+            const ctaHTML = event.is_full ? '' : `
+                <div class="event-cta">
+                    <h2>Zainteresowany? Zapisz się!</h2>
+                    <p>Zostaw swoje dane, a skontaktujemy się z Tobą w celu potwierdzenia udziału.</p>
+                    <a href="contact.html?event=${encodeURIComponent(event.title)}" class="cta-btn">
+                        ✍️ ZAPISZ SIĘ
+                    </a>
+                </div>
+            `;
+
+            container.innerHTML = `
+                <div class="event-header">
+                    <span class="event-type-badge">${typeLabel}</span>
+                    <h1 class="event-title">${event.title}</h1>
+                    <div class="event-meta-bar">
+                        ${dateFormatted ? `
+                        <div class="event-meta-item">
+                            <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                            <div>
+                                <span class="event-meta-label">Data</span>
+                                <span class="event-meta-value">${dateFormatted}</span>
+                            </div>
+                        </div>
+                        ` : ''}
+                        ${event.location ? `
+                        <div class="event-meta-item">
+                            <svg class="event-meta-icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            <div>
+                                <span class="event-meta-label">Lokalizacja</span>
+                                <span class="event-meta-value">${event.location}</span>
+                            </div>
+                        </div>
+                        ` : ''}
+                        <div class="event-meta-item">
+                            ${statusHTML}
+                        </div>
+                    </div>
+                </div>
+
+                ${imgUrl ? `<img class="event-cover" src="${imgUrl}" alt="${event.title}">` : ''}
+
+                ${descHTML ? `<div class="event-description">${descHTML}</div>` : ''}
+                
+                ${longDescHTML ? `<div class="event-long-desc">${longDescHTML}</div>` : ''}
+
+                ${ctaHTML}
+
+                ${galleryHTML}
+            `;
+        })();
+    </script>
+</body>
+
+</html>

@@ -158,6 +158,10 @@ async function fetchEducationEvents() {
     return data || [];
 }
 
+async function fetchEventById(documentId) {
+    return await strapiFetch(`/education-events/${documentId}?populate=*`);
+}
+
 async function fetchEducators() {
     const data = await strapiFetch('/educators?populate=*');
     return data || [];
@@ -224,5 +228,6 @@ window.StrapiAPI = {
     fetchAboutPage,
     fetchContactInfo,
     fetchProductsPage,
-    fetchNewsPage
+    fetchNewsPage,
+    fetchEventById
 };
