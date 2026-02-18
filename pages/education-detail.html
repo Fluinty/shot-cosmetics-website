@@ -496,7 +496,7 @@
     <script src="../js/main.js?v=3"></script>
     <script src="../js/ui-enhancements.js?v=2"></script>
     <script>
-        const STRAPI_URL = 'https://hairpassion-production.up.railway.app';
+        const STRAPI_BASE = (typeof STRAPI_URL !== 'undefined') ? STRAPI_URL : 'https://hairpassion-production.up.railway.app';
         const MONTHS_PL_FULL = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca',
             'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
 
@@ -597,7 +597,7 @@
                 }
 
                 // Inline fetch — no dependency on external api.js cache
-                const API_URL = `${STRAPI_URL}/api/education-events/${docId}?populate=*`;
+                const API_URL = `${STRAPI_BASE}/api/education-events/${docId}?populate=*`;
                 console.log('[education-detail] Fetching:', API_URL);
 
                 const response = await fetch(API_URL);
@@ -617,7 +617,7 @@
                     if (!imgData) return null;
                     const url = imgData.formats?.medium?.url || imgData.formats?.small?.url || imgData.url;
                     if (!url) return null;
-                    return url.startsWith('http') ? url : STRAPI_URL + url;
+                    return url.startsWith('http') ? url : STRAPI_BASE + url;
                 }
 
                 document.title = `${event.title} - Shot Cosmetics Edukacja`;
@@ -652,7 +652,7 @@
                 const galleryImages = [];
                 if (event.gallery && event.gallery.length > 0) {
                     event.gallery.forEach(img => {
-                        const url = img.url ? (img.url.startsWith('http') ? img.url : STRAPI_URL + img.url) : null;
+                        const url = img.url ? (img.url.startsWith('http') ? img.url : STRAPI_BASE + img.url) : null;
                         if (url) galleryImages.push(url);
                     });
                     if (galleryImages.length > 0) {
