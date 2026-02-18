@@ -56,6 +56,24 @@ html {
     box-sizing: border-box;
 }
 
+/* CMS Rich Text — extra-bold & accent underline */
+p strong,
+p b {
+    font-weight: 900;
+    color: var(--color-purple-dark);
+}
+
+.hero strong,
+.hero b {
+    font-weight: 900;
+    color: var(--color-gold);
+}
+
+p u {
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 3px;
+}
+
 html,
 body {
     min-height: 100vh;

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://hairpassion-production.up.railway.app" crossorigin>
-    <title>Świat Shot - Aktualności</title>
+    <title>Aktualności - Shot Cosmetics</title>
     <link rel="stylesheet" href="../css/styles.css?v=5">
 </head>
 
@@ -40,7 +40,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">O Nas</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle">Produkty</a>
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
                         <ul class="dropdown-menu">
                             <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
                             <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
@@ -63,7 +63,7 @@
                         </ul>
                     </li>
                     <li><a href="education.html">Edukacja</a></li>
-                    <li><a href="news.html" class="active">Świat Shot</a></li>
+                    <li><a href="news.html" class="active">Aktualności</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -75,7 +75,7 @@
             <span id="news-hero-label" class="text-uppercase"
                 style="display:block; margin-bottom: 1rem; color: var(--color-gold);">Blog &
                 Wydarzenia</span>
-            <h1 id="news-hero-title" style="margin-bottom: 1.5rem;">Świat Shot Cosmetics</h1>
+            <h1 id="news-hero-title" style="margin-bottom: 1.5rem;">Aktualności</h1>
             <p id="news-hero-desc"
                 style="color: var(--color-text-light); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
                 Najnowsze trendy, relacje ze szkoleń i premiery produktów. Bądź na bieżąco z włoską modą fryzjerską.
@@ -118,7 +118,7 @@
             if (!page) return;
             if (page.section_label) document.getElementById('news-hero-label').textContent = page.section_label;
             if (page.hero_title) document.getElementById('news-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
-            if (page.hero_description) document.getElementById('news-hero-desc').textContent = page.hero_description;
+            if (page.hero_description) document.getElementById('news-hero-desc').innerHTML = renderRichText(page.hero_description);
         })();
     </script>
     <script>
@@ -132,7 +132,7 @@
                         if (!page) return;
                         if (page.section_label) document.getElementById('news-hero-label').textContent = page.section_label;
                         if (page.hero_title) document.getElementById('news-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
-                        if (page.hero_description) document.getElementById('news-hero-desc').textContent = page.hero_description;
+                        if (page.hero_description) document.getElementById('news-hero-desc').innerHTML = renderRichText(page.hero_description);
                     })(),
                     // Articles
                     (async () => {

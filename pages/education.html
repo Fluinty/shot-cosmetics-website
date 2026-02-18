@@ -172,7 +172,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">O Nas</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle">Produkty</a>
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
                         <ul class="dropdown-menu">
                             <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
                             <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
@@ -195,7 +195,7 @@
                         </ul>
                     </li>
                     <li><a href="education.html" class="active">Edukacja</a></li>
-                    <li><a href="news.html">Świat Shot</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -366,7 +366,7 @@
             const page = await StrapiAPI.fetchEducationPage();
             if (!page) return;
             if (page.program_title) document.getElementById('edu-program-title').innerHTML = page.program_title.replace(/\n/g, '<br>');
-            if (page.program_description) document.getElementById('edu-program-desc').textContent = page.program_description;
+            if (page.program_description) document.getElementById('edu-program-desc').innerHTML = renderRichText(page.program_description);
             if (page.program_image) {
                 const imgUrl = StrapiAPI.getImageUrl(page.program_image);
                 if (imgUrl) document.getElementById('edu-program-img').src = imgUrl;

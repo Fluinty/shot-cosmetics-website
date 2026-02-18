@@ -101,11 +101,12 @@
             return;
         }
 
-        // 3. Mobile Navigation Logic
-        const isMobile = window.innerWidth <= 992;
-        if (isMobile) {
-            const dropdownToggle = e.target.closest('.dropdown-toggle');
-            if (dropdownToggle) {
+        // 3. Dropdown Toggle Logic
+        const dropdownToggle = e.target.closest('.dropdown-toggle');
+        if (dropdownToggle) {
+            const isMobile = window.innerWidth <= 992;
+            if (isMobile) {
+                // Mobile: open drill-down menu
                 e.preventDefault();
                 e.stopPropagation();
                 const dropdown = dropdownToggle.closest('.dropdown');
@@ -114,9 +115,16 @@
                     menu.classList.add('active');
                     toggleBodyLock(true);
                 }
-                return;
+            } else {
+                // Desktop: navigate to the link
+                window.location.href = dropdownToggle.href;
             }
+            return;
+        }
 
+        // 3b. Mobile submenu drill-down
+        const isMobile = window.innerWidth <= 992;
+        if (isMobile) {
             const hasSubmenuLink = e.target.closest('.has-submenu > a');
             if (hasSubmenuLink) {
                 e.preventDefault();
@@ -142,3 +150,4 @@
 
 
 })();
+

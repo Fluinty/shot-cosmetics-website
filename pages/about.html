@@ -40,7 +40,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html" class="active">O Nas</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle">Produkty</a>
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
                         <ul class="dropdown-menu">
                             <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
                             <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
@@ -63,7 +63,7 @@
                         </ul>
                     </li>
                     <li><a href="education.html">Edukacja</a></li>
-                    <li><a href="news.html">Świat Shot</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -224,8 +224,8 @@
                     const paragraphs = about.history_content.split('\n').filter(p => p.trim());
                     const p1 = document.getElementById('about-history-p1');
                     const p2 = document.getElementById('about-history-p2');
-                    if (paragraphs[0]) p1.textContent = paragraphs[0];
-                    if (paragraphs[1]) p2.textContent = paragraphs[1];
+                    if (paragraphs[0]) p1.innerHTML = renderRichText(paragraphs[0]);
+                    if (paragraphs[1]) p2.innerHTML = renderRichText(paragraphs[1]);
                     else p2.style.display = 'none';
                 }
 

@@ -7,6 +7,27 @@ const STRAPI_URL = 'https://hairpassion-production.up.railway.app';
 const API = `${STRAPI_URL}/api`;
 
 /**
+ * Convert CMS rich text (markdown + inline HTML) to rendered HTML.
+ * Handles: **bold**, *italic*, <u>underline</u>, \n → <br>
+ */
+function renderRichText(text) {
+    if (!text) return '';
+    let html = text;
+    // Preserve existing HTML tags (they pass through)
+    // Convert markdown bold **text** → <strong>text</strong>
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Convert markdown bold __text__ → <strong>text</strong>
+    html = html.replace(/__(.+?)__/g, '<strong>$1</strong>');
+    // Convert markdown italic *text* → <em>text</em>
+    html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
+    // Convert markdown italic _text_ → <em>text</em>
+    html = html.replace(/(?<![a-zA-Z0-9])_(?!_)(.+?)(?<!_)_(?![a-zA-Z0-9_])/g, '<em>$1</em>');
+    // Convert newlines to <br>
+    html = html.replace(/\n/g, '<br>');
+    return html;
+}
+
+/**
  * Generic fetch helper with error handling and caching
  */
 const _cache = {};
@@ -71,6 +92,19 @@ async function fetchAllProducts() {
 async function fetchProductBySlug(slug) {
     const data = await strapiFetch(`/products?filters[slug][$eq]=${slug}&populate=*`);
     return data && data.length > 0 ? data[0] : null;
+}
+
+async function fetchProductById(documentId) {
+    const data = await strapiFetch(`/products/${documentId}?populate=*`);
+    return data || null;
+}
+
+function getFileUrl(fileData) {
+    if (!fileData) return null;
+    const url = fileData.url;
+    if (!url) return null;
+    if (url.startsWith('http')) return url;
+    return `${STRAPI_URL}${url}`;
 }
 
 async function fetchBestsellers(limit = 3) {
@@ -175,6 +209,8 @@ window.StrapiAPI = {
     fetchProductsByCategory,
     fetchAllProducts,
     fetchProductBySlug,
+    fetchProductById,
+    getFileUrl,
     fetchBestsellers,
     fetchCategoryFull,
     fetchArticles,

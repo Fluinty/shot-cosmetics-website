@@ -9,6 +9,198 @@
     <link rel="preconnect" href="https://hairpassion-production.up.railway.app" crossorigin>
     <title>Produkt - Shot Cosmetics</title>
     <link rel="stylesheet" href="../css/styles.css?v=5">
+    <style>
+        .product-detail-layout {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .product-detail-image {
+            flex: 1 1 380px;
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .product-detail-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            background: #fafafa;
+            padding: 2rem;
+        }
+
+        .product-detail-info {
+            flex: 1 1 450px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-breadcrumb {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-breadcrumb a {
+            color: var(--color-purple);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .product-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .product-breadcrumb span {
+            margin: 0 0.5rem;
+            color: var(--color-text-muted);
+        }
+
+        .product-category-label {
+            text-transform: uppercase;
+            color: var(--color-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .product-title {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            color: var(--color-purple-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-short-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .product-long-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+            margin-bottom: 2rem;
+        }
+
+        .product-long-desc h2,
+        .product-long-desc h3 {
+            color: var(--color-purple-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-usage {
+            background: #f8f6ff;
+            border-left: 4px solid var(--color-purple);
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+
+        .product-usage h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-purple);
+            margin-bottom: 0.8rem;
+        }
+
+        .product-usage p {
+            color: var(--color-text-light);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .product-meta {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .product-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-meta-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-purple-dark);
+        }
+
+        .pdf-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--color-purple-dark), var(--color-purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(103, 58, 183, 0.3);
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(103, 58, 183, 0.4);
+        }
+
+        .pdf-download-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-layout {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .product-detail-image {
+                position: static;
+            }
+
+            .product-title {
+                font-size: 1.8rem;
+            }
+
+            .product-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +214,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">O Nas</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle">Produkty</a>
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
                         <ul class="dropdown-menu">
                             <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
                             <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
@@ -45,7 +237,7 @@
                         </ul>
                     </li>
                     <li><a href="education.html">Edukacja</a></li>
-                    <li><a href="news.html">Świat Shot</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -53,9 +245,6 @@
     </header>
 
     <main class="container" style="padding-top: 10rem; margin-top: 4rem; flex: 1;">
-        <a href="javascript:history.back()"
-            style="display: inline-block; margin-bottom: 2rem; color: var(--color-purple); font-weight: 600;">&larr;
-            Wróć do listy</a>
 
         <div id="loading"
             style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 20000; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s;">
@@ -64,8 +253,8 @@
             </div>
         </div>
 
-        <article id="product-container"
-            style="max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 3rem;">
+        <article id="product-container">
+            <p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Ładowanie produktu...</p>
         </article>
     </main>
 
@@ -105,17 +294,15 @@
         </div>
     </footer>
 
-    <script src="../js/api.js?v=4"></script>
+    <script src="../js/api.js?v=5"></script>
     <script src="../js/main.js?v=3"></script>
     <script src="../js/ui-enhancements.js?v=2"></script>
     <script>
-        // Init page with loader
         async function initPage() {
             const container = document.getElementById('product-container');
             const loader = document.getElementById('loading');
 
             try {
-                // Safety timeout
                 const safetyTimer = setTimeout(() => {
                     if (loader && loader.style.opacity !== '0') {
                         loader.style.opacity = '0';
@@ -124,14 +311,20 @@
                 }, 5000);
 
                 const params = new URLSearchParams(window.location.search);
+                const docId = params.get('id');
                 const slug = params.get('slug');
 
-                if (!slug) {
+                if (!docId && !slug) {
                     container.innerHTML = '<p class="text-center" style="width: 100%; color: red; padding: 4rem 0;">Brak parametru produktu.</p>';
                     return;
                 }
 
-                const product = await StrapiAPI.fetchProductBySlug(slug);
+                let product = null;
+                if (docId) {
+                    product = await StrapiAPI.fetchProductById(docId);
+                } else if (slug) {
+                    product = await StrapiAPI.fetchProductBySlug(slug);
+                }
 
                 if (!product) {
                     container.innerHTML = '<p class="text-center" style="width: 100%; color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono produktu.</p>';
@@ -139,42 +332,115 @@
                 }
 
                 const imgUrl = StrapiAPI.getImageUrl(product.image);
-                // Handle rich text description
-                let descHTML = (product.description || '').replace(/\n/g, '<br>');
-                let usageHTML = (product.usage || '').replace(/\n/g, '<br>');
+                const categoryName = product.category?.name || product.subcategory?.name || 'Produkt';
+                const categorySlug = product.category?.slug || '';
 
-                // Product Layout
-                container.innerHTML = `
-                    <div style="flex: 1 1 300px; text-align: center;">
-                        ${imgUrl ? `<img src="${imgUrl}" alt="${product.name}" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">` : '<div style="height: 300px; background: #eee; border-radius: 8px;"></div>'}
-                    </div>
-                    <div style="flex: 1 1 400px; display: flex; flex-direction: column; justify-content: center;">
-                        <span class="text-uppercase" style="color: var(--color-gold); display: block; margin-bottom: 0.5rem; font-weight: 600;">${product.category?.name || 'Produkt'}</span>
-                        <h1 style="margin-bottom: 1.5rem; font-size: 2.5rem; line-height: 1.2;">${product.name}</h1>
-                        <div style="font-size: 1.1rem; line-height: 1.8; color: var(--color-text); margin-bottom: 2rem;">
-                            ${descHTML}
-                        </div>
-                        ${usageHTML ? `
-                        <div style="margin-bottom: 2rem;">
-                            <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">Sposób użycia:</h3>
-                            <p style="color: var(--color-text-light); line-height: 1.6;">${usageHTML}</p>
-                        </div>` : ''}
-                        
-                        ${product.capacity ? `<p style="color: var(--color-text-muted); font-size: 0.9rem;">Pojemność: <strong>${product.capacity}</strong></p>` : ''}
+                // Rich text rendering
+                const descHTML = renderRichText(product.description || '');
+                const longDescHTML = renderRichText(product.long_description || '');
+                const usageHTML = renderRichText(product.usage || '');
+
+                // PDF file
+                const pdfUrl = StrapiAPI.getFileUrl(product.pdf_file);
+
+                // Breadcrumb
+                const breadcrumbHTML = `
+                    <div class="product-breadcrumb">
+                        <a href="products.html">Produkty</a>
+                        ${categorySlug ? `<span>›</span><a href="products.html?cat=${categorySlug}">${categoryName}</a>` : ''}
+                        <span>›</span> ${product.name}
                     </div>
                 `;
 
-                // Update page title
-                document.title = `${product.name} - Shot Cosmetics`;
+                // Back link
+                const backHTML = `
+                    <a href="products.html${categorySlug ? '?cat=' + categorySlug : ''}"
+                        style="display: inline-block; margin-bottom: 2rem; color: var(--color-purple); font-weight: 600; text-decoration: none;">
+                        &larr; Wróć do produktów
+                    </a>
+                `;
 
-                // Clear timeout logic as successful
+                // Meta section (capacity etc.)
+                let metaHTML = '';
+                if (product.capacity) {
+                    metaHTML = `
+                        <div class="product-meta">
+                            <div class="product-meta-item">
+                                <span class="product-meta-label">Pojemność</span>
+                                <span class="product-meta-value">${product.capacity}</span>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // PDF button
+                let pdfHTML = '';
+                if (pdfUrl) {
+                    pdfHTML = `
+                        <a href="${pdfUrl}" target="_blank" download class="pdf-download-btn">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm8-6v4h-4v-4H8l4-4 4 4h-2z"/>
+                            </svg>
+                            Pobierz kartę produktu (PDF)
+                        </a>
+                    `;
+                }
+
+                // Usage section
+                let usageSectionHTML = '';
+                if (usageHTML) {
+                    usageSectionHTML = `
+                        <div class="product-usage">
+                            <h3>Sposób użycia</h3>
+                            <p>${usageHTML}</p>
+                        </div>
+                    `;
+                }
+
+                // Long description
+                let longDescSectionHTML = '';
+                if (longDescHTML) {
+                    longDescSectionHTML = `
+                        <div class="product-long-desc">
+                            ${longDescHTML}
+                        </div>
+                    `;
+                }
+
+                container.innerHTML = `
+                    ${backHTML}
+                    ${breadcrumbHTML}
+                    <div class="product-detail-layout">
+                        <div class="product-detail-image">
+                            ${imgUrl
+                        ? `<img src="${imgUrl}" alt="${product.name}">`
+                        : '<div style="height: 350px; background: #f5f5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 1.2rem;">Brak zdjęcia</div>'
+                    }
+                        </div>
+                        <div class="product-detail-info">
+                            <span class="product-category-label">${categoryName}</span>
+                            <h1 class="product-title">${product.name}</h1>
+                            
+                            ${descHTML ? `<div class="product-short-desc">${descHTML}</div>` : ''}
+                            
+                            ${longDescSectionHTML}
+                            
+                            ${usageSectionHTML}
+                            
+                            ${metaHTML}
+                            
+                            ${pdfHTML}
+                        </div>
+                    </div>
+                `;
+
+                document.title = `${product.name} - Shot Cosmetics`;
                 clearTimeout(safetyTimer);
 
             } catch (error) {
                 console.error("Error loading product:", error);
                 container.innerHTML = '<p class="text-center" style="width: 100%; color: red;">Wystąpił błąd podczas ładowania produktu.</p>';
             } finally {
-                // Ensure loader removal
                 if (loader) {
                     loader.style.opacity = '0';
                     setTimeout(() => loader.style.display = 'none', 500);

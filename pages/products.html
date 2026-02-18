@@ -40,7 +40,7 @@
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="about.html">O Nas</a></li>
                     <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropdown-toggle" onclick="return false;">Produkty</a>
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
                         <ul class="dropdown-menu">
                             <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
                             <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
@@ -63,7 +63,7 @@
                         </ul>
                     </li>
                     <li><a href="education.html">Edukacja</a></li>
-                    <li><a href="news.html">Świat Shot</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
                     <li><a href="contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -261,6 +261,21 @@
             .products-hero-img-wrap {
                 max-width: 100% !important;
             }
+        }
+
+        /* Product card hover */
+        .product-card-link:hover .product-card {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-card-link:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-card-link:hover span:last-child {
+            opacity: 1;
+            color: var(--color-gold);
         }
     </style>
 
@@ -494,6 +509,7 @@
                         const name = typeof product === 'string' ? product : product.name;
                         const desc = typeof product === 'string' ? 'Zobacz więcej' : (product.desc || product.description || '');
                         const capacity = (typeof product !== 'string' && product.capacity) ? `<span style="display: block; font-size: 0.7rem; color: var(--color-gold); margin-top: 0.5rem; font-weight: 600;">${product.capacity}</span>` : '';
+                        const docId = (typeof product !== 'string') ? product.documentId : null;
 
                         let imgSrc = '../assets/images/product_purple.png';
                         let imgStyle = 'max-height: 80%; opacity: 0.8; mix-blend-mode: multiply;';
@@ -506,18 +522,31 @@
                             }
                         }
 
-                        return `
-                        <div class="card" style="padding: 2rem; text-align: center; transition: all 0.3s ease;">
-                             <div style="height: 180px; background: #fafafa; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 4px;">
+                        const cardInner = `
+                             <div style="height: 180px; background: #fafafa; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; border-radius: 4px; overflow: hidden;">
                                 <img src="${imgSrc}" 
                                      alt="${name}" 
-                                     style="${imgStyle}" loading="lazy">
+                                     style="${imgStyle} transition: transform 0.3s ease;" loading="lazy">
                             </div>
                             <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--color-text); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; min-height: 2.5em; display: flex; align-items: center; justify-content: center;">${name}</h4>
                             <p style="font-size: 0.8rem; color: var(--color-text-light); line-height: 1.4; margin-bottom: 0.5rem;">${desc}</p>
                             ${capacity}
-                        </div >
+                            <span style="display: inline-block; margin-top: 0.8rem; font-size: 0.75rem; color: var(--color-purple); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; opacity: 0.7; transition: opacity 0.3s;">Zobacz szczegóły &rarr;</span>
                         `;
+
+                        if (docId) {
+                            return `
+                            <a href="product-detail.html?id=${docId}" class="product-card-link" style="text-decoration: none; color: inherit; display: block;">
+                                <div class="card product-card" style="padding: 2rem; text-align: center; transition: all 0.3s ease; cursor: pointer; height: 100%;">
+                                    ${cardInner}
+                                </div>
+                            </a>`;
+                        } else {
+                            return `
+                            <div class="card" style="padding: 2rem; text-align: center; transition: all 0.3s ease;">
+                                ${cardInner}
+                            </div>`;
+                        }
                     }).join('');
 
                     return `<div class="products-grid">${gridHTML}</div>`;
@@ -529,7 +558,7 @@
                     if (!page) return;
                     if (page.section_label) document.getElementById('products-hero-label').textContent = page.section_label;
                     if (page.hero_title) document.getElementById('products-hero-title').innerHTML = page.hero_title.replace(/\n/g, '<br>');
-                    if (page.hero_description) document.getElementById('products-hero-desc').textContent = page.hero_description;
+                    if (page.hero_description) document.getElementById('products-hero-desc').innerHTML = renderRichText(page.hero_description);
                     if (page.hero_image) {
                         const imgUrl = StrapiAPI.getImageUrl(page.hero_image);
                         if (imgUrl) document.getElementById('products-hero-img').src = imgUrl;

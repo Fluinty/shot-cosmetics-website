@@ -80,7 +80,7 @@
                         </ul>
                     </li>
                     <li><a href="pages/education.html">Edukacja</a></li>
-                    <li><a href="pages/news.html">Świat Shot</a></li>
+                    <li><a href="pages/news.html">Aktualności</a></li>
                     <li><a href="pages/contact.html">Kontakt</a></li>
                 </ul>
             </nav>
@@ -89,7 +89,7 @@
 
     <main>
         <section id="hero-section" class="hero"
-            style="background-color: var(--color-purple-dark); margin-bottom: 0; min-height: 100vh; padding-top: 5rem; padding-bottom: 0; background-size: cover; background-position: center top; background-repeat: no-repeat;">
+            style="background-color: var(--color-purple-dark); margin-bottom: 0; min-height: 100vh; min-height: 100svh; padding-top: 5rem; padding-bottom: 0; background-size: cover; background-position: center top; background-repeat: no-repeat;">
             <div class="hero-overlay"></div>
             <div class="container hero-content" style="opacity: 0; transition: opacity 0.5s ease;">
                 <span id="hero-badge" class="text-uppercase"
@@ -103,7 +103,7 @@
                         style="background: var(--color-gold); border-color: var(--color-gold); color: black;">Odkryj
                         Produkty</a>
                     <a href="pages/contact.html" class="btn btn-outline"
-                        style="border-color: white; color: white;">Strefa Fryzjera</a>
+                        style="border-color: white; color: white;">SKONTAKTUJ SIĘ Z NAMI</a>
                 </div>
             </div>
         </section>
@@ -468,7 +468,7 @@
             if (hero.title_line2) parts.push(`<br>${hero.title_line2}`);
             if (parts.length > 0) document.getElementById('hero-title').innerHTML = parts.join(' ');
             // Description
-            if (hero.description) document.getElementById('hero-subtitle').textContent = hero.description;
+            if (hero.description) document.getElementById('hero-subtitle').innerHTML = renderRichText(hero.description);
             // CTA buttons
             if (hero.cta_text || hero.cta_link) {
                 const btns = document.getElementById('hero-buttons');
@@ -476,7 +476,7 @@
                     <a href="${hero.cta_link || 'pages/products.html'}" class="btn btn-primary"
                         style="background: var(--color-gold); border-color: var(--color-gold); color: black;">${hero.cta_text || 'Odkryj Produkty'}</a>
                     <a href="pages/contact.html" class="btn btn-outline"
-                        style="border-color: white; color: white;">Strefa Fryzjera</a>
+                        style="border-color: white; color: white;">SKONTAKTUJ SIĘ Z NAMI</a>
                 `;
             }
             // Reveal hero content with fade
@@ -493,7 +493,7 @@
             if (about.title) document.getElementById('about-heading').textContent = about.title;
             // description → first paragraph
             if (about.description) {
-                document.getElementById('about-text1').textContent = about.description;
+                document.getElementById('about-text1').innerHTML = renderRichText(about.description);
                 document.getElementById('about-text2').style.display = 'none';
             }
             // image
