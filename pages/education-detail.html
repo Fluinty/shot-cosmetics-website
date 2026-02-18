@@ -596,17 +596,28 @@
                     return;
                 }
 
-                if (typeof StrapiAPI === 'undefined' || typeof StrapiAPI.fetchEventById !== 'function') {
-                    throw new Error('StrapiAPI lub funkcja fetchEventById nie są dostępne. Odśwież stronę (Ctrl+F5).');
-                }
+                // Inline fetch — no dependency on external api.js cache
+                const API_URL = `${STRAPI_URL}/api/education-events/${docId}?populate=*`;
+                console.log('[education-detail] Fetching:', API_URL);
 
-                console.log('[education-detail] Fetching event:', docId);
-                const event = await StrapiAPI.fetchEventById(docId);
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error(`API zwróciło status ${response.status}`);
+                const json = await response.json();
+                const event = json.data;
+
                 console.log('[education-detail] Event data:', event);
 
                 if (!event) {
                     container.innerHTML = `<p class="text-center" style="color: var(--color-text-muted); padding: 4rem 0;">Nie znaleziono szkolenia o ID: ${docId}</p>`;
                     return;
+                }
+
+                // Helper to get image URL
+                function getImgUrl(imgData) {
+                    if (!imgData) return null;
+                    const url = imgData.formats?.medium?.url || imgData.formats?.small?.url || imgData.url;
+                    if (!url) return null;
+                    return url.startsWith('http') ? url : STRAPI_URL + url;
                 }
 
                 document.title = `${event.title} - Shot Cosmetics Edukacja`;
@@ -624,7 +635,7 @@
                     : '<span class="event-status-badge status-available">Miejsca dostępne</span>';
 
                 // ── Cover image ──
-                const imgUrl = StrapiAPI.getImageUrl(event.image);
+                const imgUrl = getImgUrl(event.image);
 
                 // ── Rich text descriptions ──
                 const descHTML = renderRichText(event.description || '');
