@@ -200,6 +200,53 @@
             content: "✅";
         }
 
+        /* ─── 3-column compact info grid ── */
+        .info-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-card-compact {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-card-compact .info-section-header {
+            padding: 1rem 1.2rem;
+        }
+
+        .info-card-compact .info-section-header h2 {
+            font-size: 1rem;
+        }
+
+        .info-card-compact .info-section-body {
+            padding: 1.2rem;
+            flex: 1;
+        }
+
+        .info-card-compact .info-section-body ul li {
+            font-size: 0.9rem;
+            padding: 0.4rem 0;
+            padding-left: 1.6rem;
+        }
+
+        .info-card-compact .info-section-body ul li::before {
+            top: 0.45rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Alternating section background */
         .info-section:nth-child(even) {
             background: #faf9fe;
@@ -566,12 +613,12 @@
             }).join('') + '</ul>';
         }
 
-        // ─── Build an info section card ──────────────
-        function buildInfoSection(icon, title, text, cssClass) {
+        function buildInfoSection(icon, title, text, cssClass, compact) {
             if (!text || !text.trim()) return '';
             const bodyContent = textToList(text);
+            const wrapperClass = compact ? `info-card-compact info-section ${cssClass}` : `info-section ${cssClass}`;
             return `
-                <div class="info-section ${cssClass}">
+                <div class="${wrapperClass}">
                     <div class="info-section-header">
                         <span class="section-icon">${icon}</span>
                         <h2>${title}</h2>
@@ -643,9 +690,9 @@
 
                 // ── Info sections ──
                 const programHTML = buildInfoSection('📋', 'Program szkolenia', event.program, 'program');
-                const skillsHTML = buildInfoSection('🎯', 'Jakie umiejętności zdobędziesz', event.skills, 'skills');
-                const bringHTML = buildInfoSection('✂️', 'Co zabrać ze sobą', event.what_to_bring, 'bring');
-                const includedHTML = buildInfoSection('✅', 'Co zawiera szkolenie', event.whats_included, 'included');
+                const skillsHTML = buildInfoSection('🎯', 'Umiejętności', event.skills, 'skills', true);
+                const bringHTML = buildInfoSection('✂️', 'Co zabrać ze sobą', event.what_to_bring, 'bring', true);
+                const includedHTML = buildInfoSection('✅', 'Co zawiera', event.whats_included, 'included', true);
 
                 // ── Gallery ──
                 let galleryHTML = '';
@@ -745,9 +792,12 @@
                     ${longDescHTML ? `<div class="event-long-desc">${longDescHTML}</div>` : ''}
 
                     ${programHTML}
-                    ${skillsHTML}
-                    ${bringHTML}
-                    ${includedHTML}
+
+                    <div class="info-grid-3">
+                        ${skillsHTML}
+                        ${bringHTML}
+                        ${includedHTML}
+                    </div>
 
                     ${galleryHTML}
 
