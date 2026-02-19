@@ -55,9 +55,12 @@ async function strapiFetch(endpoint) {
  */
 function getImageUrl(imageData) {
     if (!imageData) return null;
-    const url = imageData.formats?.medium?.url || imageData.formats?.small?.url || imageData.url;
+    // Check if imageData is just the url string or an object
+    const url = typeof imageData === 'string' ? imageData : imageData.url;
     if (!url) return null;
+    // If it's already a full URL, return it
     if (url.startsWith('http')) return url;
+    // Otherwise prepend STRAPI_URL
     return `${STRAPI_URL}${url}`;
 }
 
