@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://hairpassion-production.up.railway.app" crossorigin>
+    <title>Szkolenie - Shot Cosmetics</title>
+    <link rel="stylesheet" href="../css/styles.css?v=5">
+    <style>
+        /* ─── Layout ────────────────────────────────── */
+        .training-detail-layout {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* ─── Hero header ───────────────────────────── */
+        .training-header {
+            margin-bottom: 2.5rem;
+        }
+
+        .training-badges {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .training-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-category {
+            background: var(--color-gold);
+            color: white;
+        }
+
+        .badge-level-podstawowy {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-level-sredniozaawansowany {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .badge-level-zaawansowany {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .training-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: var(--color-purple-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ─── Meta bar with icons ─── */
+        .training-meta-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8f6ff;
+            border-radius: 16px;
+            border: 1px solid rgba(127, 76, 163, 0.1);
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 12px;
+            transition: background 0.2s;
+        }
+
+        .meta-item:hover {
+            background: rgba(127, 76, 163, 0.06);
+        }
+
+        .meta-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.25rem;
+        }
+
+        .meta-icon.purple {
+            background: rgba(127, 76, 163, 0.12);
+        }
+
+        .meta-icon.gold {
+            background: rgba(190, 157, 95, 0.15);
+        }
+
+        .meta-icon.green {
+            background: rgba(46, 125, 50, 0.1);
+        }
+
+        .meta-icon.blue {
+            background: rgba(25, 118, 210, 0.1);
+        }
+
+        .meta-icon.red {
+            background: rgba(198, 40, 40, 0.1);
+        }
+
+        .meta-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            margin-bottom: 0.15rem;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: var(--color-purple-dark);
+            font-size: 0.95rem;
+        }
+
+        /* ─── Cover image ──────────────────────────── */
+        .training-cover {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ─── Description ──────────────────────────── */
+        .training-description {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--color-text);
+            margin-bottom: 3rem;
+        }
+
+        /* ─── Info sections ───────────────────────── */
+        .info-section {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--color-border);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .info-section:hover {
+            border-color: var(--color-gold);
+        }
+
+        .info-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .section-icon {
+            font-size: 1.4rem;
+        }
+
+        .info-section-header h2 {
+            font-size: 1.3rem;
+            color: var(--color-purple-dark);
+            margin: 0;
+        }
+
+        .info-section-body {
+            color: var(--color-text);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .info-section-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-section-body ul li {
+            padding: 0.35rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .info-section-body ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        /* ─── 3-col compact grid ─────────────────── */
+        .info-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card-compact {
+            padding: 1.25rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        .info-card-compact .info-section-header h2 {
+            font-size: 1rem;
+        }
+
+        .info-card-compact .info-section-body {
+            font-size: 0.9rem;
+        }
+
+        .info-card-compact .info-section-body ul li {
+            padding: 0.2rem 0;
+            padding-left: 1rem;
+        }
+
+        /* ─── CTA ───────────────────────────────── */
+        .training-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--color-purple-dark), var(--color-purple));
+            border-radius: 16px;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .training-cta h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .training-cta p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .training-cta .btn-gold {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--color-gold);
+            color: white;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .training-cta .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(190, 157, 95, 0.4);
+        }
+
+        /* ─── Responsive ────────────────────────── */
+        @media (max-width: 768px) {
+            .training-title {
+                font-size: 1.8rem;
+            }
+
+            .training-meta-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .info-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .info-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ─── Back link ─────────────────────────── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--color-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="page-loader"
+        style="position: fixed; inset: 0; background: white; display: flex; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.5s;">
+        <div
+            style="border: 4px solid #f3f3f3; border-top: 4px solid var(--color-gold); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite;">
+        </div>
+    </div>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo"><img src="../assets/images/logo-new.png" alt="Shot Hair Specialist"
+                        style="height: 50px;"></a>
+                <div class="menu-toggle" id="mobile-menu" style="z-index: 10005; cursor: pointer;">&#9776;</div>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="about.html">O Nas</a></li>
+                    <li class="dropdown">
+                        <a href="products.html" class="dropdown-toggle">Produkty</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/pages/products?cat=koloryzacja">Koloryzacja</a></li>
+                            <li><a href="/pages/products?cat=rozjasnianie">Rozjaśnianie</a></li>
+                            <li class="has-submenu">
+                                <a href="/pages/products?cat=pielegnacja">Pielęgnacja</a>
+                                <ul class="submenu">
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=0">Color Care</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=1">Simply Blond</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=2">Anti-Age</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=3">Anti-Stress</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=4">Texturizing</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=5">Tricoilogy</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=6">Sun</a></li>
+                                    <li><a href="/pages/products?cat=pielegnacja&sub=7">Repara</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/pages/products?cat=zabiegi-kuracje">Zabiegi</a></li>
+                            <li><a href="/pages/products?cat=techniczne">Techniczne</a></li>
+                            <li><a href="/pages/products?cat=stylizacja">Stylizacja</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="education.html" class="active">Edukacja</a></li>
+                    <li><a href="news.html">Aktualności</a></li>
+                    <li><a href="contact.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container" style="padding-top: 10rem; padding-bottom: 4rem;">
+            <div id="training-container" class="training-detail-layout">
+                <p style="text-align: center; color: var(--color-text-muted); padding: 4rem 0;">Ładowanie szkolenia...
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2026 Shot Cosmetics Polska. Wszystkie prawa zastrzeżone.</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://www.instagram.com/shot_polska/" target="_blank"
+                    style="color: var(--color-text-muted); margin: 0 0.5rem; text-decoration: none;">Instagram</a>
+                <a href="https://www.facebook.com/ShotPolska/" target="_blank"
+                    style="color: var(--color-text-muted); margin: 0 0.5rem; text-decoration: none;">Facebook</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js?v=7"></script>
+    <script src="../js/main.js?v=3"></script>
+    <script src="../js/ui-enhancements.js?v=2"></script>
+    <script>
+        const LEVEL_LABELS = {
+            'podstawowy': 'Podstawowy',
+            'sredniozaawansowany': 'Średniozaawansowany',
+            'zaawansowany': 'Zaawansowany'
+        };
+
+        const MONTHS_PL_FULL = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca',
+            'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+
+        // Helper to render rich text (newlines → paragraphs)
+        function renderRichText(text) {
+            if (!text) return '';
+            return text.split('\n').filter(l => l.trim()).map(l => `<p>${l.trim()}</p>`).join('');
+        }
+
+        // Helper to build a list from newline-separated text
+        function textToList(text) {
+            if (!text) return '';
+            const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+            return '<ul>' + lines.map(l => {
+                const clean = l.replace(/^[-–•*]\s*/, '').replace(/^\d+\.\s*/, '');
+                return `<li>${clean}</li>`;
+            }).join('') + '</ul>';
+        }
+
+        // Build info section card
+        function buildInfoSection(icon, title, text, compact) {
+            if (!text || !text.trim()) return '';
+            const bodyContent = textToList(text);
+            const cls = compact ? 'info-section info-card-compact' : 'info-section';
+            return `
+                <div class="${cls}">
+                    <div class="info-section-header">
+                        <span class="section-icon">${icon}</span>
+                        <h2>${title}</h2>
+                    </div>
+                    <div class="info-section-body">
+                        ${bodyContent}
+                    </div>
+                </div>
+            `;
+        }
+
+        // ─── Main init ──────────────────────────────
+        (async function () {
+            const container = document.getElementById('training-container');
+
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const docId = params.get('id');
+
+                if (!docId) {
+                    container.innerHTML = '<p style="text-align:center; padding:4rem; color:#999;">Brak ID szkolenia.</p>';
+                    return;
+                }
+
+                const t = await StrapiAPI.fetchTrainingById(docId);
+                if (!t) {
+                    container.innerHTML = '<p style="text-align:center; padding:4rem; color:#999;">Nie znaleziono szkolenia.</p>';
+                    return;
+                }
+
+                document.title = `${t.title} - Shot Cosmetics`;
+
+                // Image
+                const imgUrl = StrapiAPI.getImageUrl(t.image);
+                const coverHtml = imgUrl
+                    ? `<img src="${imgUrl}" alt="${t.title}" class="training-cover">`
+                    : '';
+
+                // Badges
+                const levelClass = `badge-level-${t.level || 'podstawowy'}`;
+                const levelLabel = LEVEL_LABELS[t.level] || t.level || 'Podstawowy';
+                const categoryBadge = t.category
+                    ? `<span class="training-badge badge-category">${t.category}</span>`
+                    : '';
+
+                // Date formatting
+                let dateStr = '—';
+                if (t.date) {
+                    const d = new Date(t.date);
+                    dateStr = `${d.getDate()} ${MONTHS_PL_FULL[d.getMonth()]} ${d.getFullYear()}`;
+                }
+
+                // Meta bar
+                const metaItems = [];
+
+                if (t.target_group) {
+                    metaItems.push(`
+                        <div class="meta-item">
+                            <div class="meta-icon purple">🎯</div>
+                            <div class="meta-text">
+                                <span class="meta-label">Grupa docelowa</span>
+                                <span class="meta-value">${t.target_group}</span>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                if (t.duration) {
+                    metaItems.push(`
+                        <div class="meta-item">
+                            <div class="meta-icon gold">⏱️</div>
+                            <div class="meta-text">
+                                <span class="meta-label">Czas trwania</span>
+                                <span class="meta-value">${t.duration}</span>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                if (t.training_type) {
+                    metaItems.push(`
+                        <div class="meta-item">
+                            <div class="meta-icon green">📋</div>
+                            <div class="meta-text">
+                                <span class="meta-label">Rodzaj szkolenia</span>
+                                <span class="meta-value">${t.training_type}</span>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                if (t.date) {
+                    metaItems.push(`
+                        <div class="meta-item">
+                            <div class="meta-icon blue">📅</div>
+                            <div class="meta-text">
+                                <span class="meta-label">Data</span>
+                                <span class="meta-value">${dateStr}</span>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                metaItems.push(`
+                    <div class="meta-item">
+                        <div class="meta-icon red">🏆</div>
+                        <div class="meta-text">
+                            <span class="meta-label">Poziom</span>
+                            <span class="meta-value">${levelLabel}</span>
+                        </div>
+                    </div>
+                `);
+
+                // Info sections — full width
+                const goalSection = buildInfoSection('🎯', 'Cel Szkolenia', t.training_goal, false);
+                const structureSection = buildInfoSection('📐', 'Struktura Szkolenia', t.structure, false);
+
+                // Info sections — compact 3-col grid
+                const materialsProvided = buildInfoSection('📦', 'Materiały zapewnione', t.materials_provided, true);
+                const materialsToBring = buildInfoSection('🎒', 'Do zabrania', t.materials_to_bring, true);
+                const trainingPlan = buildInfoSection('📋', 'Plan szkolenia', t.training_plan, true);
+
+                const hasCompactGrid = materialsProvided || materialsToBring || trainingPlan;
+
+                // CTA
+                const ctaHtml = `
+                    <div class="training-cta">
+                        <h3>Zainteresowany/a tym szkoleniem?</h3>
+                        <p>Skontaktuj się z nami, aby uzyskać więcej informacji lub zapisać się.</p>
+                        <a href="contact.html?training=${encodeURIComponent(t.title)}&subject=training" class="btn-gold">
+                            ZAPISZ SIĘ
+                        </a>
+                    </div>
+                `;
+
+                // Build full page
+                container.innerHTML = `
+                    <a href="education.html" class="back-link">← Powrót do edukacji</a>
+
+                    <div class="training-header">
+                        <div class="training-badges">
+                            ${categoryBadge}
+                            <span class="training-badge ${levelClass}">${levelLabel}</span>
+                        </div>
+                        <h1 class="training-title">${t.title}</h1>
+                    </div>
+
+                    <div class="training-meta-bar">
+                        ${metaItems.join('')}
+                    </div>
+
+                    ${coverHtml}
+
+                    <div class="training-description">
+                        ${renderRichText(t.description)}
+                    </div>
+
+                    ${goalSection}
+                    ${structureSection}
+
+                    ${hasCompactGrid ? `
+                        <div class="info-grid-3">
+                            ${materialsProvided}
+                            ${materialsToBring}
+                            ${trainingPlan}
+                        </div>
+                    ` : ''}
+
+                    ${ctaHtml}
+                `;
+
+            } catch (error) {
+                console.error('Error loading training:', error);
+                container.innerHTML = '<p style="text-align:center; padding:4rem; color:#c62828;">Wystąpił błąd przy ładowaniu szkolenia.</p>';
+            } finally {
+                const loader = document.getElementById('page-loader');
+                if (loader) {
+                    loader.style.opacity = '0';
+                    setTimeout(() => loader.remove(), 500);
+                }
+            }
+        })();
+
+        // Safety timeout
+        setTimeout(() => {
+            const loader = document.getElementById('page-loader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 500);
+            }
+        }, 5000);
+    </script>
+</body>
+
+</html>

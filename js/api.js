@@ -203,6 +203,16 @@ async function fetchNewsPage() {
     return await strapiFetch('/news-page?populate=*');
 }
 
+// ─── TRAININGS ────────────────────────────────────────────────────
+async function fetchTrainings() {
+    const data = await strapiFetch('/trainings?populate=*&sort=title:asc');
+    return data || [];
+}
+
+async function fetchTrainingById(documentId) {
+    return await strapiFetch(`/trainings/${documentId}?populate=*`);
+}
+
 // ─── EXPORT ───────────────────────────────────────────────────────
 
 window.StrapiAPI = {
@@ -229,5 +239,7 @@ window.StrapiAPI = {
     fetchContactInfo,
     fetchProductsPage,
     fetchNewsPage,
-    fetchEventById
+    fetchEventById,
+    fetchTrainings,
+    fetchTrainingById
 };

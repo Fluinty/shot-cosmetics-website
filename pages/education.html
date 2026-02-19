@@ -118,10 +118,105 @@
             gap: 0.5rem;
         }
 
+        /* Training Plan Cards */
+        .training-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .training-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            transition: all 0.35s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .training-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(80, 30, 120, 0.15);
+            border-color: var(--color-gold);
+        }
+
+        .training-card-img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .training-card-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .training-level-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 0.75rem;
+            width: fit-content;
+        }
+
+        .training-level-badge.level-podstawowy {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .training-level-badge.level-sredniozaawansowany {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .training-level-badge.level-zaawansowany {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .training-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .training-card-desc {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .training-card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--color-purple);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .training-card:hover .training-card-link {
+            color: var(--color-gold);
+        }
+
         @media (max-width: 768px) {
             .program-section {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .training-grid {
+                grid-template-columns: 1fr;
             }
 
             .calendar-item {
@@ -138,6 +233,12 @@
                 flex-direction: column;
                 gap: 0.5rem;
                 justify-content: center;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .training-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -223,12 +324,20 @@
                     holistyczne podejście do fryzjerstwa, ucząc nie tylko technik, ale także diagnozy włosa i
                     psychologii pracy z klientem.
                 </p>
-                <ul id="edu-program-features" style="color: var(--color-text); line-height: 2;">
-                    <li>• <strong>Koloryzacja DNA:</strong> Poznaj chemię koloru od podstaw.</li>
-                    <li>• <strong>Blond Mastery:</strong> Bezpieczne rozjaśnianie i tonowanie.</li>
-                    <li>• <strong>Trychologia w salonie:</strong> Zabiegi pielęgnacyjne i kuracje.</li>
-                    <li>• <strong>Stylizacja i Cięcie:</strong> Nowoczesne formy i tekstury.</li>
-                </ul>
+
+            </div>
+        </section>
+
+        <!-- Plan Szkoleń -->
+        <section class="container" style="padding: 6rem 0;">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <span class="text-uppercase" style="color: var(--color-text-light);">Nasze Szkolenia</span>
+                <h2>Plan Szkoleń</h2>
+                <div style="width: 60px; height: 3px; background: var(--color-gold); margin: 1rem auto;"></div>
+            </div>
+            <div id="trainings-grid" class="training-grid">
+                <p class="text-center" style="padding: 3rem; color: var(--color-text-muted); grid-column: 1/-1;">
+                    Ładowanie szkoleń...</p>
             </div>
         </section>
 
@@ -349,10 +458,7 @@
                         </div>
                         <div class="event-info" style="flex: 1;">
                             <h4>${ev.title}</h4>
-                            <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: 0.5rem; max-width: 600px;">${(() => {
-                        const raw = (ev.description || '').split('\n')[0].replace(/^[-–•*]\s*/, '').trim();
-                        return raw.length > 150 ? raw.substring(0, 150) + '...' : raw;
-                    })()}</p>
+                            <p style="color: var(--color-text-light); font-size: 0.9rem; margin-bottom: 0.5rem; max-width: 600px;">${ev.description || ''}</p>
                             <div class="event-meta">
                                 <span>• ${ev.location || 'Online'}</span>
                                 <span>• ${ev.is_full ? 'Lista zamknięta' : 'Miejsca dostępne'}</span>
@@ -366,6 +472,38 @@
 
 
 
+        const LEVEL_LABELS = {
+            'podstawowy': 'Podstawowy',
+            'sredniozaawansowany': 'Średniozaawansowany',
+            'zaawansowany': 'Zaawansowany'
+        };
+
+        async function loadTrainings() {
+            const grid = document.getElementById('trainings-grid');
+            const trainings = await StrapiAPI.fetchTrainings();
+            if (!trainings || trainings.length === 0) {
+                grid.innerHTML = '<p class="text-center" style="color: var(--color-text-muted); grid-column: 1/-1;">Brak zaplanowanych szkoleń.</p>';
+                return;
+            }
+            grid.innerHTML = trainings.map(t => {
+                const imgUrl = StrapiAPI.getImageUrl(t.image) || '../assets/images/news_masterclass.png';
+                const levelClass = `level-${t.level || 'podstawowy'}`;
+                const levelLabel = LEVEL_LABELS[t.level] || t.level || 'Podstawowy';
+                const desc = (t.short_description || '').length > 120 ? t.short_description.substring(0, 120) + '...' : (t.short_description || '');
+                return `
+                    <a href="training-detail.html?id=${t.documentId}" class="training-card">
+                        <img src="${imgUrl}" alt="${t.title}" class="training-card-img">
+                        <div class="training-card-body">
+                            <span class="training-level-badge ${levelClass}">${levelLabel}</span>
+                            <h3>${t.title}</h3>
+                            <p class="training-card-desc">${desc}</p>
+                            <span class="training-card-link">Szczegóły →</span>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
         async function loadPageContent() {
             const page = await StrapiAPI.fetchEducationPage();
             if (!page) return;
@@ -375,11 +513,7 @@
                 const imgUrl = StrapiAPI.getImageUrl(page.program_image);
                 if (imgUrl) document.getElementById('edu-program-img').src = imgUrl;
             }
-            if (page.program_features && page.program_features.length > 0) {
-                document.getElementById('edu-program-features').innerHTML = page.program_features.map(f =>
-                    `<li>• <strong>${f.title}:</strong> ${f.description}</li>`
-                ).join('');
-            }
+
         }
 
         async function initPage() {
@@ -388,6 +522,7 @@
                 await Promise.all([
                     loadEducators(),
                     loadEvents(),
+                    loadTrainings(),
                     loadPageContent()
                 ]);
             } catch (error) {
