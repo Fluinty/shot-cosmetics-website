@@ -70,10 +70,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
-            padding: 1.5rem;
-            background: #f8f6ff;
-            border-radius: 16px;
-            border: 1px solid rgba(127, 76, 163, 0.1);
             margin-bottom: 2.5rem;
         }
 
@@ -81,13 +77,17 @@
             display: flex;
             align-items: flex-start;
             gap: 0.75rem;
-            padding: 0.75rem;
-            border-radius: 12px;
-            transition: background 0.2s;
+            padding: 1.25rem;
+            border-radius: 14px;
+            background: #f8f6ff;
+            border: 1px solid rgba(127, 76, 163, 0.08);
+            transition: all 0.3s ease;
         }
 
         .meta-item:hover {
-            background: rgba(127, 76, 163, 0.06);
+            border-color: var(--color-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(80, 30, 120, 0.08);
         }
 
         .meta-icon {
@@ -540,15 +540,8 @@
                     `);
                 }
 
-                metaItems.push(`
-                    <div class="meta-item">
-                        <div class="meta-icon red">🏆</div>
-                        <div class="meta-text">
-                            <span class="meta-label">Poziom</span>
-                            <span class="meta-value">${levelLabel}</span>
-                        </div>
-                    </div>
-                `);
+
+
 
                 // Info sections — full width
                 const goalSection = buildInfoSection('🎯', 'Cel Szkolenia', t.training_goal, false);
