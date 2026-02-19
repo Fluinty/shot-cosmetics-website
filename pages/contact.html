@@ -90,6 +90,14 @@
             .map-section .grid-2-cols>div:nth-child(2) {
                 order: 2 !important;
             }
+
+            #contactForm>div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+
+            #contactForm {
+                padding: 1.5rem !important;
+            }
         }
     </style>
 </head>
@@ -198,6 +206,111 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact-form" class="container" style="margin-bottom: 4rem;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="text-align: center; margin-bottom: 2.5rem;">
+                    <h5
+                        style="text-transform: uppercase; color: var(--color-gold); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 0.8rem;">
+                        Formularz kontaktowy</h5>
+                    <h2 style="font-size: 2rem; color: var(--color-purple-dark); margin-bottom: 0.8rem;">Napisz do nas
+                    </h2>
+                    <p style="color: var(--color-text-light); max-width: 500px; margin: 0 auto;">Masz pytanie o
+                        produkty, szkolenia lub współpracę? Wypełnij formularz, a odezwiemy się najszybciej jak to
+                        możliwe.</p>
+                </div>
+
+                <form id="contactForm"
+                    style="background: #ffffff; border-radius: 16px; padding: 2.5rem; box-shadow: 0 8px 30px rgba(0,0,0,0.06); border: 1px solid #f0eef5;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label for="cf-name">Imię i nazwisko *</label>
+                            <input type="text" id="cf-name" name="name" class="form-control" placeholder="Jan Kowalski"
+                                required
+                                style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s;">
+                        </div>
+                        <div>
+                            <label for="cf-email">E-mail *</label>
+                            <input type="email" id="cf-email" name="email" class="form-control"
+                                placeholder="jan@example.com" required
+                                style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s;">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <label for="cf-phone">Telefon</label>
+                            <input type="tel" id="cf-phone" name="phone" class="form-control"
+                                placeholder="+48 600 000 000"
+                                style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s;">
+                        </div>
+                        <div>
+                            <label for="cf-subject">Temat</label>
+                            <select id="cf-subject" name="subject" class="form-control"
+                                style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; transition: border-color 0.3s, box-shadow 0.3s; background: #fff; cursor: pointer;">
+                                <option value="">Wybierz temat...</option>
+                                <option value="products">Pytanie o produkty</option>
+                                <option value="training">Zapisy na szkolenie</option>
+                                <option value="collaboration">Współpraca / Dystrybucja</option>
+                                <option value="complaint">Reklamacja</option>
+                                <option value="other">Inne</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Event name (auto-filled from URL param, shown only when training topic) -->
+                    <div id="cf-event-wrapper" style="margin-bottom: 1.5rem; display: none;">
+                        <label for="cf-event">Nazwa szkolenia</label>
+                        <input type="text" id="cf-event" name="event" class="form-control" readonly
+                            style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; background: #f8f6ff; color: var(--color-purple-dark); font-weight: 600;">
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label for="cf-message">Wiadomość *</label>
+                        <textarea id="cf-message" name="message" class="form-control" rows="5"
+                            placeholder="Opisz swoje pytanie lub prośbę..." required
+                            style="border: 1px solid #e0dce8; border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 1rem; resize: vertical; min-height: 120px; transition: border-color 0.3s, box-shadow 0.3s;"></textarea>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                        <input type="checkbox" id="cf-rodo" name="rodo" required
+                            style="width: 18px; height: 18px; accent-color: var(--color-purple); cursor: pointer;">
+                        <label for="cf-rodo"
+                            style="font-size: 0.8rem; color: var(--color-text-light); font-weight: 400; margin-bottom: 0; cursor: pointer;">
+                            Wyrażam zgodę na przetwarzanie moich danych osobowych w celu odpowiedzi na zapytanie. *
+                        </label>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button type="submit" id="cf-submit"
+                            style="display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.1rem 3rem; background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%); color: white; border: none; border-radius: 50px; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(92, 45, 145, 0.3);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                            Wyślij wiadomość
+                        </button>
+                    </div>
+
+                    <!-- Success message (hidden by default) -->
+                    <div id="cf-success"
+                        style="display: none; text-align: center; padding: 2rem; margin-top: 1.5rem; background: #e8f5e9; border-radius: 12px;">
+                        <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">✅</div>
+                        <h3 style="color: #2e7d32; margin-bottom: 0.5rem;">Wiadomość wysłana!</h3>
+                        <p style="color: #388e3c;">Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe.</p>
+                    </div>
+
+                    <!-- Error message (hidden by default) -->
+                    <div id="cf-error"
+                        style="display: none; text-align: center; padding: 1.5rem; margin-top: 1.5rem; background: #fce4ec; border-radius: 12px;">
+                        <p style="color: #c62828; margin: 0;">Wystąpił błąd. Spróbuj ponownie lub skontaktuj się
+                            telefonicznie.</p>
+                    </div>
+                </form>
             </div>
         </section>
 
@@ -420,14 +533,100 @@
 
         async function initPage() {
             try {
-                // If there were other fetches, we would Promise.all them here.
-                // Currently only loadDistributors seems dynamic.
-                // Hero seems hardcoded in HTML? Or maybe I missed it.
-                // But let's assume loadDistributors is the main thing.
                 await loadDistributors();
-
-                // If there are hero elements hidden, reveal them.
                 document.querySelectorAll('.hero-content').forEach(el => el.style.opacity = '1');
+
+                // ── Contact Form Setup ──
+                const urlParams = new URLSearchParams(window.location.search);
+                const eventName = urlParams.get('event');
+                const subjectSelect = document.getElementById('cf-subject');
+                const eventWrapper = document.getElementById('cf-event-wrapper');
+                const eventInput = document.getElementById('cf-event');
+
+                // Auto-fill from ?event= param (from education detail page CTA)
+                if (eventName) {
+                    eventInput.value = decodeURIComponent(eventName);
+                    subjectSelect.value = 'training';
+                    eventWrapper.style.display = 'block';
+                    // Scroll to form
+                    setTimeout(() => {
+                        document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 600);
+                }
+
+                // Show/hide event field based on subject selection
+                subjectSelect.addEventListener('change', function () {
+                    if (this.value === 'training') {
+                        eventWrapper.style.display = 'block';
+                    } else {
+                        eventWrapper.style.display = 'none';
+                    }
+                });
+
+                // Form submission
+                const contactForm = document.getElementById('contactForm');
+                contactForm.addEventListener('submit', async function (e) {
+                    e.preventDefault();
+
+                    const submitBtn = document.getElementById('cf-submit');
+                    const successDiv = document.getElementById('cf-success');
+                    const errorDiv = document.getElementById('cf-error');
+
+                    // Reset messages
+                    successDiv.style.display = 'none';
+                    errorDiv.style.display = 'none';
+
+                    // Disable button
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.6';
+                    submitBtn.innerHTML = '<span>Wysyłanie...</span>';
+
+                    // Collect form data
+                    const formData = {
+                        name: document.getElementById('cf-name').value,
+                        email: document.getElementById('cf-email').value,
+                        phone: document.getElementById('cf-phone').value,
+                        subject: subjectSelect.value,
+                        event: eventInput.value,
+                        message: document.getElementById('cf-message').value
+                    };
+
+                    console.log('[contact-form] Submitted data:', formData);
+
+                    // TODO: Connect to backend (e.g., Edge Function, email service)
+                    // For now, simulate success after a short delay
+                    try {
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+
+                        // Show success
+                        successDiv.style.display = 'block';
+                        contactForm.reset();
+                        eventWrapper.style.display = 'none';
+
+                        // Re-enable button
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Wyślij wiadomość`;
+                    } catch (err) {
+                        console.error('[contact-form] Error:', err);
+                        errorDiv.style.display = 'block';
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                        submitBtn.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg> Wyślij wiadomość`;
+                    }
+                });
+
+                // Focus styles for inputs
+                document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(el => {
+                    el.addEventListener('focus', function () {
+                        this.style.borderColor = 'var(--color-purple)';
+                        this.style.boxShadow = '0 0 0 3px rgba(92, 45, 145, 0.1)';
+                    });
+                    el.addEventListener('blur', function () {
+                        this.style.borderColor = '#e0dce8';
+                        this.style.boxShadow = 'none';
+                    });
+                });
 
             } catch (err) {
                 console.error("Error loading contact page", err);
